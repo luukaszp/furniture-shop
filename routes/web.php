@@ -24,3 +24,8 @@ Route::get('/about/company', function () {
 Route::get('/about/contact', function () {
     return view('about.contact');
 });
+
+Route::get('/product/1', function () {
+    return view('product');
+});
+

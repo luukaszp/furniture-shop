@@ -36,7 +36,9 @@
             <div class="row mt-3 mb-3" style="display: inline-flex">
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="...">
+                        <a href="/product/1">
+                            <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="armchair">
+                        </a>
                         <div class="card-body">
                             <h5 class="card-title">Skórzany fotel</h5>
                             <p class="card-text" style="font-weight: bold">59,00 zł</p>
@@ -46,7 +48,9 @@
                 </div>
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="...">
+                        <a href="/product/1">
+                            <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="armchair">
+                        </a>
                         <div class="card-body">
                             <h5 class="card-title">Skórzany fotel</h5>
                             <p class="card-text" style="font-weight: bold">59,00 zł</p>
@@ -56,7 +60,9 @@
                 </div>
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="...">
+                        <a href="/product/1">
+                            <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="armchair">
+                        </a>
                         <div class="card-body">
                             <h5 class="card-title">Skórzany fotel</h5>
                             <p class="card-text" style="font-weight: bold">59,00 zł</p>
@@ -68,7 +74,9 @@
             <div class="row mt-3 mb-3" style="display: inline-flex">
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="...">
+                        <a href="/product/1">
+                            <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="armchair">
+                        </a>
                         <div class="card-body">
                             <h5 class="card-title">Skórzany fotel</h5>
                             <p class="card-text" style="font-weight: bold">59,00 zł</p>
@@ -78,7 +86,9 @@
                 </div>
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="...">
+                        <a href="/product/1">
+                            <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="armchair">
+                        </a>
                         <div class="card-body">
                             <h5 class="card-title">Skórzany fotel</h5>
                             <p class="card-text" style="font-weight: bold">59,00 zł</p>
@@ -88,7 +98,9 @@
                 </div>
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="...">
+                        <a href="/product/1">
+                            <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="armchair">
+                        </a>
                         <div class="card-body">
                             <h5 class="card-title">Skórzany fotel</h5>
                             <p class="card-text" style="font-weight: bold">59,00 zł</p>
