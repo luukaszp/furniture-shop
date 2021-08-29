@@ -28,8 +28,8 @@
             <div class="col-sm">
                 <div class="list-group list-group-flush">
                     <p>O NAS</p>
-                    <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Kontakt i dane firmy</a>
-                    <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">O firmie</a>
+                    <a href="/about/contact" class="list-group-item list-group-item-action list-group-item-secondary">Kontakt i dane firmy</a>
+                    <a href="/about/company" class="list-group-item list-group-item-action list-group-item-secondary">O firmie</a>
                 </div>
             </div>
         </div>
