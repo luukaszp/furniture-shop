@@ -12,13 +12,6 @@
             </div>
             <div class="col-sm">
                 <div class="list-group list-group-flush">
-                    <p>MOJE KONTO</p>
-                    <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Twoje zamówienia</a>
-                    <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Ustawienia konta</a>
-                </div>
-            </div>
-            <div class="col-sm">
-                <div class="list-group list-group-flush">
                     <p>PŁATNOŚCI I DOSTAWA</p>
                     <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Formy płatności</a>
                     <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Czas i koszty dostawy</a>
