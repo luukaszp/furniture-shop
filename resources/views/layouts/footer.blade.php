@@ -4,7 +4,7 @@
         <div class="row text-black py-5">
             <div class="col-sm">
                 <div class="list-group list-group-flush">
-                    <p>POMOC</p>
+                    <p style="font-weight: bold">POMOC</p>
                     <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Zwroty i reklamacje</a>
                     <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Pytania i odpowiedzi</a>
                     <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Regulamin</a>
@@ -12,7 +12,7 @@
             </div>
             <div class="col-sm">
                 <div class="list-group list-group-flush">
-                    <p>PŁATNOŚCI I DOSTAWA</p>
+                    <p style="font-weight: bold">PŁATNOŚCI I DOSTAWA</p>
                     <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Formy płatności</a>
                     <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Czas i koszty dostawy</a>
                     <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Czas realizacji zamówienia</a>
@@ -20,14 +20,14 @@
             </div>
             <div class="col-sm">
                 <div class="list-group list-group-flush">
-                    <p>INFORMACJE</p>
+                    <p style="font-weight: bold">INFORMACJE</p>
                     <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Polityka prywatności</a>
                     <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Jak kupować?</a>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="list-group list-group-flush">
-                    <p>O NAS</p>
+                    <p style="font-weight: bold">O NAS</p>
                     <a href="/about/contact" class="list-group-item list-group-item-action list-group-item-secondary">Kontakt i dane firmy</a>
                     <a href="/about/company" class="list-group-item list-group-item-action list-group-item-secondary">O firmie</a>
                 </div>
@@ -36,7 +36,7 @@
         <hr class="my-4" style="color: black">
         <section class="mb-4 pt-5">
             <a
-                class="btn btn-primary btn-floating m-1"
+                class="btn btn-dark btn-floating m-1"
                 style="background-color: #FF0000;"
                 href="https://www.youtube.com/"
                 role="button"
@@ -44,7 +44,7 @@
                 ></a>
 
             <a
-            class="btn btn-primary btn-floating m-1"
+            class="btn btn-dark btn-floating m-1"
             style="background-color: #3b5998;"
             href="https://www.facebook.com/"
             role="button"
@@ -52,7 +52,7 @@
             ></a>
 
             <a
-            class="btn btn-primary btn-floating m-1"
+            class="btn btn-dark btn-floating m-1"
             style="background-color: #55acee;"
             href="https://twitter.com/"
             role="button"
@@ -60,7 +60,7 @@
             ></a>
 
             <a
-            class="btn btn-primary btn-floating m-1"
+            class="btn btn-dark btn-floating m-1"
             style="background-color: #dd4b39;"
             href="https://www.google.com/"
             role="button"
@@ -68,7 +68,7 @@
             ></a>
 
             <a
-            class="btn btn-primary btn-floating m-1"
+            class="btn btn-dark btn-floating m-1"
             style="background-color: #ac2bac;"
             href="https://www.instagram.com/"
             role="button"
@@ -76,7 +76,7 @@
             ></a>
 
             <a
-            class="btn btn-primary btn-floating m-1"
+            class="btn btn-dark btn-floating m-1"
             style="background-color: #E60023;"
             href="https://pl.pinterest.com/"
             role="button"
