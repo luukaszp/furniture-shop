@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,15 @@ Route::get('/product/1', function () {
     return view('product');
 });
 
+Route::get('/shopping_cart', function () {
+    return view('shopping_cart');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
