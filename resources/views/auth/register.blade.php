@@ -103,7 +103,7 @@
                             <label for="province" class="col-md-4 col-form-label text-md-right">{{ __('Województwo') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-select form-select" id="province" type="province" aria-label=".form-select" @error('province') is-invalid @enderror" name="province"
+                                <select class="form-select" id="province" type="province" aria-label=".form-select" @error('province') is-invalid @enderror" name="province"
                                     value="{{ old('province') }}" required autocomplete="province">
                                     <option selected value="dolnośląskie">dolnośląskie</option>
                                     <option value="kujawsko-pomorskie">kujawsko-pomorskie</option>

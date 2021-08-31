@@ -38,6 +38,22 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
+Route::get('/admin_panel/orders', function () {
+    return view('admin_panel.orders');
+});
+
+Route::get('/admin_panel/products', function () {
+    return view('admin_panel.products');
+});
+
+Route::get('/admin_panel/customers', function () {
+    return view('admin_panel.customers');
+});
+
+Route::get('/admin_panel/categories', function () {
+    return view('admin_panel.categories');
+});
+
 
 Auth::routes();
 

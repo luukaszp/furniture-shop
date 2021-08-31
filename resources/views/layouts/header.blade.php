@@ -3,7 +3,7 @@
         <div class="container-fluid" style="width: 1500px">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <span style="color: rgb(158, 91, 2)">
-                    <i class="fas fa-couch" style="font-size: 2em;"></i>
+                    <i class="fas fa-couch" style="font-size: 2em"></i>
                     <i class="ps-2" style="font-size: 24px; font-family: 'Vegan Style Personal Use', sans-serif;">Sklep meblowy</i>
                 </span>
             </a>
@@ -68,6 +68,18 @@
                         <a class="nav-link link-dark" style="font-size: 2em" href="/shopping_cart">
                             <li class="fas fa-shopping-cart"></li>
                         </a>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a class="nav-link link-dark" style="font-size: 2em" href="#" id="dropdownMenu" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <li class="fas fa-cog"></li>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/admin_panel/categories"><i class="fas fa-th"></i> Kategorie</a></li>
+                        <li><a class="dropdown-item" href="/admin_panel/customers"><i class="fas fa-users"></i> Klienci</a></li>
+                        <li><a class="dropdown-item" href="/admin_panel/orders"><i class="fas fa-clipboard-check"></i> Zamówienia</a></li>
+                        <li><a class="dropdown-item" href="/admin_panel/products"><i class="fas fa-box-open"></i> Produkty</a></li>
                     </ul>
                 </div>
             </div>
