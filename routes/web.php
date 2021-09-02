@@ -46,12 +46,20 @@ Route::get('/admin_panel/products', function () {
     return view('admin_panel.products');
 });
 
+Route::get('/admin_panel/products/add', function () {
+    return view('admin_panel.add_product');
+});
+
 Route::get('/admin_panel/customers', function () {
     return view('admin_panel.customers');
 });
 
 Route::get('/admin_panel/categories', function () {
     return view('admin_panel.categories');
+});
+
+Route::get('/admin_panel/subcategories', function () {
+    return view('admin_panel.subcategories');
 });
 
 

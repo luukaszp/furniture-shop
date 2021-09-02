@@ -58,7 +58,7 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Adres') }}</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="address" placeholder="ul. Akacjowa 3B" class="form-control @error('address') is-invalid @enderror" name="address"
+                                <input id="address" type="text" placeholder="ul. Akacjowa 3B" class="form-control @error('address') is-invalid @enderror" name="address"
                                     value="{{ old('address') }}" required autocomplete="address">
 
                                 @error('address')
@@ -73,7 +73,7 @@
                             <label for="zip_code" class="col-md-4 col-form-label text-md-right">{{ __('Kod pocztowy') }}</label>
 
                             <div class="col-md-6">
-                                <input id="zip_code" type="zip_code" placeholder="59-400" class="form-control @error('zip_code') is-invalid @enderror" name="zip_code"
+                                <input id="zip_code" type="text" placeholder="59-400" class="form-control @error('zip_code') is-invalid @enderror" name="zip_code"
                                     value="{{ old('zip_code') }}" required autocomplete="zip_code">
 
                                 @error('zip_code')
@@ -88,7 +88,7 @@
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Miejscowość') }}</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="city" class="form-control @error('city') is-invalid @enderror"
+                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror"
                                     name="city" value="{{ old('city') }}" required autocomplete="city">
 
                                 @error('city')
@@ -103,7 +103,7 @@
                             <label for="province" class="col-md-4 col-form-label text-md-right">{{ __('Województwo') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-select" id="province" type="province" aria-label=".form-select" @error('province') is-invalid @enderror" name="province"
+                                <select class="form-select" id="province" type="text" aria-label=".form-select" @error('province') is-invalid @enderror" name="province"
                                     value="{{ old('province') }}" required autocomplete="province">
                                     <option selected value="dolnośląskie">dolnośląskie</option>
                                     <option value="kujawsko-pomorskie">kujawsko-pomorskie</option>
@@ -134,7 +134,7 @@
                             <label for="phone_number" class="col-md-4 col-form-label text-md-right">{{ __('Telefon komórkowy') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone_number" type="phone_number" placeholder="666555444" class="form-control @error('phone_number') is-invalid @enderror"
+                                <input id="phone_number" type="text" placeholder="666555444" class="form-control @error('phone_number') is-invalid @enderror"
                                     name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number">
 
                                 @error('phone_number')

@@ -9,6 +9,7 @@
                 <input class="form-control me-2" type="search" placeholder="Szukaj" aria-label="Search">
                 <button class="btn btn-outline-light" type="submit">Wyszukaj</button>
             </form>
+            <a href="./products/add" class="btn btn-outline-light" type="submit">Dodaj produkt</a>
         </div>
     </nav>
     <table class="table table-striped">
@@ -16,23 +17,29 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nazwa</th>
-                <th scope="col">Kolor</th>
-                <th scope="col">Waga</th>
-                <th scope="col">Kod</th>
-                <th scope="col">Producent</th>
+                <th scope="col">Kategoria</th>
+                <th scope="col">Podkategoria</th>
                 <th scope="col">Cena</th>
+                <th scope="col">Kolor</th>
+                <th scope="col">Ilość</th>
+                <th scope="col">Rozmiar</th>
+                <th scope="col">Kod produktu</th>
+                <th scope="col">Waga</th>
                 <th scope="col">Akcje</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <th scope="row">1</th>
-                <td>Fotel</td>
-                <td>Szary</td>
+                <td>Fotel bujany Liliano</td>
+                <td>Meble pokojowe</td>
+                <td>Fotele i sofy</td>
+                <td>599,99 zł</td>
+                <td>Różowy</td>
+                <td>100</td>
+                <td>M</td>
+                <td>FOT-RÓŻ-3</td>
                 <td>5 kg</td>
-                <td>01-105</td>
-                <td>Jack-O</td>
-                <td>59,00 zł</td>
                 <td>
                     <span style="color: orange">
                         <i class="far fa-edit pe-1" data-bs-toggle="modal" data-bs-target="#modal"></i>
@@ -44,12 +51,15 @@
             </tr>
             <tr>
                 <th scope="row">2</th>
-                <td>Kanapa</td>
-                <td>Brązowy</td>
-                <td>30 kg</td>
-                <td>03-567</td>
-                <td>Mister Furnit</td>
-                <td>259,00 zł</td>
+                <td>Fotel bujany Liliano</td>
+                <td>Meble pokojowe</td>
+                <td>Fotele i sofy</td>
+                <td>699,99 zł</td>
+                <td>Szary</td>
+                <td>50</td>
+                <td>XL</td>
+                <td>FOT-SZA-7</td>
+                <td>10 kg</td>
                 <td>
                     <span style="color: orange">
                         <i class="far fa-edit pe-1" data-bs-toggle="modal" data-bs-target="#modal"></i>

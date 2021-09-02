@@ -28,11 +28,11 @@
             <tr>
                 <th scope="row">1</th>
                 <td>Łukasz Poterała</td>
-                <td>14002</td>
+                <td><a href="/admin_panel/orders/1">14002</td>
                 <td>30 sierpnia 2021</td>
                 <td>59,00 zł</td>
                 <td>przesyłka wysłana</td>
-                <td><a href="/admin_panel/orders/1">520000014312467514303576</a></td>
+                <td>520000014312467514303576</td>
             </tr>
             <tr>
                 <th scope="row">1</th>
