@@ -9,6 +9,7 @@
                 <input class="form-control me-2" type="search" placeholder="Szukaj" aria-label="Search">
                 <button class="btn btn-outline-light" type="submit">Wyszukaj</button>
             </form>
+            <a href="./subcategories/add" class="btn btn-outline-light" type="submit">Dodaj podkategorię</a>
         </div>
     </nav>
     <table class="table table-striped">

@@ -76,8 +76,8 @@
                         <li class="fas fa-cog"></li>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/admin_panel/categories"><i class="fas fa-th"></i> Kategorie</a></li>
-                        <li><a class="dropdown-item" href="/admin_panel/subcategories"><i class="fas fa-th"></i> Podkategorie</a></li>
+                        <li><a class="dropdown-item" href="/admin_panel/categories"><i class="fas fa-th-large"></i> Kategorie</a></li>
+                        <li><a class="dropdown-item" href="/admin_panel/subcategories"><i class="fas fa-th-list"></i> Podkategorie</a></li>
                         <li><a class="dropdown-item" href="/admin_panel/customers"><i class="fas fa-users"></i> Klienci</a></li>
                         <li><a class="dropdown-item" href="/admin_panel/orders"><i class="fas fa-clipboard-check"></i> Zamówienia</a></li>
                         <li><a class="dropdown-item" href="/admin_panel/products"><i class="fas fa-box-open"></i> Produkty</a></li>

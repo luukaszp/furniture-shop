@@ -9,6 +9,7 @@
                 <input class="form-control me-2" type="search" placeholder="Szukaj" aria-label="Search">
                 <button class="btn btn-outline-light" type="submit">Wyszukaj</button>
             </form>
+            <a href="./categories/add" class="btn btn-outline-light" type="submit">Dodaj kategorię</a>
         </div>
     </nav>
     <table class="table table-striped">
@@ -20,14 +21,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Meble ogrodowe</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Meble kuchenne</td>
-            </tr>
+            @forelse($categories as $category)
+                <tr>
+                    <th scope="row">{{ $category->id }}</th>
+                    <td>{{ $category->name }}</td>
+                </tr>
+            @empty
+                <h3 class="font-weight-bold text-center">Brak danych</h3>
+            @endforelse
         </tbody>
     </table>
 </div>

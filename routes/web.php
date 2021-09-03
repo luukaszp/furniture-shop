@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,11 +53,37 @@ Route::get('/admin_panel/products/add', function () {
     return view('admin_panel.add_product');
 });
 
+Route::get('/admin_panel/categories/add', function () {
+    return view('admin_panel.add_category');
+});
+
+Route::get('/admin_panel/subcategories/add', function () {
+    return view('admin_panel.add_subcategory');
+});
+
+Route::post('/product/store', [ProductController::class, 'store']);
+/*Route::get('/product/all', [ProductController::class, 'getAll']);
+Route::get('/product/{id}', [ProductController::class, 'show']);
+Route::put('/product/edit/{product}', [ProductController::class, 'edit']);
+Route::delete('/product/delete/{id}', [ProductController::class, 'delete']);*/
+
+Route::post('/category/store', [CategoryController::class, 'store']);
+/*Route::get('/category/all', [CategoryController::class, 'getAll']);
+Route::get('/category/{id}', [CategoryController::class, 'show']);
+Route::put('/category/edit/{category}', [CategoryController::class, 'edit']);
+Route::delete('/category/delete/{id}', [CategoryController::class, 'delete']);*/
+
+Route::post('/subcategory/store', [SubcategoryController::class, 'store']);
+/*Route::get('/subcategory/all', [SubcategoryController::class, 'getAll']);
+Route::get('/subcategory/{id}', [SubcategoryController::class, 'show']);
+Route::put('/subcategory/edit/{subcategory}', [SubcategoryController::class, 'edit']);
+Route::delete('/subcategory/delete/{id}', [SubcategoryController::class, 'delete']);*/
+
 Route::get('/admin_panel/customers', function () {
     return view('admin_panel.customers');
 });
 
-Route::get('/admin_panel/categories', function () {
+Route::get('/admin_panel/categories', [CategoryController::class, 'index'], function () {
     return view('admin_panel.categories');
 });
 

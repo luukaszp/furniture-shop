@@ -8,7 +8,7 @@
                 <div class="card-header" style="font-size: 24px; font-weight: bold">{{ __('Dodawanie produktu') }}</div>
 
                 <div class="card-body">
-                    <form>
+                    <form method="POST" action="/product/store" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row pt-3">
@@ -162,10 +162,17 @@
                             </div>
                         </div>
 
+                        <div class="form-group row pt-3">
+                            <label for="formFile" class="col-md-4 col-form-label form-label">Zdjęcie produktu</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="file" id="formFile">
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0 pt-3">
                             <div class="col-md-7 offset-md-3">
                                 <button type="submit" class="btn btn-success">
-                                    {{ __('Dodaj') }}
+                                    {{ __('Dodaj produkt') }}
                                 </button>
                             </div>
                         </div>
