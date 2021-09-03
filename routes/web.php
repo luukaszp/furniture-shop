@@ -45,11 +45,11 @@ Route::get('/admin_panel/orders', function () {
     return view('admin_panel.orders');
 });
 
-Route::get('/admin_panel/products', function () {
+Route::get('/admin_panel/products', [ProductController::class, 'index'], function () {
     return view('admin_panel.products');
 });
 
-Route::get('/admin_panel/products/add', function () {
+Route::get('/admin_panel/products/add', [SubcategoryController::class, 'getAll'], function () {
     return view('admin_panel.add_product');
 });
 
@@ -57,7 +57,7 @@ Route::get('/admin_panel/categories/add', function () {
     return view('admin_panel.add_category');
 });
 
-Route::get('/admin_panel/subcategories/add', function () {
+Route::get('/admin_panel/subcategories/add', [CategoryController::class, 'getAllSub'], function () {
     return view('admin_panel.add_subcategory');
 });
 
@@ -87,7 +87,7 @@ Route::get('/admin_panel/categories', [CategoryController::class, 'index'], func
     return view('admin_panel.categories');
 });
 
-Route::get('/admin_panel/subcategories', function () {
+Route::get('/admin_panel/subcategories', [SubcategoryController::class, 'index'], function () {
     return view('admin_panel.subcategories');
 });
 

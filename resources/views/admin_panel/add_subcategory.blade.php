@@ -34,9 +34,11 @@
                             <div class="col-md-6">
                                 <select class="form-select" id="category" type="text" aria-label=".form-select" @error('category') is-invalid
                                     @enderror" name="category" value="{{ old('category') }}" required autocomplete="category">
-                                    <option selected value="Meble kuchenne">Meble kuchenne</option>
-                                    <option value="Meble łazienkowe">Meble łazienkowe</option>
-                                    <option value="Akcesoria i dekoracje">Akcesoria i dekoracje</option>
+                                    @forelse($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @empty
+                                        <option>Brak danych</option>
+                                    @endforelse
                                 </select>
                                 @error('category')
                                 <span class="invalid-feedback" role="alert">

@@ -29,46 +29,22 @@
             </tr>
         </thead>
         <tbody>
+            @forelse($products as $product)
             <tr>
-                <th scope="row">1</th>
-                <td>Fotel bujany Liliano</td>
-                <td>Meble pokojowe</td>
-                <td>Fotele i sofy</td>
-                <td>599,99 zł</td>
-                <td>Różowy</td>
-                <td>100</td>
-                <td>M</td>
-                <td>FOT-RÓŻ-3</td>
-                <td>5 kg</td>
-                <td>
-                    <span style="color: orange">
-                        <i class="far fa-edit pe-1" data-bs-toggle="modal" data-bs-target="#modal"></i>
-                    </span>
-                    <span style="color: red">
-                        <i class="far fa-trash-alt ps-1" data-bs-toggle="modal" data-bs-target="#modal2"></i>
-                    </span>
-                </td>
+                <th scope="row">{{ $product->id }}</th>
+                <td>{{ $product->name }}</td>
+                <td>{{ $product->categoryName }}</td>
+                <td>{{ $product->subcategoryName }}</td>
+                <td>{{ $product->price }}</td>
+                <td>{{ $product->color }}</td>
+                <td>{{ $product->amount }}</td>
+                <td>{{ $product->size }}</td>
+                <td>{{ $product->code_product }}</td>
+                <td>{{ $product->weight }}</td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Fotel bujany Liliano</td>
-                <td>Meble pokojowe</td>
-                <td>Fotele i sofy</td>
-                <td>699,99 zł</td>
-                <td>Szary</td>
-                <td>50</td>
-                <td>XL</td>
-                <td>FOT-SZA-7</td>
-                <td>10 kg</td>
-                <td>
-                    <span style="color: orange">
-                        <i class="far fa-edit pe-1" data-bs-toggle="modal" data-bs-target="#modal"></i>
-                    </span>
-                    <span style="color: red">
-                        <i class="far fa-trash-alt ps-1" data-bs-toggle="modal" data-bs-target="#modal2"></i>
-                    </span>
-                </td>
-            </tr>
+            @empty
+                <th scope="col" colspan="11" class="font-weight-bold text-center">Brak danych</th>
+            @endforelse
         </tbody>
     </table>
     <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">

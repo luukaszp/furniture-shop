@@ -27,7 +27,7 @@
                     <td>{{ $category->name }}</td>
                 </tr>
             @empty
-                <h3 class="font-weight-bold text-center">Brak danych</h3>
+                <th scope="col" colspan="3" class="font-weight-bold text-center">Brak danych</th>
             @endforelse
         </tbody>
     </table>

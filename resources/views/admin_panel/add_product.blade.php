@@ -32,9 +32,11 @@
                             <div class="col-md-6">
                                 <select class="form-select" id="category" type="text" aria-label=".form-select" @error('category')
                                     is-invalid @enderror" name="category" value="{{ old('category') }}" required autocomplete="category">
-                                    <option selected value="Meble kuchenne">Meble kuchenne</option>
-                                    <option value="Meble łazienkowe">Meble łazienkowe</option>
-                                    <option value="Akcesoria i dekoracje">Akcesoria i dekoracje</option>
+                                    @forelse($subcategories as $category)
+                                    <option value="{{ $category->categoryID }}">{{ $category->categoryName }}</option>
+                                    @empty
+                                        <option>Brak danych</option>
+                                    @endforelse
                                 </select>
                                 @error('category')
                                 <span class="invalid-feedback" role="alert">
@@ -50,9 +52,11 @@
                             <div class="col-md-6">
                                 <select class="form-select" id="subcategory" type="text" aria-label=".form-select" @error('subcategory')
                                     is-invalid @enderror" name="subcategory" value="{{ old('subcategory') }}" required autocomplete="subcategory">
-                                    <option selected value="Szafki kuchenne">Szafki kuchenne</option>
-                                    <option value="Blaty kuchenne">Blaty kuchenne</option>
-                                    <option value="Stoły kuchenne">Stoły kuchenne</option>
+                                    @forelse($subcategories as $subcategory)
+                                    <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                    @empty
+                                        <option>Brak danych</option>
+                                    @endforelse
                                 </select>
                                 @error('subcategory')
                                 <span class="invalid-feedback" role="alert">
@@ -131,15 +135,15 @@
                         </div>
 
                         <div class="form-group row pt-3">
-                            <label for="product_code"
+                            <label for="code_product"
                                 class="col-md-4 col-form-label text-md-right">{{ __('Kod produktu') }}</label>
 
                             <div class="col-md-6">
-                                <input id="product_code" type="text" placeholder="(krzeslo-kolor-numer=KRZ-CZA-3)"
-                                    class="form-control @error('product_code') is-invalid @enderror" name="product_code"
-                                    value="{{ old('product_code') }}" required autocomplete="product_code">
+                                <input id="code_product" type="text" placeholder="(krzeslo-kolor-numer=KRZ-CZA-3)"
+                                    class="form-control @error('code_product') is-invalid @enderror" name="code_product"
+                                    value="{{ old('code_product') }}" required autocomplete="code_product">
 
-                                @error('product_code')
+                                @error('code_product')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -163,9 +167,9 @@
                         </div>
 
                         <div class="form-group row pt-3">
-                            <label for="formFile" class="col-md-4 col-form-label form-label">Zdjęcie produktu</label>
+                            <label for="photo" class="col-md-4 col-form-label form-label">Zdjęcie produktu</label>
                             <div class="col-md-6">
-                                <input class="form-control" type="file" id="formFile">
+                                <input class="form-control" type="file" id="photo" name="photo">
                             </div>
                         </div>
 

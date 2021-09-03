@@ -21,14 +21,14 @@
             </tr>
         </thead>
         <tbody>
+            @forelse($subcategories as $subcategory)
             <tr>
-                <th scope="row">1</th>
-                <td>Ławki</td>
+                <th scope="row">{{ $subcategory->id }}</th>
+                <td>{{ $subcategory->name }}</td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Szafki kuchenne</td>
-            </tr>
+            @empty
+                <th scope="col" colspan="3" class="font-weight-bold text-center">Brak danych</th>
+            @endforelse
         </tbody>
     </table>
 </div>
