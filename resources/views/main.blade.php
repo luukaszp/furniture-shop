@@ -34,80 +34,22 @@
         <div class="items" style="text-align: center; justify-content: center">
             <h2 class="pt-5 pb-3">Produkty</h2>
             <div class="row mt-3 mb-3" style="display: inline-flex">
+                @forelse($products as $product)
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <a href="/product/1">
-                            <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="armchair">
+                        <a href="/product/{{ $product->id }}">
+                            <img src="../storage/{{ $product->photo }}" class="card-img-top" alt="armchair">
                         </a>
-                        <div class="card-body">
-                            <h5 class="card-title">Skórzany fotel</h5>
-                            <p class="card-text" style="font-weight: bold">59,00 zł</p>
+                        <div class="card-body" style="height: 175px">
+                            <h5 class="card-title" style="height: 50px">{{ $product->name }}</h5>
+                            <p class="card-text" style="font-weight: bold">{{ $product->price }}</p>
                             <a href="#" class="btn btn-outline-dark">Dodaj do koszyka</a>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <a href="/product/1">
-                            <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="armchair">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">Skórzany fotel</h5>
-                            <p class="card-text" style="font-weight: bold">59,00 zł</p>
-                            <a href="#" class="btn btn-outline-dark">Dodaj do koszyka</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <a href="/product/1">
-                            <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="armchair">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">Skórzany fotel</h5>
-                            <p class="card-text" style="font-weight: bold">59,00 zł</p>
-                            <a href="#" class="btn btn-outline-dark">Dodaj do koszyka</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3 mb-3" style="display: inline-flex">
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <a href="/product/1">
-                            <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="armchair">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">Skórzany fotel</h5>
-                            <p class="card-text" style="font-weight: bold">59,00 zł</p>
-                            <a href="#" class="btn btn-outline-dark">Dodaj do koszyka</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <a href="/product/1">
-                            <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="armchair">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">Skórzany fotel</h5>
-                            <p class="card-text" style="font-weight: bold">59,00 zł</p>
-                            <a href="#" class="btn btn-outline-dark">Dodaj do koszyka</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <a href="/product/1">
-                            <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="armchair">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">Skórzany fotel</h5>
-                            <p class="card-text" style="font-weight: bold">59,00 zł</p>
-                            <a href="#" class="btn btn-outline-dark">Dodaj do koszyka</a>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                <h1>Brak produktów w sklepie</h1>
+                @endforelse
             </div>
         </div>
     </div>

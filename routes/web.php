@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [ProductController::class, 'mainDisplay'], function () {
     return view('main');
 });
 
@@ -27,10 +27,6 @@ Route::get('/about/company', function () {
 
 Route::get('/about/contact', function () {
     return view('about.contact');
-});
-
-Route::get('/product/1', function () {
-    return view('product');
 });
 
 Route::get('/shopping_cart', function () {
@@ -62,8 +58,10 @@ Route::get('/admin_panel/subcategories/add', [CategoryController::class, 'getAll
 });
 
 Route::post('/product/store', [ProductController::class, 'store']);
+Route::get('/product/{id}', [ProductController::class, 'showProduct'], function () {
+    return view('product');
+});
 /*Route::get('/product/all', [ProductController::class, 'getAll']);
-Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::put('/product/edit/{product}', [ProductController::class, 'edit']);
 Route::delete('/product/delete/{id}', [ProductController::class, 'delete']);*/
 

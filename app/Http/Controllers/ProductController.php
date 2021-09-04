@@ -43,7 +43,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Display all products.
+     * Display all products (admin panel - table).
      *
      * @param  array  $data
      * @return \App\Models\Product
@@ -56,5 +56,29 @@ class ProductController extends Controller
         ->join('subcategories', 'products.subcategory_id', '=', 'subcategories.id')
         ->select('products.*', 'subcategories.name as subcategoryName', 'categories.name as categoryName')->get();
         return view('admin_panel.products', compact('products'));
+    }
+
+    /**
+     * Display all products (main page).
+     *
+     * @param  array  $data
+     * @return \App\Models\Product
+     */
+    public function mainDisplay()
+    {
+        $products = Product::select('id', 'name', 'photo', 'price')->get();
+        return view('main', compact('products'));
+    }
+
+    /**
+     * Display product by id
+     *
+     * @param  $id
+     */
+    public function showProduct($id)
+    {
+        $products = Product::where('id', $id)->get();
+
+        return view('product', compact('products'));
     }
 }

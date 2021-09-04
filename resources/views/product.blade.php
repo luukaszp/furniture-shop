@@ -4,17 +4,19 @@
     <div class="container">
         <div class="product-info">
             <div class="row text-center">
+                @forelse($products as $product)
                 <div class="col-xl-6 col-sm-6 mb-5">
                     <div class="row me-1" style="width: 30rem">
-                        <img src="/images/furniture/armchair.jpg" class="card-img-top" alt="armchair">
+                        <img src="../storage/{{ $product->photo }}" class="card-img-top" alt="armchair">
                     </div>
                 </div>
                 <div class="col" style="text-align: left">
-                    <h1 class="pb-3">Fotel skórzany</h1>
+                    <h1 class="pb-3" >{{ $product->name }}</h1>
+                    <hr class="mb-4">
                     <div class="row mb-5">
                         <div class="col">
                             <p class="mb-0"style="font-weight: bold">Dostępność:</p>
-                            <span style="font-size: 12px">pełny magazyn/na wyczerpaniu/ brak w magazynie (ilość sztuk do bazy)</span>
+                            <span style="font-size: 12px">pełny magazyn/na wyczerpaniu/ brak w magazynie (ilość sztuk do bazy - {{ $product->amount }})</span>
                         </div>
                         <div class="col">
                             <p class="mb-0"style="font-weight: bold">Wysyłka w:</p>
@@ -25,35 +27,16 @@
                             <span style="font-size: 12px">darmowa od 150 zł</span>
                         </div>
                     </div>
-                    <h4>Cena:</h4>
-                    <h2 class="mb-3" style="font-weight: bold">59,00 zł</h2>
+                    <h4>Cena</h4>
+                    <h2 class="mb-3" style="font-weight: bold">{{ $product->price }}</h2>
                     <form>
                         <div class="form-group pb-3">
-                            <label for="colorSelect">Kolor</label>
-                            <select class="form-control" id="colorSelect" required>
-                            <option value="kremowy">Kremowy</option>
-                            <option value="czarny">Czarny</option>
-                            <option value="zielony">Zielony</option>
-                            <option value="fioletowy">Fioletowy</option>
-                            <option value="żółty">Żółty</option>
-                            <option value="czerwony">Czerwony</option>
-                            <option value="szary">Szary</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Proszę wybrać kolor.
-                            </div>
+                            <h4>Kolor</h4>
+                            <h2 style="font-weight: bold">{{ $product->color }}</h2>
                         </div>
                         <div class="form-group pb-3">
-                            <label for="sizeSelect">Rozmiar</label>
-                            <select class="form-control" id="sizeSelect" required>
-                            <option value="S">S</option>
-                            <option value="M">M</option>
-                            <option value="L">L</option>
-                            <option value="XL">XL</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Proszę wybrać rozmiar.
-                            </div>
+                            <h4>Rozmiar</h4>
+                            <h2 style="font-weight: bold">{{ $product->size }}</h2>
                         </div>
                         <div class="form-group pb-3">
                             <label for="quantityInput">Ilość</label>
@@ -85,6 +68,9 @@
                 <h3>Opis - kolor, waga, kod produktu, producent</h3>
                 <br>
                 <h3>Opinie o produkcie</h3>
+                @empty
+                    <h1>Brak danego produktu</h1>
+                @endforelse
             </div>
         </div>
     </div>
