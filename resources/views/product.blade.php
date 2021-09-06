@@ -70,31 +70,47 @@
                 </div>
                 <h3>Opis - kolor, waga, kod produktu, producent</h3>
                 <br>
+                @empty
+                    <h1>Brak danego produktu</h1>
+                @endforelse
                 <h3 class="mt-5 mb-5">Opinie o produkcie</h3>
+                <hr>
+                @guest
+                <h1>Zaloguj się by wystawić opinię</h1>
+                @else
+                <h5>Wystaw opinię</h5>
                 <form style="justify-content: center; text-align: center; display: flex" method="POST" action="/product/rating">
                     @csrf
                     <div class="col-5">
-                        <div class="star-rating mb-2">
-                            <input type="radio" id="5-stars" name="rating" value="5" />
+                        <div class="star-rating">
+                            <input type="radio" id="5-stars" name="rate" value="5" />
                             <label for="5-stars" class="star">&#9733;</label>
-                            <input type="radio" id="4-stars" name="rating" value="4" />
+                            <input type="radio" id="4-stars" name="rate" value="4" />
                             <label for="4-stars" class="star">&#9733;</label>
-                            <input type="radio" id="3-stars" name="rating" value="3" />
+                            <input type="radio" id="3-stars" name="rate" value="3" />
                             <label for="3-stars" class="star">&#9733;</label>
-                            <input type="radio" id="2-stars" name="rating" value="2" />
+                            <input type="radio" id="2-stars" name="rate" value="2" />
                             <label for="2-stars" class="star">&#9733;</label>
-                            <input type="radio" id="1-star" name="rating" value="1" />
+                            <input type="radio" id="1-star" name="rate" value="1" />
                             <label for="1-star" class="star">&#9733;</label>
                         </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" placeholder="Pozostaw swoją opinię" id="opinion" style="height: 100px"></textarea>
+                        <div class="form-group pt-3">
+                            <div class="mb-3">
+                                <textarea id="opinion" type="text" class="form-control @error('opinion') is-invalid @enderror" name="opinion"
+                                    value="{{ old('opinion') }}" required autofocus>
+                                </textarea>
+                                @error('opinion')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <input type="hidden" id="product_id" name="product_id" value="{{ request()->id }}">
                         </div>
                         <button type="submit" class="btn btn-success">Wyślij opinię</button>
                     </div>
                 </form>
-                @empty
-                    <h1>Brak danego produktu</h1>
-                @endforelse
+                @endguest
             </div>
         </div>
     </div>

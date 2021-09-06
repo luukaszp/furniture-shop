@@ -35,22 +35,13 @@ class RatingController extends Controller
      */
     public function addRating(Request $request)
     {
-        $this->validate(
-            $request,
-            [
-                'rate' => 'required',
-            ]
-        );
-
-        $product = Product::find($request->id);
-
         $rating = new Rating();
         $rating->rate = $request->rate;
         $rating->opinion = $request->opinion;
         $rating->product_id = $request->product_id;
-        //$rating->user_id = auth()->user()->id;
+        $rating->user_id = auth()->user()->id;
         $rating->save();
 
-        return $rating;
+        return redirect('product/' . $request->product_id);
     }
 }
