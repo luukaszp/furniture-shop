@@ -47,7 +47,8 @@ class SubcategoryController extends Controller
         //$subcategories = Subcategory::all();
         $subcategories = DB::table('subcategories')
             ->join('categories', 'subcategories.category_id', '=', 'categories.id')
-            ->select('subcategories.id', 'subcategories.name', 'categories.id as categoryID', 'categories.name as categoryName')->get();
+            ->select('subcategories.id', 'subcategories.name', 'categories.id as categoryID', 'categories.name as categoryName')
+            ->get();
         return view('admin_panel.add_product', compact('subcategories'));
     }
 }

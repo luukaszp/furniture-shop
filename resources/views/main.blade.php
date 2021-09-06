@@ -48,7 +48,9 @@
                     </div>
                 </div>
                 @empty
-                <h1>Brak produktów w sklepie</h1>
+                <div>
+                    <h1>Brak produktów w sklepie</h1>
+                </div>
                 @endforelse
             </div>
         </div>

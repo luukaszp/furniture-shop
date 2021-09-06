@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\RatingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -58,9 +59,14 @@ Route::get('/admin_panel/subcategories/add', [CategoryController::class, 'getAll
 });
 
 Route::post('/product/store', [ProductController::class, 'store']);
+Route::post('/product/rating', [RatingController::class, 'addRating']);
 Route::get('/product/{id}', [ProductController::class, 'showProduct'], function () {
     return view('product');
 });
+
+Route::get('rating/{id}', 'RatingController@showRating');
+Route::post('rating/add', 'RatingController@addRating');
+
 /*Route::get('/product/all', [ProductController::class, 'getAll']);
 Route::put('/product/edit/{product}', [ProductController::class, 'edit']);
 Route::delete('/product/delete/{id}', [ProductController::class, 'delete']);*/

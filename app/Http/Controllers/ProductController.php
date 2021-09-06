@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
+use App\Models\Subcategory;
 
 class ProductController extends Controller
 {
@@ -19,8 +20,12 @@ class ProductController extends Controller
     {
         $product = new Product();
         $product->name = $request->get('name');
-        $product->category_id = $request->get('category');
-        $product->subcategory_id = $request->get('subcategory');
+
+        $subID = $request->get('subcategory');
+        $categoryID = Subcategory::where('id', $subID)->pluck('category_id')->first();
+        $product->subcategory_id = $subID;
+        $product->category_id = $categoryID;
+
         $product->price = $request->get('price');
         $product->color = $request->get('color');
         $product->amount = $request->get('amount');

@@ -45,16 +45,4 @@ class CategoryController extends Controller
         $categories = Category::all();
         return view('admin_panel.add_subcategory', compact('categories'));
     }
-
-    /**
-     * Get all categories (for select options - products).
-     *
-     * @param  array  $data
-     * @return \App\Models\Category
-     */
-    public function getAllPro()
-    {
-        $categories = Category::all();
-        return view('admin_panel.add_product', compact('categories'));
-    }
 }

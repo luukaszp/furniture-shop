@@ -63,15 +63,65 @@
                         </div>
                     </form>
                     <br>
-                    <p>Ocena (gwiazdki + średnia)</p>
+                    <p>Ocena</p>
+                    <div class="container">
+                        <span id="rateMe1"></span>
+                    </div>
                 </div>
                 <h3>Opis - kolor, waga, kod produktu, producent</h3>
                 <br>
-                <h3>Opinie o produkcie</h3>
+                <h3 class="mt-5 mb-5">Opinie o produkcie</h3>
+                <form style="justify-content: center; text-align: center; display: flex" method="POST" action="/product/rating">
+                    @csrf
+                    <div class="col-5">
+                        <div class="star-rating mb-2">
+                            <input type="radio" id="5-stars" name="rating" value="5" />
+                            <label for="5-stars" class="star">&#9733;</label>
+                            <input type="radio" id="4-stars" name="rating" value="4" />
+                            <label for="4-stars" class="star">&#9733;</label>
+                            <input type="radio" id="3-stars" name="rating" value="3" />
+                            <label for="3-stars" class="star">&#9733;</label>
+                            <input type="radio" id="2-stars" name="rating" value="2" />
+                            <label for="2-stars" class="star">&#9733;</label>
+                            <input type="radio" id="1-star" name="rating" value="1" />
+                            <label for="1-star" class="star">&#9733;</label>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" placeholder="Pozostaw swoją opinię" id="opinion" style="height: 100px"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Wyślij opinię</button>
+                    </div>
+                </form>
                 @empty
                     <h1>Brak danego produktu</h1>
                 @endforelse
             </div>
         </div>
     </div>
+    <style>
+        .star-rating {
+        display:flex;
+        flex-direction: row-reverse;
+        font-size:2.5em;
+        justify-content:center;
+        }
+
+        .star-rating input {
+        display:none;
+        }
+
+        .star-rating label {
+        color:#ccc;
+        cursor:pointer;
+        }
+
+        .star-rating :checked ~ label {
+        color:#f90;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+        color:#fc0;
+        }
+        </style>
 @endsection
