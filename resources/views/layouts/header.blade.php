@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse ps-5">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Meble</a>
+                        <a class="nav-link" href="/furniture">Meble</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Akcesoria i dekoracje</a>

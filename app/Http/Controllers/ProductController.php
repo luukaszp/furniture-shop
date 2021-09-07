@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProduct;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
@@ -85,5 +86,18 @@ class ProductController extends Controller
         $products = Product::where('id', $id)->get();
 
         return view('product', compact('products'));
+    }
+
+    /**
+     * Display product by category
+     *
+     * @param  $id
+     */
+    public function productByCategory(Request $request, Category $categoryName)
+    {
+        $categoryName =  $request->route()->parameters();
+        $categoryID = Category::where('name', $categoryName)->pluck('id');
+        $products = Product::where('category_id', $categoryID)->get();
+        return view('furniture', compact('products'));
     }
 }

@@ -38,6 +38,14 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
+Route::get('/furniture', [CategoryController::class, 'allCategories'], function () {
+    return view('furniture');
+});
+Route::get('/furniture/{category}', [ProductController::class, 'productByCategory'], function () {
+    return view('furniture/');
+});
+
+
 Route::get('/admin_panel/orders', function () {
     return view('admin_panel.orders');
 });

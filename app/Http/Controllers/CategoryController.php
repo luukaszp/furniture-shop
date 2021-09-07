@@ -45,4 +45,28 @@ class CategoryController extends Controller
         $categories = Category::all();
         return view('admin_panel.add_subcategory', compact('categories'));
     }
+
+    /**
+     * Display all categories for menu.
+     *
+     * @param  array  $data
+     * @return \App\Models\Category
+     */
+    public function categoryMenu()
+    {
+        $categories = Category::all();
+        return view('furniture', compact('categories'));
+    }
+
+    /**
+     * Display all categories (furniture).
+     *
+     * @param  array  $data
+     * @return \App\Models\Product
+     */
+    public function allCategories()
+    {
+        $categories = Category::get('name');
+        return view('furniture', compact('categories'));
+    }
 }
