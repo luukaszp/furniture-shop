@@ -47,6 +47,11 @@
             @endforelse
         </tbody>
     </table>
+
+    <div style="justify-content: center; display: flex">
+        {!! $products->links() !!}
+    </div>
+
     <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -79,4 +84,15 @@
         </div>
     </div>
 </div>
+<style>
+    .pagination .page-link {
+        background: black;
+        color: white;
+    }
+
+    .page-item.active .page-link {
+        background: white;
+        color: black;
+    }
+</style>
 @endsection

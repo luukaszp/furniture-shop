@@ -59,7 +59,7 @@ class ProductController extends Controller
         $products = DB::table('products')
         ->join('categories', 'products.category_id', '=', 'categories.id')
         ->join('subcategories', 'products.subcategory_id', '=', 'subcategories.id')
-        ->select('products.*', 'subcategories.name as subcategoryName', 'categories.name as categoryName')->get();
+        ->select('products.*', 'subcategories.name as subcategoryName', 'categories.name as categoryName')->paginate(10);
         return view('admin_panel.products', compact('products'));
     }
 
@@ -71,7 +71,7 @@ class ProductController extends Controller
      */
     public function mainDisplay()
     {
-        $products = Product::select('id', 'name', 'photo', 'price')->get();
+        $products = Product::select('id', 'name', 'photo', 'price')->paginate(9);
         return view('main', compact('products'));
     }
 

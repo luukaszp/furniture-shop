@@ -54,5 +54,19 @@
                 @endforelse
             </div>
         </div>
+        <div style="justify-content: center; display: flex">
+            {!! $products->links() !!}
+        </div>
     </div>
+<style>
+    .pagination .page-link {
+        background: black;
+        color: white;
+    }
+
+    .page-item.active .page-link {
+        background: white;
+        color: black;
+    }
+</style>
 @endsection
