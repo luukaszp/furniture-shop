@@ -67,6 +67,7 @@
     .page-item.active .page-link {
         background: white;
         color: black;
+        border-color: black;
     }
 </style>
 @endsection

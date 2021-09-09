@@ -4,6 +4,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +33,16 @@ Route::get('/about/contact', function () {
 
 Route::get('/shopping_cart', function () {
     return view('shopping_cart');
+});
+
+Route::get('/profile/contact_details', [UserController::class, 'userInfo'], function () {
+    return view('profile.contact_details');
+});
+
+Route::post('/profile/contact_details/edit', [UserController::class, 'editUser']);
+
+Route::get('/profile/user_orders', function () {
+    return view('profile.user_orders');
 });
 
 Route::get('/profile', function () {

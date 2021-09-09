@@ -13,9 +13,6 @@
                         <a class="nav-link" href="/furniture">Meble</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Akcesoria i dekoracje</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#">Promocje</a>
                     </li>
                     <li class="nav-item">
