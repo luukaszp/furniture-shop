@@ -64,6 +64,10 @@
                         </ul>
                         <a class="nav-link link-dark" style="font-size: 2em" href="/shopping_cart">
                             <li class="fas fa-shopping-cart"></li>
+                            <span class="position-absolute start-10 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em">
+                                2
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
                         </a>
                     </ul>
                 </div>

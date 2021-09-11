@@ -36,7 +36,7 @@
             <div class="row mt-3 mb-3" style="display: inline-flex">
                 @forelse($products as $product)
                 <div class="col">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card mb-3" style="width: 18rem;">
                         <a href="/product/{{ $product->id }}">
                             <img src="../storage/{{ $product->photo }}" class="card-img-top" alt="armchair">
                         </a>

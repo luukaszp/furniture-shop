@@ -3,7 +3,7 @@
 @section('content')
 <div class="container col-5" style="border: 5px solid black">
     <div class="row text-center">
-        <h2 class="card-header mt-1" style="font-family: Copperplate">Dane klienta</h2>
+        <h2 class="card-header mt-1" style="font-family: Copperplate">Dane wysyłkowe</h2>
         <hr>
         @forelse($users as $user)
         <div class="col-6" style="text-align: left">
