@@ -19,7 +19,7 @@
                         <a class="nav-link" href="#">Nowości</a>
                     </li>
                 </ul>
-                <form class="d-flex">
+                <form class="d-flex col-4">
                     <input class="form-control me-2" type="search" placeholder="Szukaj" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Szukaj</button>
                 </form>
@@ -62,11 +62,11 @@
                                 @endguest
                             </ul>
                         </ul>
-                        <a class="nav-link link-dark" style="font-size: 2em" href="/shopping_cart">
+                        <a class="nav-link link-dark" style="font-size: 2em" href="/cart/show">
                             <li class="fas fa-shopping-cart"></li>
                             <span class="position-absolute start-10 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em">
-                                2
-                                <span class="visually-hidden">unread messages</span>
+                                {{ Cart::content()->count() }}
+                                <span class="visually-hidden"></span>
                             </span>
                         </a>
                     </ul>

@@ -12,7 +12,7 @@
             <a href="./products/add" class="btn btn-outline-light" type="submit">Dodaj produkt</a>
         </div>
     </nav>
-    <table class="table table-striped">
+    <table class="table table-striped" style="text-align: center">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -35,12 +35,16 @@
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->categoryName }}</td>
                 <td>{{ $product->subcategoryName }}</td>
-                <td>{{ $product->price }}</td>
+                <td>{{ $product->price }} zł</td>
                 <td>{{ $product->color }}</td>
                 <td>{{ $product->amount }}</td>
                 <td>{{ $product->size }}</td>
                 <td>{{ $product->code_product }}</td>
-                <td>{{ $product->weight }}</td>
+                <td>{{ $product->weight }} kg</td>
+                <td>
+                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modal"><i class="fas fa-pencil-alt"></i></button>
+                <button class="btn btn-danger btn-sm" data-bs-toggle="modal2" data-bs-target="#modal2"><i class="fas fa-trash"></i></button>
+            </td>
             </tr>
             @empty
                 <th scope="col" colspan="11" class="font-weight-bold text-center">Brak danych</th>

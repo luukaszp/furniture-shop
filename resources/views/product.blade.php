@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session('message'))
+    <div class="alert alert-success" role="alert">
+        <div>
+            <i class="fas fa-check-circle"></i> {{ session('message') }}
+            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        </div>
+    </div>
+    @endif
     <div class="container">
         <div class="product-info">
             <div class="row text-center">
@@ -24,12 +32,14 @@
                         </div>
                         <div class="col">
                             <p class="mb-0" style="font-weight: bold">Koszt dostawy:</p>
-                            <span style="font-size: 12px">darmowa od 150 zł</span>
+                            <span style="font-size: 12px">darmowa od 500 zł</span>
                         </div>
                     </div>
                     <h4>Cena</h4>
-                    <h2 class="mb-3" style="font-weight: bold">{{ $product->price }}</h2>
-                    <form>
+                    <h2 class="mb-3" style="font-weight: bold">{{ $product->price }} zł</h2>
+                    <form action="{{ route('cart.store') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
                         <div class="form-group pb-3">
                             <h4>Kolor</h4>
                             <h2 style="font-weight: bold">{{ $product->color }}</h2>
@@ -38,29 +48,20 @@
                             <h4>Rozmiar</h4>
                             <h2 style="font-weight: bold">{{ $product->size }}</h2>
                         </div>
-                        <div class="form-group pb-3">
-                            <label for="quantityInput">Ilość</label>
-                            <input type="quantity" class="form-control" id="quantityInput" value="1" required>
+                        <div class="form-group pb-3 col-3">
+                            <label for="quantity">Ilość</label>
+                            <input type="text" class="form-control" id="quantity" value="1" name="quantity" required>
                         </div>
-                        <div class="form-group pb-3">
-                            <label for="deliverySelect">Dostawa</label>
-                            <select class="form-control" id="deliverySelect" required>
-                                <option value="0">Odbiór osobisty - 0 zł</option>
-                                <option value="20">Dostawa kurierem (do 30kg) - 20 zł</option>
-                                <option value="50">Dostawa bez wniesienia - 50 zł</option>
-                                <option value="80">Dostawa z wniesieniem - 80 zł</option>
-                                <option value="100">Dostawa z wniesieniem o wybranej porze dnia - 100 zł</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Proszę wybrać sposób dostawy.
-                            </div>
-                        </div>
+                        @if ($cart->where('id', $product->id)->count())
+                            <h3 class="mt-3" style="font-weight: bold; color: rgb(158, 91, 2)">Produkt znajduje się już w koszyku</h3>
+                        @else
                         <div class="col-12 pb-3">
                             <button class="btn btn-dark" type="submit">
                                 Do koszyka
                                 <i class="fas fa-shopping-cart" style="font-size: 1em"></i>
                             </button>
                         </div>
+                        @endif
                     </form>
                     <br>
                     <p>Ocena</p>
@@ -140,4 +141,10 @@
         color:#fc0;
         }
         </style>
+
+        <script>
+            document.querySelector("#addProductToastBtn").onclick = function() {
+            new bootstrap.Toast(document.querySelector('#addProductToast')).show();
+            }
+        </script>
 @endsection

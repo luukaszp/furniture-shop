@@ -18,7 +18,7 @@
                     <div class="card-body" style="height: 175px">
                         <h5 class="card-title" style="height: 50px">{{ $product->name }}</h5>
                         <p class="card-text" style="font-weight: bold">{{ $product->price }}</p>
-                        <a href="#" class="btn btn-outline-dark">Dodaj do koszyka</a>
+                        <a href="/product/{{ $product->id }}" class="btn btn-outline-dark">Zobacz więcej</a>
                     </div>
                 </div>
             </div>

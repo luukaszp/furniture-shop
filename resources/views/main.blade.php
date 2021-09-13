@@ -38,12 +38,12 @@
                 <div class="col">
                     <div class="card mb-3" style="width: 18rem;">
                         <a href="/product/{{ $product->id }}">
-                            <img src="../storage/{{ $product->photo }}" class="card-img-top" alt="armchair">
+                            <img src="../storage/{{ $product->photo }}" class="card-img-top" alt="furniture">
                         </a>
                         <div class="card-body" style="height: 175px">
                             <h5 class="card-title" style="height: 50px">{{ $product->name }}</h5>
-                            <p class="card-text" style="font-weight: bold">{{ $product->price }}</p>
-                            <a href="#" class="btn btn-outline-dark">Dodaj do koszyka</a>
+                            <p class="card-text" style="font-weight: bold">{{ $product->price }} zł</p>
+                            <a href="/product/{{ $product->id }}" class="btn btn-outline-dark">Zobacz więcej</a>
                         </div>
                     </div>
                 </div>

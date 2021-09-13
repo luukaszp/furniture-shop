@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use App\Models\Subcategory;
+use Cart;
 
 class ProductController extends Controller
 {
@@ -33,6 +34,7 @@ class ProductController extends Controller
         $product->size = $request->get('size');
         $product->code_product = $request->get('code_product');
         $product->weight = $request->get('weight');
+        $product->description = $request->get('description');
 
         if ($request->file('photo')) {
             $product->photo = $imagePath = $request->file('photo')->store('products', 'public');
@@ -84,8 +86,9 @@ class ProductController extends Controller
     public function showProduct($id)
     {
         $products = Product::where('id', $id)->get();
+        $cart = Cart::content();
 
-        return view('product', compact('products'));
+        return view('product', compact('products', 'cart'));
     }
 
     /**

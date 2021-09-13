@@ -147,6 +147,21 @@
                         </div>
 
                         <div class="form-group row pt-3">
+                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Opis produktu') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description"
+                                    value="{{ old('description') }}" required autocomplete="description"></textarea>
+
+                                @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row pt-3">
                             <label for="photo" class="col-md-4 col-form-label form-label">Zdjęcie produktu</label>
                             <div class="col-md-6">
                                 <input class="form-control" type="file" id="photo" name="photo">

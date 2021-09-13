@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
@@ -29,10 +30,6 @@ Route::get('/about/company', function () {
 
 Route::get('/about/contact', function () {
     return view('about.contact');
-});
-
-Route::get('/shopping_cart', function () {
-    return view('shopping_cart');
 });
 
 Route::get('/profile/contact_details', [UserController::class, 'userInfo'], function () {
@@ -81,7 +78,17 @@ Route::post('/product/store', [ProductController::class, 'store']);
 Route::post('/product/rating', [RatingController::class, 'addRating']);
 Route::get('/product/{id}', [ProductController::class, 'showProduct'], function () {
     return view('product');
-});
+})->name('product.index');
+
+Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
+Route::get('/cart/show', [CartController::class, 'show'], function () {
+    return view('shopping_cart');
+})->name('cart.show');
+Route::put('/cart/update', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/delete', [CartController::class, 'delete'])->name('cart.delete');
+Route::delete('/cart/destroy', [CartController::class, 'destroy'])->name('cart.destroy');
+Route::put('/cart/weight', [CartController::class, 'getWeight'])->name('cart.weight');
+
 
 Route::get('rating/{id}', 'RatingController@showRating');
 Route::post('rating/add', 'RatingController@addRating');
