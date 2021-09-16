@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('code_product');
             $table->integer('weight');
             $table->string('photo');
-            $table->string('description');
+            $table->text('description');
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->unsignedInteger('subcategory_id');

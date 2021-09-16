@@ -69,4 +69,50 @@ class CategoryController extends Controller
         $categories = Category::get('name');
         return view('furniture', compact('categories'));
     }
+
+    /**
+     * Display specified category
+     *
+     * @param  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($id)
+    {
+        $category = Category::where('id', $id)->first();
+
+        return $category;
+    }
+
+    /**
+     * Edit specific category.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function edit(Request $request, $id)
+    {
+        $category = Category::find($id);
+
+        $category->name = $request->name;
+        $category->save();
+
+        $this->index();
+        return redirect('admin_panel/categories');
+    }
+
+    /**
+     * Remove the specified category.
+     *
+     * @param  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete($id)
+    {
+        $category = Category::find($id);
+        $category->destroy($id);
+
+        $this->index();
+        return redirect('admin_panel/categories');
+    }
 }

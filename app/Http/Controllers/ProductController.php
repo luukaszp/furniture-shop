@@ -28,7 +28,7 @@ class ProductController extends Controller
         $product->subcategory_id = $subID;
         $product->category_id = $categoryID;
 
-        $product->price = $request->get('price');
+        $product->price = str_replace(",", ".", $request->get('price'));
         $product->color = $request->get('color');
         $product->amount = $request->get('amount');
         $product->size = $request->get('size');
@@ -51,6 +51,29 @@ class ProductController extends Controller
     }
 
     /**
+     * Edit info about specific product.
+     *
+     * @param  Request $request
+     */
+    public function edit(Request $request, $id)
+    {
+        $product = Product::find($id);
+        $product->name = $request->get('name');
+
+        $product->price = str_replace(",", ".", $request->get('price'));
+        $product->color = $request->get('color');
+        $product->amount = $request->get('amount');
+        $product->size = $request->get('size');
+        $product->code_product = $request->get('code_product');
+        $product->weight = $request->get('weight');
+        $product->description = $request->get('description');
+
+        $product->save();
+
+        return redirect('/admin_panel/products');
+    }
+
+    /**
      * Display all products (admin panel - table).
      *
      * @param  array  $data
@@ -62,7 +85,7 @@ class ProductController extends Controller
         $products = DB::table('products')
         ->join('categories', 'products.category_id', '=', 'categories.id')
         ->join('subcategories', 'products.subcategory_id', '=', 'subcategories.id')
-        ->select('products.*', 'subcategories.name as subcategoryName', 'categories.name as categoryName')->paginate(10);
+        ->select('products.*', 'subcategories.name as subcategoryName', 'categories.name as categoryName')->paginate(5);
         return view('admin_panel.products', compact('products'));
     }
 

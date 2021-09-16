@@ -64,10 +64,12 @@
                         </ul>
                         <a class="nav-link link-dark" style="font-size: 2em" href="/cart/show">
                             <li class="fas fa-shopping-cart"></li>
+                            @if(Cart::content()->count() > 0)
                             <span class="position-absolute start-10 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em">
                                 {{ Cart::content()->count() }}
                                 <span class="visually-hidden"></span>
                             </span>
+                            @endif
                         </a>
                     </ul>
                 </div>

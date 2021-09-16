@@ -75,6 +75,7 @@ Route::get('/admin_panel/subcategories/add', [CategoryController::class, 'getAll
 });
 
 Route::post('/product/store', [ProductController::class, 'store']);
+Route::post('/product/edit/{id}', [ProductController::class, 'edit']);
 Route::post('/product/rating', [RatingController::class, 'addRating']);
 Route::get('/product/{id}', [ProductController::class, 'showProduct'], function () {
     return view('product');
@@ -98,10 +99,9 @@ Route::put('/product/edit/{product}', [ProductController::class, 'edit']);
 Route::delete('/product/delete/{id}', [ProductController::class, 'delete']);*/
 
 Route::post('/category/store', [CategoryController::class, 'store']);
-/*Route::get('/category/all', [CategoryController::class, 'getAll']);
-Route::get('/category/{id}', [CategoryController::class, 'show']);
-Route::put('/category/edit/{category}', [CategoryController::class, 'edit']);
-Route::delete('/category/delete/{id}', [CategoryController::class, 'delete']);*/
+Route::get('admin_panel/category/{id}', [CategoryController::class, 'show']);
+Route::put('/category/edit/{id}', [CategoryController::class, 'edit']);
+Route::delete('/category/delete/{id}', [CategoryController::class, 'delete']);
 
 Route::post('/subcategory/store', [SubcategoryController::class, 'store']);
 /*Route::get('/subcategory/all', [SubcategoryController::class, 'getAll']);

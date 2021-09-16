@@ -34,7 +34,7 @@
             </div>
         </div>
         <hr class="my-4" style="color: black">
-        <section class="mb-4 pt-5">
+        <section class="pb-5 pt-5">
             <a
                 class="btn btn-dark btn-floating m-1"
                 style="background-color: #FF0000;"
