@@ -13,17 +13,11 @@ class RatingController extends Controller
      *
      * @param  $id
      */
-    public function showRating($id)
+    public function show($id)
     {
-        $rates = Rating::where('product_id', $id);
-        $average = (float) $rates->avg('rate');
-        $round = round($average, 1);
-        $data = [
-            'avg' => $round,
-            'count' => $rates->count('rate')
-        ];
+        $rating = Rating::where('product_id', $id)->first();
 
-        return $data;
+        return $rating;
     }
 
     /**
@@ -40,6 +34,24 @@ class RatingController extends Controller
         $rating->opinion = $request->opinion;
         $rating->product_id = $request->product_id;
         $rating->user_id = auth()->user()->id;
+        $rating->save();
+
+        return redirect('product/' . $request->product_id);
+    }
+
+    /**
+     * Edit specific rating/opinion.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function edit(Request $request, $id)
+    {
+        $rating = Rating::find($id);
+
+        $rating->opinion = $request->opinion;
+        $rating->rate = $request->rate;
         $rating->save();
 
         return redirect('product/' . $request->product_id);

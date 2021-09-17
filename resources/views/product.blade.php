@@ -63,88 +63,203 @@
                         </div>
                         @endif
                     </form>
-                    <br>
-                    <p>Ocena</p>
-                    <div class="container">
-                        <span id="rateMe1"></span>
-                    </div>
                 </div>
-                <h3>Opis - kolor, waga, kod produktu, producent</h3>
-                <br>
+                <hr>
+                <div class="description" style="text-align: left">
+                    <h2 style="font-weight: bold">Opis produktu</h2>
+                    <p style="text-align: justify"> {{$product->description }}</p>
+                </div>
+                <hr>
                 @empty
                     <h1>Brak danego produktu</h1>
                 @endforelse
-                <h3 class="mt-5 mb-5">Opinie o produkcie</h3>
-                <hr>
-                @guest
-                <h1>Zaloguj się by wystawić opinię</h1>
-                @else
-                <h5>Wystaw opinię</h5>
-                <form style="justify-content: center; text-align: center; display: flex" method="POST" action="/product/rating">
-                    @csrf
-                    <div class="col-5">
-                        <div class="star-rating">
-                            <input type="radio" id="5-stars" name="rate" value="5" />
-                            <label for="5-stars" class="star">&#9733;</label>
-                            <input type="radio" id="4-stars" name="rate" value="4" />
-                            <label for="4-stars" class="star">&#9733;</label>
-                            <input type="radio" id="3-stars" name="rate" value="3" />
-                            <label for="3-stars" class="star">&#9733;</label>
-                            <input type="radio" id="2-stars" name="rate" value="2" />
-                            <label for="2-stars" class="star">&#9733;</label>
-                            <input type="radio" id="1-star" name="rate" value="1" />
-                            <label for="1-star" class="star">&#9733;</label>
-                        </div>
-                        <div class="form-group pt-3">
-                            <div class="mb-3">
-                                <textarea id="opinion" type="text" class="form-control @error('opinion') is-invalid @enderror" name="opinion"
-                                    value="{{ old('opinion') }}" required autofocus>
-                                </textarea>
-                                @error('opinion')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                <div class="ratings">
+                    @guest
+                    <h1>Zaloguj się by wystawić opinię</h1>
+                    @endguest
+                    @if($ratings->contains('user_id', Auth::user()->id))
+                    <h1 class="pt-2 pb-4">Dziękujemy za wystawienie opinii!</h1>
+                    @else
+                    <h5>Wystaw opinię</h5>
+                    <form style="justify-content: center; text-align: center; display: flex" method="POST" action="/product/rating">
+                        @csrf
+                        <div class="col-5">
+                            <div class="star-rating">
+                                <input type="radio" id="5-stars" name="rate" value="5" />
+                                <label for="5-stars" class="star">&#9733;</label>
+                                <input type="radio" id="4-stars" name="rate" value="4" />
+                                <label for="4-stars" class="star">&#9733;</label>
+                                <input type="radio" id="3-stars" name="rate" value="3" />
+                                <label for="3-stars" class="star">&#9733;</label>
+                                <input type="radio" id="2-stars" name="rate" value="2" />
+                                <label for="2-stars" class="star">&#9733;</label>
+                                <input type="radio" id="1-star" name="rate" value="1" />
+                                <label for="1-star" class="star">&#9733;</label>
                             </div>
-                            <input type="hidden" id="product_id" name="product_id" value="{{ request()->id }}">
+                            <div class="form-group pt-3">
+                                <div class="mb-3">
+                                    <textarea id="opinion" rows="3" type="text" class="form-control @error('opinion') is-invalid @enderror" name="opinion" value="{{ old('opinion') }}" required autofocus></textarea>
+                                    @error('opinion')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                <input type="hidden" id="product_id" name="product_id" value="{{ request()->id }}">
+                            </div>
+                            <button type="submit" class="btn btn-success">Wyślij opinię</button>
                         </div>
-                        <button type="submit" class="btn btn-success">Wyślij opinię</button>
+                    </form>
+                    @endif
+                    <div class="list-group" style="text-align: left">
+                        @forelse($ratings as $rating)
+                            <a class="list-group-item list-group-item-action" aria-current="true">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <div class="comment-header" style="display: inline-flex">
+                                        <h5 class="mb-1 pe-4">{{ $rating->users->name }} {{ $rating->users->surname }}</h5>
+                                        <div class="rating-star" style="color: darkorange">
+                                            @for($i = 0; $i < $rating->rate; $i++)
+                                                <i class="fas fa-star"></i>
+                                            @endfor
+                                            @for($i = $rating->rate; $i < 5; $i++)
+                                                <i class="far fa-star"></i>
+                                            @endfor
+                                        </div>
+                                    </div>
+                                    <small class="text-muted">
+                                        @if($rating->user_id == Auth::user()->id)
+                                            <button class="btn editbtn" id="editRating" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id={{ $rating->product_id }}><i class="fas fa-pencil-alt" style="font-size: 1.3em"></i></button>
+                                        @endif
+                                        {{ $rating->created_at }}
+                                    </small>
+                                </div>
+                                <p class="mb-1">{{ $rating->opinion }}</p>
+                            </a>
+                        @empty
+                        <hr>
+                            <h2 class="pt-1" style="font-weight: bold; text-align: center">Brak opinii. Wystaw pierwszą opinię dla tego produktu!</h2>
+                        @endforelse
                     </div>
-                </form>
-                @endguest
+                </div>
+                @isset($rating)
+                <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel">Edycja opinii</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST" action="/rating/edit" class="mb-3">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="col-12">
+
+                                        <div class="form-group row pt-3">
+                                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Ocena') }}</label>
+
+                                            <div class="col-4 star-rating">
+                                                <input type="radio" id="5-stars" name="rate" value="5" />
+                                                <label for="5-stars" class="star">&#9733;</label>
+                                                <input type="radio" id="4-stars" name="rate" value="4" />
+                                                <label for="4-stars" class="star">&#9733;</label>
+                                                <input type="radio" id="3-stars" name="rate" value="3" />
+                                                <label for="3-stars" class="star">&#9733;</label>
+                                                <input type="radio" id="2-stars" name="rate" value="2" />
+                                                <label for="2-stars" class="star">&#9733;</label>
+                                                <input type="radio" id="1-star" name="rate" value="1" />
+                                                <label for="1-star" class="star">&#9733;</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row pt-3">
+                                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Opinia') }}</label>
+
+                                            <div class="col-md-6 opinion">
+                                                <input id="opinion" type="text" class="form-control @error('opinion') is-invalid @enderror"
+                                                    name="opinion" value="{{ $rating->opinion }}" required autocomplete="opinion" autofocus>
+
+                                                @error('opinion')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <input type="hidden" id="product_id" name="product_id" value="{{ $rating->product_id }}">
+                                    <div class="col-12 pt-3" style="justify-content: center; text-align: center;">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                            aria-label="Close">Zamknij</button>
+                                        <button type="submit" class="btn btn-success">Edytuj opinię</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endisset
             </div>
         </div>
     </div>
-    <style>
+<style>
         .star-rating {
-        display:flex;
-        flex-direction: row-reverse;
-        font-size:2.5em;
-        justify-content:center;
+            display:flex;
+            flex-direction: row-reverse;
+            font-size:2.5em;
+            justify-content:center;
         }
 
         .star-rating input {
-        display:none;
+            display:none;
         }
 
         .star-rating label {
-        color:#ccc;
-        cursor:pointer;
+            color:#ccc;
+            cursor:pointer;
         }
 
         .star-rating :checked ~ label {
-        color:#f90;
+            color:#f90;
         }
 
         .star-rating label:hover,
         .star-rating label:hover ~ label {
-        color:#fc0;
+            color:#fc0;
         }
-        </style>
+</style>
 
-        <script>
-            document.querySelector("#addProductToastBtn").onclick = function() {
-            new bootstrap.Toast(document.querySelector('#addProductToast')).show();
-            }
-        </script>
+<script>
+    /*document.querySelector("#addProductToastBtn").onclick = function() {
+        new bootstrap.Toast(document.querySelector('#addProductToast')).show();
+    }*/
+
+    $(document).ready(function () {
+        var editModal = document.getElementById('editModal')
+        var deleteModal = document.getElementById('deleteModal')
+
+        editModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var id = button.getAttribute('data-bs-id');
+
+            $.get('rating/' + id + '', function (data) {
+            var inputOpinion = editModal.querySelector('.opinion input')
+            inputOpinion.value = data.opinion
+            var inputID = editModal.querySelector('.modal-body form')
+            inputID.action = '/rating/edit/' + data.id
+            })
+        });
+
+        /*deleteModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var id = button.getAttribute('data-bs-id');
+
+            $.get('rating/' + id + '', function (data) {
+            var inputID = deleteModal.querySelector('.modal-footer form')
+            inputID.action = '/rating/delete/' + data.id
+            })
+        });*/
+    });
+</script>
 @endsection

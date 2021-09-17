@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProduct;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
@@ -110,8 +111,9 @@ class ProductController extends Controller
     {
         $products = Product::where('id', $id)->get();
         $cart = Cart::content();
+        $ratings = Rating::with('users:id,name,surname')->where('product_id', $id)->get();
 
-        return view('product', compact('products', 'cart'));
+        return view('product', compact('products', 'cart', 'ratings'));
     }
 
     /**
