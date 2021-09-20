@@ -80,7 +80,8 @@ Route::post('/product/rating', [RatingController::class, 'addRating']);
 Route::get('/product/{id}', [ProductController::class, 'showProduct'], function () {
     return view('product');
 })->name('product.index');
-Route::get('product/rating/{id}', [RatingController::class, 'show']);
+Route::get('admin_panel/product/{id}', [ProductController::class, 'show']);
+Route::delete('/product/delete/{id}', [ProductController::class, 'delete']);
 
 Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
 Route::get('/cart/show', [CartController::class, 'show'], function () {
@@ -91,13 +92,9 @@ Route::delete('/cart/delete', [CartController::class, 'delete'])->name('cart.del
 Route::delete('/cart/destroy', [CartController::class, 'destroy'])->name('cart.destroy');
 Route::put('/cart/weight', [CartController::class, 'getWeight'])->name('cart.weight');
 
-
 Route::post('rating/add', [RatingController::class, 'addRating']);
 Route::put('/rating/edit/{id}', [RatingController::class, 'edit']);
-
-/*Route::get('/product/all', [ProductController::class, 'getAll']);
-Route::put('/product/edit/{product}', [ProductController::class, 'edit']);
-Route::delete('/product/delete/{id}', [ProductController::class, 'delete']);*/
+Route::get('product/rating/{id}', [RatingController::class, 'show']);
 
 Route::post('/category/store', [CategoryController::class, 'store']);
 Route::get('admin_panel/category/{id}', [CategoryController::class, 'show']);

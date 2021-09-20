@@ -24,7 +24,13 @@
                     <div class="row mb-5">
                         <div class="col">
                             <p class="mb-0"style="font-weight: bold">Dostępność:</p>
-                            <span style="font-size: 12px">pełny magazyn/na wyczerpaniu/ brak w magazynie (ilość sztuk do bazy - {{ $product->amount }})</span>
+                            @if($product->amount >= 35)
+                            <span class="badge rounded-pill bg-success" style="font-size: 12px">{{ $product->amount }} sztuk</span>
+                            @elseif($product->amount < 35 && $product->amount > 15)
+                            <span class="badge rounded-pill bg-warning text-dark" style="font-size: 12px">{{ $product->amount }} sztuk</span>
+                            @else
+                            <span class="badge rounded-pill bg-danger" style="font-size: 12px">{{ $product->amount }} sztuk</span>
+                            @endif
                         </div>
                         <div class="col">
                             <p class="mb-0"style="font-weight: bold">Wysyłka w:</p>

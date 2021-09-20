@@ -128,4 +128,32 @@ class ProductController extends Controller
         $products = Product::where('category_id', $categoryID)->get();
         return view('furniture', compact('products'));
     }
+
+    /**
+     * Display specified product
+     *
+     * @param  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($id)
+    {
+        $product = Product::where('id', $id)->first();
+
+        return $product;
+    }
+
+    /**
+     * Remove the specified product.
+     *
+     * @param  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete($id)
+    {
+        $product = Product::find($id);
+        $product->destroy($id);
+
+        $this->index();
+        return redirect('admin_panel/products');
+    }
 }

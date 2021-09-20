@@ -4,14 +4,14 @@
 <div class="container">
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Kategorie</a>
+            <a class="navbar-brand">Kategorie</a>
             <form class="d-flex">
                 <input class="form-control me-2" id="search" type="search" placeholder="Szukaj" aria-label="Search">
             </form>
             <a href="./categories/add" class="btn btn-outline-light" type="submit">Dodaj kategorię</a>
         </div>
     </nav>
-    <table class="table table-striped" data-toggle="table" data-search="true" data-search-selector="#search">
+    <table class="table table-striped" data-toggle="table" data-search="true" data-search-selector="#search" style="text-align: center">
         <thead>
             <tr>
                 <th scope="col">#</th>

@@ -41,8 +41,8 @@
                 <td>{{ $product->code_product }}</td>
                 <td>{{ $product->weight }} kg</td>
                 <td>
-                    <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id={{ $product->id }}><i class="fas fa-pencil-alt"></i></button>
-                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash"></i></button>
+                    <button class="btn btn-success btn-sm editbtn" id="editCategory" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id={{ $product->id }}><i class="fas fa-pencil-alt"></i></button>
+                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id={{ $product->id }}><i class="fas fa-trash"></i></button>
                 </td>
             </tr>
             <tr>
@@ -74,7 +74,7 @@
                                 <div class="form-group row pt-3">
                                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nazwa') }}</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 productName">
                                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                                             value="{{ $product->name }}" required autocomplete="name" autofocus>
 
@@ -89,8 +89,8 @@
                                 <div class="form-group row pt-3">
                                     <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Cena') }}</label>
 
-                                    <div class="col-md-6">
-                                        <input id="address" type="text" class="form-control @error('price') is-invalid @enderror" name="price"
+                                    <div class="col-md-6 productPrice">
+                                        <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price"
                                             value="{{ $product->price }}" required autocomplete="price">
 
                                         @error('price')
@@ -104,7 +104,7 @@
                                 <div class="form-group row pt-3">
                                     <label for="color" class="col-md-4 col-form-label text-md-right">{{ __('Kolor') }}</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 productColor">
                                         <input id="color" type="text" class="form-control @error('color') is-invalid @enderror" name="color"
                                             value="{{ $product->color }}" required autocomplete="color">
 
@@ -119,7 +119,7 @@
                                 <div class="form-group row pt-3">
                                     <label for="amount" class="col-md-4 col-form-label text-md-right">{{ __('Ilość') }}</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 productAmount">
                                         <input id="amount" type="text" class="form-control @error('amount') is-invalid @enderror" name="amount"
                                             value="{{ $product->amount }}" required autocomplete="amount">
 
@@ -136,10 +136,10 @@
                                 <div class="form-group row pt-3">
                                     <label for="size" class="col-md-4 col-form-label text-md-right">{{ __('Rozmiar') }}</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 productSize">
                                         <select class="form-select" id="size" type="text" aria-label=".form-select" @error('size') is-invalid
                                             @enderror" name="size" value="{{ old('size') }}" required autocomplete="size">
-                                            <option selected value="S">S</option>
+                                            <option value="S">S</option>
                                             <option value="M">M</option>
                                             <option value="L">L</option>
                                             <option value="XL">XL</option>
@@ -155,7 +155,7 @@
                                 <div class="form-group row pt-3">
                                     <label for="code_product" class="col-md-4 col-form-label text-md-right">{{ __('Kod produktu') }}</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 productCode">
                                         <input id="code_product" type="text" placeholder="(krzeslo-kolor-numer=KRZ-CZA-3)"
                                             class="form-control @error('code_product') is-invalid @enderror" name="code_product"
                                             value="{{ $product->code_product }}" required autocomplete="code_product">
@@ -171,7 +171,7 @@
                                 <div class="form-group row pt-3">
                                     <label for="weight" class="col-md-4 col-form-label text-md-right">{{ __('Waga') }}</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 productWeight">
                                         <input id="weight" type="text" class="form-control @error('weight') is-invalid @enderror" name="weight"
                                             value="{{ $product->weight }}" required autocomplete="weight">
 
@@ -186,7 +186,7 @@
                                 <div class="form-group row pt-3">
                                     <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Opis produktu') }}</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 productDescription">
                                         <input id="description" type="text" class="form-control @error('description') is-invalid @enderror"
                                             name="description" value="{{ $product->description }}" required autocomplete="description">
 
@@ -221,8 +221,13 @@
                     <p class="pt-4" style="font-size: 24px">Czy chcesz usunąć ten produkt?</p>
                 </div>
                 <div class="modal-footer" style="justify-content: center">
-                    <button type="button" class="btn btn-success">TAK</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="deleteModal">NIE</button>
+                    <form method="POST" action="/product/delete" class="mb-3">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" id="product_id" name="product_id" value="">
+                        <button type="submit" class="btn btn-success">TAK</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">NIE</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -239,4 +244,44 @@
         color: black;
     }
 </style>
+<script>
+    $(document).ready(function () {
+        var editModal = document.getElementById('editModal')
+        var deleteModal = document.getElementById('deleteModal')
+
+        editModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var id = button.getAttribute('data-bs-id');
+
+            $.get('product/' + id + '', function (data) {
+                var inputName = editModal.querySelector('.productName input')
+                inputName.value = data.name
+                var inputPrice = editModal.querySelector('.productPrice input')
+                inputPrice.value = data.price
+                var inputColor = editModal.querySelector('.productColor input')
+                inputColor.value = data.color
+                var inputAmount = editModal.querySelector('.productAmount input')
+                inputAmount.value = data.amount
+                var inputCode = editModal.querySelector('.productCode input')
+                inputCode.value = data.code_product
+                var inputWeight = editModal.querySelector('.productWeight input')
+                inputWeight.value = data.weight
+                var inputDescription = editModal.querySelector('.productDescription input')
+                inputDescription.value = data.description
+                var inputID = editModal.querySelector('.modal-body form')
+                inputID.action = '/product/edit/' + data.id
+            })
+        });
+
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var id = button.getAttribute('data-bs-id');
+
+            $.get('product/' + id + '', function (data) {
+            var inputID = deleteModal.querySelector('.modal-footer form')
+            inputID.action = '/product/delete/' + data.id
+            })
+        });
+    });
+</script>
 @endsection

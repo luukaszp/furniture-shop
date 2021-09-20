@@ -10,7 +10,7 @@
                 <button class="rounded-pill btn-light" style="text-decoration: none; color:black; border: 1px solid black" onclick="history.back(-1)"><i class="fas fa-arrow-circle-left"></i> Powrót</</button>
             </div>
             @forelse($products as $product)
-            <div class="col">
+            <div class="col" style="justify-content: center; display: flex">
                 <div class="card mb-3" style="width: 18rem;">
                     <a href="/product/{{ $product->id }}">
                         <img src="../storage/{{ $product->photo }}" class="card-img-top" alt="armchair">

@@ -4,13 +4,13 @@
 <div class="container">
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Klienci</a>
+            <a class="navbar-brand">Klienci</a>
             <form class="d-flex">
                 <input class="form-control me-2" id="search" type="search" placeholder="Szukaj" aria-label="Search">
             </form>
         </div>
     </nav>
-    <table class="table table-striped" data-toggle="table" data-search="true" data-search-selector="#search">
+    <table class="table table-striped" data-toggle="table" data-search="true" data-search-selector="#search" style="text-align: center">
         <thead>
             <tr>
                 <th scope="col">#</th>
