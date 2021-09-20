@@ -105,10 +105,9 @@ Route::put('/category/edit/{id}', [CategoryController::class, 'edit']);
 Route::delete('/category/delete/{id}', [CategoryController::class, 'delete']);
 
 Route::post('/subcategory/store', [SubcategoryController::class, 'store']);
-/*Route::get('/subcategory/all', [SubcategoryController::class, 'getAll']);
-Route::get('/subcategory/{id}', [SubcategoryController::class, 'show']);
-Route::put('/subcategory/edit/{subcategory}', [SubcategoryController::class, 'edit']);
-Route::delete('/subcategory/delete/{id}', [SubcategoryController::class, 'delete']);*/
+Route::get('admin_panel/subcategory/{id}', [SubcategoryController::class, 'show']);
+Route::put('/subcategory/edit/{id}', [SubcategoryController::class, 'edit']);
+Route::delete('/subcategory/delete/{id}', [SubcategoryController::class, 'delete']);
 
 Route::get('/admin_panel/customers', function () {
     return view('admin_panel.customers');

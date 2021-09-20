@@ -51,7 +51,7 @@
                     <form method="POST" action="/category/edit" class="mb-3">
                         @csrf
                         @method('PUT')
-                            <div class="col-12">
+                            <div class="col-12 pb-3">
                                 <div class="form-group row pt-3">
                                     <label for="name"
                                         class="col-md-4 col-form-label text-md-right">{{ __('Nazwa kategorii') }}</label>
@@ -72,9 +72,9 @@
                         <hr>
                         <input type="hidden" id="category_id" name="category_id" value="">
                         <div class="col-12 pt-3" style="justify-content: center; text-align: center;">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal"
                                 aria-label="Close">Zamknij</button>
-                            <button type="submit" class="btn btn-success">Edytuj kategorię</button>
+                            <button type="submit" class="btn btn-outline-dark ms-2">Edytuj kategorię</button>
                         </div>
                     </form>
                 </div>
@@ -98,7 +98,7 @@
                         @method('DELETE')
                         <input type="hidden" id="category_id" name="category_id" value="">
                         <button type="submit" class="btn btn-success">TAK</button>
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="deleteModal">NIE</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">NIE</button>
                     </form>
                 </div>
             </div>

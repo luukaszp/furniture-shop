@@ -51,4 +51,50 @@ class SubcategoryController extends Controller
             ->get();
         return view('admin_panel.add_product', compact('subcategories'));
     }
+
+    /**
+     * Display specified subcategory
+     *
+     * @param  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($id)
+    {
+        $subcategory = Subcategory::where('id', $id)->first();
+
+        return $subcategory;
+    }
+
+    /**
+     * Edit specific subcategory.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function edit(Request $request, $id)
+    {
+        $subcategory = Subcategory::find($id);
+
+        $subcategory->name = $request->name;
+        $subcategory->save();
+
+        $this->index();
+        return redirect('admin_panel/subcategories');
+    }
+
+    /**
+     * Remove the specified subcategory.
+     *
+     * @param  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete($id)
+    {
+        $subcategory = Subcategory::find($id);
+        $subcategory->destroy($id);
+
+        $this->index();
+        return redirect('admin_panel/subcategories');
+    }
 }
