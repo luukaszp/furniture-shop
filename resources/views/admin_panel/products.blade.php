@@ -6,13 +6,12 @@
         <div class="container-fluid">
             <a class="navbar-brand">Produkty</a>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Szukaj" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Wyszukaj</button>
+                <input class="form-control me-2" id="search" type="search" placeholder="Szukaj" aria-label="Search">
             </form>
             <a href="./products/add" class="btn btn-outline-light" type="submit">Dodaj produkt</a>
         </div>
     </nav>
-    <table class="table table-striped" style="text-align: center">
+    <table class="table table-striped" data-toggle="table" data-search="true" data-search-selector="#search" style="text-align: center">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -46,9 +45,10 @@
                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash"></i></button>
                 </td>
             </tr>
-            <td colspan="12">
-                <span style="font-weight: bold">Opis: </span>{{ $product->description }}
-            </td>
+            <tr>
+                <th data-field="description" data-searchable="false">Opis</th>
+                <td colspan="12">{{ $product->description }}</td>
+            </tr>
             @empty
                 <th scope="col" colspan="11" class="font-weight-bold text-center">Brak danych</th>
             @endforelse

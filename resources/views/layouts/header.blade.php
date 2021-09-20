@@ -19,10 +19,6 @@
                         <a class="nav-link" href="#">Nowości</a>
                     </li>
                 </ul>
-                <form class="d-flex col-4">
-                    <input class="form-control me-2" type="search" placeholder="Szukaj" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Szukaj</button>
-                </form>
                 <div class="dropdown">
                     <ul style="margin: 0; display: inline-flex">
                         <a class="nav-link link-dark" style="font-size: 2em" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

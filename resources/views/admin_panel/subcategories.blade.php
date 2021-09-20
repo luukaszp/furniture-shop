@@ -6,13 +6,12 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Podkategorie</a>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Szukaj" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Wyszukaj</button>
+                <input class="form-control me-2" id="search" type="search" placeholder="Szukaj" aria-label="Search">
             </form>
             <a href="./subcategories/add" class="btn btn-outline-light" type="submit">Dodaj podkategorię</a>
         </div>
     </nav>
-    <table class="table table-striped">
+    <table class="table table-striped" data-toggle="table" data-search="true" data-search-selector="#search">
         <thead>
             <tr>
                 <th scope="col">#</th>

@@ -75,8 +75,9 @@
                 @endforelse
                 <div class="ratings">
                     @guest
-                    <h1>Zaloguj się by wystawić opinię</h1>
+                    <h1 class="pt-3 pb-4">Zaloguj się by wystawić opinię</h1>
                     @endguest
+                    @auth
                     @if($ratings->contains('user_id', Auth::user()->id))
                     <h1 class="pt-2 pb-4">Dziękujemy za wystawienie opinii!</h1>
                     @else
@@ -111,6 +112,7 @@
                         </div>
                     </form>
                     @endif
+                    @endauth
                     <div class="list-group" style="text-align: left">
                         @forelse($ratings as $rating)
                             <a class="list-group-item list-group-item-action" aria-current="true">
@@ -126,12 +128,14 @@
                                             @endfor
                                         </div>
                                     </div>
+                                    @auth
                                     <small class="text-muted">
                                         @if($rating->user_id == Auth::user()->id)
                                             <button class="btn editbtn" id="editRating" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id={{ $rating->product_id }}><i class="fas fa-pencil-alt" style="font-size: 1.3em"></i></button>
                                         @endif
                                         {{ $rating->created_at }}
                                     </small>
+                                    @endauth
                                 </div>
                                 <p class="mb-1">{{ $rating->opinion }}</p>
                             </a>

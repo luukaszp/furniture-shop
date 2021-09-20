@@ -6,12 +6,11 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Klienci</a>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Szukaj" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Wyszukaj</button>
+                <input class="form-control me-2" id="search" type="search" placeholder="Szukaj" aria-label="Search">
             </form>
         </div>
     </nav>
-    <table class="table table-striped">
+    <table class="table table-striped" data-toggle="table" data-search="true" data-search-selector="#search">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -23,7 +22,6 @@
                 <th scope="col">Miejscowość</th>
                 <th scope="col">Województwo</th>
                 <th scope="col">Telefon komórkowy</th>
-                <th scope="col">Akcje</th>
             </tr>
         </thead>
         <tbody>
