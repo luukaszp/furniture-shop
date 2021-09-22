@@ -59,6 +59,7 @@
         {!! $products->links() !!}
     </div>
 
+    @if(!$products->isEmpty())
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 750px">
             <div class="modal-content">
@@ -232,6 +233,7 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
 <style>
     .pagination .page-link {

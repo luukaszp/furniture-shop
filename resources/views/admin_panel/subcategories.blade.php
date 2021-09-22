@@ -39,6 +39,7 @@
         {!! $subcategories->links() !!}
     </div>
 
+    @if(!$subcategories->isEmpty())
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -102,6 +103,7 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
 <style>
     .pagination .page-link {

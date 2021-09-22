@@ -7,7 +7,7 @@
         <div class="row mt-3 mb-3" style="display: inline-flex">
             @isset($products)
             <div class="mb-3">
-                <button class="rounded-pill btn-light" style="text-decoration: none; color:black; border: 1px solid black" onclick="history.back(-1)"><i class="fas fa-arrow-circle-left"></i> Powrót</</button>
+                <button class="rounded-pill btn-light" style="text-decoration: none; color:black; border: 1px solid black" onclick="history.back(-1)"><i class="fas fa-arrow-circle-left"></i> Powrót</button>
             </div>
             @forelse($products as $product)
             <div class="col" style="justify-content: center; display: flex">

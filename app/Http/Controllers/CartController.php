@@ -40,7 +40,7 @@ class CartController extends Controller
     public function show()
     {
         $carts = Cart::content();
-        $subtotal = Cart::subtotal();
+        $subtotal = Cart::subtotal(2, '.', '');
         return view('shopping_cart', compact('carts', 'subtotal'));
     }
 
@@ -52,7 +52,7 @@ class CartController extends Controller
      */
     public function update(Request $request)
     {
-        Cart::update($request->rowId, $request->quantity);
+        Cart::update($request->id, $request->quantity);
         return redirect()->route('cart.show');
     }
 
@@ -64,7 +64,7 @@ class CartController extends Controller
      */
     public function delete(Request $request)
     {
-        Cart::remove($request->rowId);
+        Cart::remove($request->id);
         return redirect()->route('cart.show');
     }
 

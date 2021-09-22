@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -87,8 +88,8 @@ Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store')
 Route::get('/cart/show', [CartController::class, 'show'], function () {
     return view('shopping_cart');
 })->name('cart.show');
-Route::put('/cart/update', [CartController::class, 'update'])->name('cart.update');
-Route::delete('/cart/delete', [CartController::class, 'delete'])->name('cart.delete');
+Route::put('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/delete/{id}', [CartController::class, 'delete'])->name('cart.delete');
 Route::delete('/cart/destroy', [CartController::class, 'destroy'])->name('cart.destroy');
 Route::put('/cart/weight', [CartController::class, 'getWeight'])->name('cart.weight');
 
@@ -118,6 +119,11 @@ Route::get('/admin_panel/subcategories', [SubcategoryController::class, 'index']
     return view('admin_panel.subcategories');
 });
 
+Route::post('payment/store', [PaymentController::class, 'store'])->name('payment.store');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('payment', [PaymentController::class, 'payment']);
+});
 
 Auth::routes();
 
