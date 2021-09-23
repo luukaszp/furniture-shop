@@ -1,12 +1,6 @@
 <?php
 
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\SubcategoryController;
-use App\Http\Controllers\RatingController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,7 +19,7 @@ Route::get('/', [ProductController::class, 'mainDisplay'], function () {
     return view('main');
 });
 
-Route::get('/about/company', function () {
+/*Route::get('/about/company', function () {
     return view('about.company');
 });
 
@@ -54,25 +48,26 @@ Route::get('/furniture/{category}', [ProductController::class, 'productByCategor
     return view('furniture/');
 });
 
+Route::prefix('admin_panel')->group( function () {
+    Route::get('/orders', function () {
+        return view('admin_panel.orders');
+    });
 
-Route::get('/admin_panel/orders', function () {
-    return view('admin_panel.orders');
-});
+    Route::get('/admin_panel/products', [ProductController::class, 'index'], function () {
+        return view('admin_panel.products');
+    });
 
-Route::get('/admin_panel/products', [ProductController::class, 'index'], function () {
-    return view('admin_panel.products');
-});
+    Route::get('/products/add', [SubcategoryController::class, 'getAll'], function () {
+        return view('admin_panel.add_product');
+    });
 
-Route::get('/admin_panel/products/add', [SubcategoryController::class, 'getAll'], function () {
-    return view('admin_panel.add_product');
-});
+    Route::get('/categories/add', function () {
+        return view('admin_panel.add_category');
+    });
 
-Route::get('/admin_panel/categories/add', function () {
-    return view('admin_panel.add_category');
-});
-
-Route::get('/admin_panel/subcategories/add', [CategoryController::class, 'getAllSub'], function () {
-    return view('admin_panel.add_subcategory');
+    Route::get('/subcategories/add', [CategoryController::class, 'getAllSub'], function () {
+        return view('admin_panel.add_subcategory');
+    });
 });
 
 Route::post('/product/store', [ProductController::class, 'store']);
@@ -123,8 +118,8 @@ Route::post('payment/store', [PaymentController::class, 'store'])->name('payment
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('payment', [PaymentController::class, 'payment']);
-});
+});*/
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

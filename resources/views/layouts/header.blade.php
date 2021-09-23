@@ -27,17 +27,12 @@
                         <ul class="dropdown-menu" style="text-align: center" aria-labelledby="navbarScrollingDropdown">
                             <ul class="navbar-nav ml-auto" style="justify-content: center; display: inline-block">
                                 @guest
-                                @if (Route::has('login'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Zaloguj się') }}</a>
+                                        <a class="nav-link" href="/login">Zaloguj się</a>
                                     </li>
-                                @endif
-
-                                @if (Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Zarejestruj się') }}</a>
+                                        <a class="nav-link" href="/register">Zarejestruj się</a>
                                     </li>
-                                @endif
                                 @else
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link" href="/profile" role="button" data-toggle="dropdown"
@@ -45,12 +40,9 @@
                                             {{ Auth::user()->name }} {{ Auth::user()->surname }}
                                         </a>
 
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                                {{ __('Wyloguj się') }}
-                                        </a>
+                                        <a class="dropdown-item" href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Wyloguj się</a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        <form id="logout-form" action="/logout" method="POST" class="d-none">
                                             @csrf
                                         </form>
                                         </div>
