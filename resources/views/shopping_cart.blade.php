@@ -99,17 +99,11 @@
                         <div class="col-12 pb-3">
                             <div class="form-group row pt-3">
                                 <label for="quantity"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Ilość') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">Ilość</label>
 
                                 <div class="col-md-6 quantity">
-                                    <input id="quantity" type="text" class="form-control @error('quantity') is-invalid @enderror"
+                                    <input id="quantity" type="text" class="form-control"
                                         name="quantity" value="{{ old('$cart->quantity') }}" required autocomplete="quantity" autofocus>
-
-                                    @error('quantity')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
                             </div>
                         </div>

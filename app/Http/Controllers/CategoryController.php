@@ -35,6 +35,17 @@ class CategoryController extends Controller
     }
 
     /**
+     * Display view for adding new category.
+     *
+     * @param  array  $data
+     * @return \App\Models\Category
+     */
+    public function addCategoryView()
+    {
+        return view('admin_panel.add_category');
+    }
+
+    /**
      * Get all categories (for select options - subcategories).
      *
      * @param  array  $data

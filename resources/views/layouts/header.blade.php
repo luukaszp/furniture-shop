@@ -61,6 +61,7 @@
                         </a>
                     </ul>
                 </div>
+                @auth
                 <div class="btn-group">
                     <a class="nav-link link-dark" style="font-size: 2em" href="#" id="dropdownMenu" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -74,6 +75,7 @@
                         <li><a class="dropdown-item" href="/admin_panel/products"><i class="fas fa-box-open"></i> Produkty</a></li>
                     </ul>
                 </div>
+                @endauth
             </div>
         </div>
     </nav>

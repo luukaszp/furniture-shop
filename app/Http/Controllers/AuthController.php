@@ -7,21 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Product;
 use Validator;
-use Tymon\JWTAuth\Exceptions\JWTException;
-use JWTAuth;
 
 class AuthController extends Controller
 {
-    /**
-     * Create a new AuthController instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth.jwt', ['except' => ['loginUser', 'login', 'register', 'registerUser']]);
-    }
-
     /**
      * Display login view.
      *
@@ -79,7 +67,8 @@ class AuthController extends Controller
             'password' => bcrypt($request->password)
         ]);
 
-        //User created, redirect
+        $token = $user->createToken('auth_token')->plainTextToken;
+
         return redirect('/login');
     }
 
@@ -94,11 +83,14 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        if (! $token = auth()->attempt($validator->validated())) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        if (!Auth::attempt($request->only('email', 'password'))) {
+            return response()->json(['message' => 'Invalid login details'], 401);
         }
 
-        $this->createNewToken($token);
+        $user = User::where('email', $request['email'])->firstOrFail();
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
         $this->productMain();
 
         return redirect('/');
@@ -121,48 +113,17 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function logout()
+    public function logout(Request $request)
     {
-        auth()->logout();
+        auth()->user()->tokens()->delete();
+        $request->session()->invalidate();
+        $this->productMain();
 
-        $products = Product::select('id', 'name', 'photo', 'price')->paginate(9);
-        return view('main', compact('products'));
+        return redirect('/');
     }
 
-    /**
-     * Refresh a token.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function refresh()
+    public function me(Request $request)
     {
-        return $this->createNewToken(auth()->refresh());
-    }
-
-    /**
-     * Get the authenticated User.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function userProfile()
-    {
-        return response()->json(auth()->user());
-    }
-
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function createNewToken($token)
-    {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user()
-        ]);
+        return $request->user();
     }
 }
