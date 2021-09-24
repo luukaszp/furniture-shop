@@ -54,17 +54,11 @@
                         <div class="col-12 pb-3">
                             <div class="form-group row pt-3">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Nazwa podkategorii') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">Nazwa podkategorii</label>
 
                                 <div class="col-md-6 subcategoryName">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                                    <input id="name" type="text" class="form-control"
                                         name="name" value="{{ $subcategory->name }}" required autocomplete="name" autofocus>
-
-                                    @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
                             </div>
                         </div>

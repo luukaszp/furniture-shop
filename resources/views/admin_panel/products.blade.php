@@ -73,129 +73,77 @@
                         <div class="col-12 mb-4" style="display: flex">
                             <div class="col-6">
                                 <div class="form-group row pt-3">
-                                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nazwa') }}</label>
+                                    <label for="name" class="col-md-4 col-form-label text-md-right">Nazwa</label>
 
                                     <div class="col-md-6 productName">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                                        <input id="name" type="text" class="form-control" name="name"
                                             value="{{ $product->name }}" required autocomplete="name" autofocus>
-
-                                        @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
                                     </div>
                                 </div>
 
                                 <div class="form-group row pt-3">
-                                    <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Cena') }}</label>
+                                    <label for="price" class="col-md-4 col-form-label text-md-right">Cena</label>
 
                                     <div class="col-md-6 productPrice">
-                                        <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price"
+                                        <input id="price" type="text" class="form-control" name="price"
                                             value="{{ $product->price }}" required autocomplete="price">
-
-                                        @error('price')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
                                     </div>
                                 </div>
 
                                 <div class="form-group row pt-3">
-                                    <label for="color" class="col-md-4 col-form-label text-md-right">{{ __('Kolor') }}</label>
+                                    <label for="color" class="col-md-4 col-form-label text-md-right">Kolor</label>
 
                                     <div class="col-md-6 productColor">
-                                        <input id="color" type="text" class="form-control @error('color') is-invalid @enderror" name="color"
+                                        <input id="color" type="text" class="form-control" name="color"
                                             value="{{ $product->color }}" required autocomplete="color">
-
-                                        @error('color')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
                                     </div>
                                 </div>
 
                                 <div class="form-group row pt-3">
-                                    <label for="amount" class="col-md-4 col-form-label text-md-right">{{ __('Ilość') }}</label>
+                                    <label for="amount" class="col-md-4 col-form-label text-md-right">Ilość</label>
 
                                     <div class="col-md-6 productAmount">
-                                        <input id="amount" type="text" class="form-control @error('amount') is-invalid @enderror" name="amount"
+                                        <input id="amount" type="text" class="form-control" name="amount"
                                             value="{{ $product->amount }}" required autocomplete="amount">
-
-                                        @error('amount')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-6">
                                 <div class="form-group row pt-3">
-                                    <label for="size" class="col-md-4 col-form-label text-md-right">{{ __('Rozmiar') }}</label>
+                                    <label for="size" class="col-md-4 col-form-label text-md-right">Rozmiar</label>
 
                                     <div class="col-md-6 productSize">
-                                        <select class="form-select" id="size" type="text" aria-label=".form-select" @error('size') is-invalid
-                                            @enderror" name="size" value="{{ old('size') }}" required autocomplete="size">
+                                        <select class="form-select" id="size" type="text" aria-label=".form-select" name="size" value="{{ old('size') }}" required autocomplete="size">
                                             <option value="S">S</option>
                                             <option value="M">M</option>
                                             <option value="L">L</option>
                                             <option value="XL">XL</option>
                                         </select>
-                                        @error('size')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
                                     </div>
                                 </div>
 
                                 <div class="form-group row pt-3">
-                                    <label for="code_product" class="col-md-4 col-form-label text-md-right">{{ __('Kod produktu') }}</label>
+                                    <label for="code_product" class="col-md-4 col-form-label text-md-right">Kod produktu</label>
 
                                     <div class="col-md-6 productCode">
-                                        <input id="code_product" type="text" placeholder="(krzeslo-kolor-numer=KRZ-CZA-3)"
-                                            class="form-control @error('code_product') is-invalid @enderror" name="code_product"
-                                            value="{{ $product->code_product }}" required autocomplete="code_product">
-
-                                        @error('code_product')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                        <input id="code_product" type="text" placeholder="(product-color-number KRZ-CZA-3)" class="form-control" name="code_product" value="{{ $product->code_product }}" required autocomplete="code_product">
                                     </div>
                                 </div>
 
                                 <div class="form-group row pt-3">
-                                    <label for="weight" class="col-md-4 col-form-label text-md-right">{{ __('Waga') }}</label>
+                                    <label for="weight" class="col-md-4 col-form-label text-md-right">Waga</label>
 
                                     <div class="col-md-6 productWeight">
-                                        <input id="weight" type="text" class="form-control @error('weight') is-invalid @enderror" name="weight"
-                                            value="{{ $product->weight }}" required autocomplete="weight">
-
-                                        @error('weight')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                        <input id="weight" type="text" class="form-control" name="weight" value="{{ $product->weight }}" required autocomplete="weight">
                                     </div>
                                 </div>
 
                                 <div class="form-group row pt-3">
-                                    <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Opis produktu') }}</label>
+                                    <label for="description" class="col-md-4 col-form-label text-md-right">Opis produktu</label>
 
                                     <div class="col-md-6 productDescription">
-                                        <input id="description" type="text" class="form-control @error('description') is-invalid @enderror"
-                                            name="description" value="{{ $product->description }}" required autocomplete="description">
-
-                                        @error('description')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                        <input id="description" type="text" class="form-control" name="description" value="{{ $product->description }}" required autocomplete="description">
                                     </div>
                                 </div>
                             </div>

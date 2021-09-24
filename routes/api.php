@@ -68,7 +68,7 @@ Route::prefix('admin_panel')->group( function () {
         return view('admin_panel.orders');
     });
 
-    Route::get('/admin_panel/products', [ProductController::class, 'index'], function () {
+    Route::get('/products', [ProductController::class, 'index'], function () {
         return view('admin_panel.products');
     });
 

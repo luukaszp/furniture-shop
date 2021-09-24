@@ -33,7 +33,7 @@ class RatingController extends Controller
         $rating->rate = $request->rate;
         $rating->opinion = $request->opinion;
         $rating->product_id = $request->product_id;
-        $rating->user_id = auth()->user()->id;
+        $rating->user_id = auth('api')->user()->id;
         $rating->save();
 
         return redirect('product/' . $request->product_id);
