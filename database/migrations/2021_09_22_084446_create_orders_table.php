@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('order_amount');
             $table->string('payment_status')->default('oczekiwanie na wpłatę');
             $table->string('order_status')->default('zamówienie w toku');
+            $table->string('tracking_number')->unique();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

@@ -41,7 +41,7 @@
                 <td>{{ $product->code_product }}</td>
                 <td>{{ $product->weight }} kg</td>
                 <td>
-                    <button class="btn btn-success btn-sm editbtn" id="editCategory" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id={{ $product->id }}><i class="fas fa-pencil-alt"></i></button>
+                    <button class="btn btn-success btn-sm editbtn" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id={{ $product->id }}><i class="fas fa-pencil-alt"></i></button>
                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id={{ $product->id }}><i class="fas fa-trash"></i></button>
                 </td>
             </tr>

@@ -73,6 +73,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::prefix('admin_panel')->group( function () {
         Route::get('/orders', [OrderController::class, 'index']);
+        Route::get('/order/{id}', [OrderController::class, 'show']);
         Route::get('/products', [ProductController::class, 'index']);
         Route::get('/products/add', [SubcategoryController::class, 'getAll']);
         Route::get('/categories/add', [CategoryController::class, 'addCategoryView']);
@@ -112,4 +113,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::post('payment/store', [PaymentController::class, 'store'])->name('payment.store');
     Route::get('payment', [PaymentController::class, 'payment']);
+
+    Route::put('/order/confirm/{id}', [OrderController::class, 'confirmation']);
 });
