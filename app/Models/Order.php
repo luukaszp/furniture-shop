@@ -11,8 +11,6 @@ class Order extends Model
 
     protected $table = 'orders';
 
-    protected $hidden = ['pivot'];
-
     public function users()
     {
         return $this->belongsTo(User::class, 'user_id');

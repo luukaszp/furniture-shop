@@ -2,13 +2,15 @@
 @section('content')
 <div class="container">
     @if (session('message'))
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success col-4" role="alert" style="text-align: center">
         <div>
             <i class="fas fa-check-circle"></i> {{ session('message') }}
             <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
         </div>
     </div>
     @endif
+    @php ($product_id = [])
+    @php ($amount = [])
     @forelse($carts as $cart)
     <table id="cart" class="table">
         <thead>
@@ -26,6 +28,8 @@
                     <div class="row">
                         <div class="col-sm-3 hidden-xs"><img src="../storage/{{ $cart->options->photo }}" class="thumbnail img-thumbnail" /></div>
                         <div class="col-sm-9">
+                            @php ($product_id[] = $cart->id)
+                            @php ($amount[] = $cart->qty)
                             <h4 class="nomargin">{{ $cart->name }}</h4>
                             <p>Waga: <span style="font-weight: bold">{{ $cart->weight }} kg</span></p>
                             <p>Kolor: <span style="font-weight: bold">{{ $cart->options->color }}</span></p>
@@ -51,7 +55,8 @@
         </tbody>
     </table>
     @isset($cart)
-    <form>
+    <form method="POST" action="/order/store">
+        @csrf
         <div class="summary col-6" style="display: inline; text-align: right">
             <div class="order-summary">
                 <p class="summary-info"><span class="title">Koszt: </span><span style="font-weight: bold">{{ $subtotal }}zł</span></p>
@@ -77,9 +82,14 @@
                     <span style="font-weight: bold" id="subtotal" data-bs-id={{ $subtotal }}></span>
                 </h2>
                 <hr>
+                <input type="hidden" id="subtotal" name="subtotal" value="{{ $subtotal }}">
+                <input type="hidden" id="product_id" name="product_id" value="{{ json_encode($product_id) }}">
+                <input type="hidden" id="amount" name="amount" value="{{ json_encode($amount) }}">
             </div>
             <div class="checkout-info mb-3" style="text-align: center">
-                <a class="btn btn-outline-dark me-2" href="/payment"><i class="fas fa-money-bill-wave"></i> Zapłać</a>
+                <button type="submit" class="btn btn-outline-dark me-2">
+                    <i class="fas fa-money-bill-wave"></i> Zapłać
+                </button>
                 <a class="btn btn-outline-dark ms-2 me-2" href="/furniture"><i class="fas fa-shopping-cart"></i> Kontynuuj zakupy</a>
             </div>
         </div>

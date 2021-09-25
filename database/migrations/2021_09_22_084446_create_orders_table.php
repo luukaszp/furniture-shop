@@ -15,8 +15,11 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tracking_number');
-            $table->string('status')->default('oczekiwanie na wpłatę');
+            $table->string('order_number');
+            $table->string('order_date');
+            $table->string('order_amount');
+            $table->string('payment_status')->default('oczekiwanie na wpłatę');
+            $table->string('order_status')->default('zamówienie w toku');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

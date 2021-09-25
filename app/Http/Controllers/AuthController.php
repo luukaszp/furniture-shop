@@ -122,8 +122,12 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function me(Request $request)
+    public function refresh(Request $request)
     {
-        return $request->user();
+        $user = $request->user();
+
+        $user->tokens()->delete();
+
+        return response()->json(['token' => $user->createToken($user->name)->plainTextToken]);
     }
 }

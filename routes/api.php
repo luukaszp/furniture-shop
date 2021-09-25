@@ -22,10 +22,7 @@ use App\Http\Controllers\PaymentController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:sanctum')->get("/refresh", [AuthController::class, 'refresh']);
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
@@ -46,8 +43,6 @@ Route::prefix('furniture')->group( function () {
     Route::get('/{category}', [ProductController::class, 'productByCategory']);
 });
 
-Route::get('/{id}', [ProductController::class, 'showProduct'])->name('product.index');
-
 Route::prefix('cart')->group( function () {
     Route::post('/store', [CartController::class, 'store'])->name('cart.store');
     Route::get('/show', [CartController::class, 'show'])->name('cart.show');
@@ -57,10 +52,13 @@ Route::prefix('cart')->group( function () {
     Route::put('/weight', [CartController::class, 'getWeight'])->name('cart.weight');
 });
 
+Route::get('product/{id}', [ProductController::class, 'showProduct'])->name('product.index');
 Route::get('product/rating/{id}', [RatingController::class, 'show']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::post('order/store', [OrderController::class, 'store']);
 
     Route::prefix('profile')->group( function () {
         Route::get('/contact_details', [UserController::class, 'userInfo']);
@@ -84,7 +82,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('/subcategory/{id}', [SubcategoryController::class, 'show']);
         Route::get('/categories', [CategoryController::class, 'index']);
         Route::get('/subcategories', [SubcategoryController::class, 'index']);
-        Route::get('/admin_panel/customers', function () {
+        Route::get('/customers', function () {
             return view('admin_panel.customers');
         });
     });

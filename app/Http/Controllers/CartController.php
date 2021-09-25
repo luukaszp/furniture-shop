@@ -17,17 +17,19 @@ class CartController extends Controller
     {
         $productID = $request->input('product_id');
         $products = Product::findOrFail($productID);
+        $quantity = $request->input('quantity');
 
         $cart = Cart::add(
             $products->id,
             $products->name,
-            $request->input('quantity'),
+            $quantity,
             $products->price,
             $products->weight,
             ['color' => $products->color, 'size' => $products->size, 'photo' => $products->photo],
         );
 
         $products = Product::where('id', $productID)->get();
+
         return redirect()->route('product.index', $productID)->with('message', 'Pomyślnie dodano do koszyka!');
     }
 

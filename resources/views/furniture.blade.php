@@ -17,7 +17,7 @@
                     </a>
                     <div class="card-body" style="height: 175px">
                         <h5 class="card-title" style="height: 50px">{{ $product->name }}</h5>
-                        <p class="card-text" style="font-weight: bold">{{ $product->price }}</p>
+                        <p class="card-text" style="font-weight: bold">{{ $product->price }} zł</p>
                         <a href="/product/{{ $product->id }}" class="btn btn-outline-dark">Zobacz więcej</a>
                     </div>
                 </div>

@@ -18,8 +18,10 @@
                 <th scope="col">Numer zamówienia</th>
                 <th scope="col">Data zamówienia</th>
                 <th scope="col">Wartość</th>
-                <th scope="col">Status</th>
+                <th scope="col">Status płatności</th>
+                <th scope="col">Status zamówienia</th>
                 <th scope="col">Numer przesyłki</th>
+                <th scope="col">Potwierdzenie</th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +31,8 @@
                 <td>30 sierpnia 2021</td>
                 <td>59,00 zł</td>
                 <td>przesyłka wysłana</td>
-                <td>520000014312467514303576</td>
+                <td>zamówienie ukończone</td>
+                <td>Przycisk - potwierdzenie otrzymania zamówienia</td>
             </tr>
             <tr>
                 <th scope="row">1</th>
@@ -37,7 +40,8 @@
                 <td>31 sierpnia 2021</td>
                 <td>19,00 zł</td>
                 <td>oczekiwanie na wpłatę</td>
-                <td>520000014312467514303577</td>
+                <td>zamówienie w trakcie</td>
+                <td>Przycisk - potwierdzenie otrzymania zamówienia</td>
             </tr>
         </tbody>
     </table>

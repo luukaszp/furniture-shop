@@ -16,9 +16,7 @@
                             <p>{{ Session::get('success') }}</p>
                         </div>
                         @endif
-                        <form role="form" action="{{ route('payment.store') }}" method="post" class="require-validation"
-                            data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
-                            id="payment-form">
+                        <form role="form" action="{{ route('payment.store') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
                             @csrf
                             <div class='form-row row pt-3'>
                                 <div class='col-xs-12 form-group required'>
@@ -45,6 +43,7 @@
                                     <label class='control-label'>Rok ważności</label>
                                     <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
                                 </div>
+                                <input type="hidden" id="orderID" name="orderID" value="{{ $orderID }}">
                             </div>
                             <div class="row" style="text-align: center">
                                 <div class="col-xs-12 pt-4">

@@ -51,104 +51,67 @@
                             @csrf
 
                             <div class="form-group row pt-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Imię') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Imię</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                                    <input id="name" type="text" class="form-control" name="name"
                                         value="{{ $user->name }}" required autocomplete="name" autofocus>
-
-                                    @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row pt-3">
-                                <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Nazwisko') }}</label>
+                                <label for="surname" class="col-md-4 col-form-label text-md-right">Nazwisko</label>
 
                                 <div class="col-md-6">
-                                    <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname"
+                                    <input id="surname" type="text" class="form-control" name="surname"
                                         value="{{ $user->surname }}" required autocomplete="surname" autofocus>
-
-                                    @error('surname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row pt-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Adres e-mail') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right">Adres e-mail</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}"
+                                        class="form-control" name="email" value="{{ $user->email }}"
                                         required autocomplete="email">
-
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row pt-3">
-                                <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Adres') }}</label>
+                                <label for="address" class="col-md-4 col-form-label text-md-right">Adres zamieszkania</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
-                                        class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $user->address }}"
+                                        class="form-control" name="address" value="{{ $user->address }}"
                                         required autocomplete="address">
-
-                                    @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row pt-3">
-                                <label for="zip_code" class="col-md-4 col-form-label text-md-right">{{ __('Kod pocztowy') }}</label>
+                                <label for="zip_code" class="col-md-4 col-form-label text-md-right">Kod pocztowy</label>
 
                                 <div class="col-md-6">
                                     <input id="zip_code" type="text"
-                                        class="form-control @error('zip_code') is-invalid @enderror" name="zip_code"
+                                        class="form-control" name="zip_code"
                                         value="{{ $user->zip_code }}" required autocomplete="zip_code">
-
-                                    @error('zip_code')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row pt-3">
-                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Miejscowość') }}</label>
+                                <label for="city" class="col-md-4 col-form-label text-md-right">Miejscowość</label>
 
                                 <div class="col-md-6">
-                                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city"
+                                    <input id="city" type="text" class="form-control" name="city"
                                         value="{{ $user->city }}" required autocomplete="city">
-
-                                    @error('city')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row pt-3">
-                                <label for="province" class="col-md-4 col-form-label text-md-right">{{ __('Województwo') }}</label>
+                                <label for="province" class="col-md-4 col-form-label text-md-right">Województwo</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-select" id="province" type="text" aria-label=".form-select" @error('province')
-                                        is-invalid @enderror" name="province" value="{{ $user->province }}" required autocomplete="province">
+                                    <select class="form-select" id="province" type="text" aria-label=".form-select" name="province" value="{{ $user->province }}" required autocomplete="province">
                                         <option selected value="dolnośląskie">dolnośląskie</option>
                                         <option value="kujawsko-pomorskie">kujawsko-pomorskie</option>
                                         <option value="lubelskie">lubelskie</option>
@@ -166,27 +129,16 @@
                                         <option value="wielkopolskie">wielkopolskie</option>
                                         <option value="zachodniopomorskie">zachodniopomorskie</option>
                                     </select>
-                                    @error('province')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row pt-3 mb-5">
-                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">{{ __('Telefon komórkowy') }}</label>
+                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">Telefon komórkowy</label>
 
                                 <div class="col-md-6">
                                     <input id="phone_number" type="text"
-                                        class="form-control @error('phone_number') is-invalid @enderror" name="phone_number"
+                                        class="form-control" name="phone_number"
                                         value="{{ $user->phone_number }}" required autocomplete="phone_number">
-
-                                    @error('phone_number')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
                             </div>
                             <div class="modal-footer" style="justify-content: center">

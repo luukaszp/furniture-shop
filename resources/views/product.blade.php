@@ -72,7 +72,7 @@
                 </div>
                 <hr>
                 <div class="description" style="text-align: left">
-                    <h2 style="font-weight: bold">Opis produktu</h2>
+                    <h2 class="pb-4" style="font-weight: bold">Opis produktu</h2>
                     <p style="text-align: justify"> {{$product->description }}</p>
                 </div>
                 <hr>
@@ -87,8 +87,8 @@
                     @if($ratings->contains('user_id', Auth::user()->id))
                     <h1 class="pt-2 pb-4">Dziękujemy za wystawienie opinii!</h1>
                     @else
-                    <h5>Wystaw opinię</h5>
-                    <form style="justify-content: center; text-align: center; display: flex" method="POST" action="/product/rating">
+                    <h3>Wystaw opinię</h3>
+                    <form style="justify-content: center; text-align: center; display: flex" method="POST" action="/rating/add">
                         @csrf
                         <div class="col-5">
                             <div class="star-rating">
@@ -105,12 +105,7 @@
                             </div>
                             <div class="form-group pt-3">
                                 <div class="mb-3">
-                                    <textarea id="opinion" rows="3" type="text" class="form-control @error('opinion') is-invalid @enderror" name="opinion" value="{{ old('opinion') }}" required autofocus></textarea>
-                                    @error('opinion')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <textarea id="opinion" rows="3" type="text" class="form-control" name="opinion" value="{{ old('opinion') }}" required autofocus></textarea>
                                 </div>
                                 <input type="hidden" id="product_id" name="product_id" value="{{ request()->id }}">
                             </div>
@@ -166,7 +161,7 @@
                                     <div class="col-12">
 
                                         <div class="form-group row pt-3">
-                                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Ocena') }}</label>
+                                            <label for="name" class="col-md-4 col-form-label text-md-right">Ocena</label>
 
                                             <div class="col-4 star-rating">
                                                 <input type="radio" id="5-stars" name="rate" value="5" />
@@ -186,14 +181,8 @@
                                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Opinia') }}</label>
 
                                             <div class="col-md-6 opinion">
-                                                <input id="opinion" type="text" class="form-control @error('opinion') is-invalid @enderror"
+                                                <input id="opinion" type="text" class="form-control"
                                                     name="opinion" value="{{ $rating->opinion }}" required autocomplete="opinion" autofocus>
-
-                                                @error('opinion')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
                                             </div>
                                         </div>
                                     </div>
