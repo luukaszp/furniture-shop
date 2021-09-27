@@ -29,14 +29,14 @@
             <tr>
                 <th scope="row">{{ $order->id }}</th>
                 <td>{{ $order->name }} {{ $order->surname }}</td>
-                <td>{{ $order->order_number }}</td>
+                <td><a href="/order/{{ $order->id }}">{{ $order->order_number }}</a></td>
                 <td>{{ $order->order_date }}</td>
                 <td>{{ $order->order_amount }} zł</td>
                 <td>{{ $order->payment_status }}</td>
                 <td>{{ $order->order_status }}</td>
                 <td>{{ $order->tracking_number }}</td>
                 <td>
-                    <button class="btn btn-success btn-sm editbtn" data-bs-toggle="modal" data-bs-target="#confirmationModal" data-bs-id={{ $order->id }}><i class="fas fa-check-circle"></i></button>
+                    <button class="btn btn-success btn-sm editbtn" data-bs-toggle="modal" data-bs-target="#realizationModal" data-bs-id={{ $order->id }}><i class="fas fa-check-circle"></i></button>
                 </td>
             </tr>
             @empty
@@ -50,11 +50,11 @@
     </div>
 
     @if(!$orders->isEmpty())
-    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal fade" id="realizationModal" tabindex="-1" aria-labelledby="realizationModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="confirmationModalLabel">Potwierdzenie wysłania przesyłki</h5>
+                    <h5 class="modal-title" id="realizationModalLabel">Potwierdzenie wysłania przesyłki</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="text-align: center">
@@ -62,7 +62,7 @@
                     <p class="pt-4" style="font-size: 24px">Czy chcesz potwierdzić status tego zamówienia?</p>
                 </div>
                 <div class="modal-footer" style="justify-content: center">
-                    <form method="POST" action="/order/edit" class="mb-3">
+                    <form method="POST" action="/order/realization" class="mb-3">
                         @csrf
                         @method('PUT')
                         <button type="submit" class="btn btn-success">TAK</button>
@@ -87,15 +87,15 @@
 </style>
 <script>
     $(document).ready(function () {
-    var confirmationModal = document.getElementById('confirmationModal')
+    var realizationModal = document.getElementById('realizationModal')
 
-    confirmationModal.addEventListener('show.bs.modal', function (event) {
+    realizationModal.addEventListener('show.bs.modal', function (event) {
         var button = event.relatedTarget;
         var id = button.getAttribute('data-bs-id');
 
-        $.get('order/' + id + '', function (data) {
-            var inputID = confirmationModal.querySelector('.modal-footer form')
-                inputID.action = '/order/confirm/' + data.id
+        $.get('/order/fetch/' + id + '', function (data) {
+            var inputID = realizationModal.querySelector('.modal-footer form')
+                inputID.action = '/order/realization/' + data.id
             })
         });
     });

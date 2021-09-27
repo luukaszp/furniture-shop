@@ -38,9 +38,7 @@
                             <label for="price" class="col-md-4 col-form-label text-md-right">Cena</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text"
-                                    class="form-control" name="price"
-                                    value="{{ old('price') }}" required autocomplete="price">
+                                <input id="address" type="number" class="form-control" name="price" step="any" value="{{ old('price') }}" required autocomplete="price">
                             </div>
                         </div>
 
@@ -60,8 +58,7 @@
                                 class="col-md-4 col-form-label text-md-right">Ilość</label>
 
                             <div class="col-md-6">
-                                <input id="amount" type="text" class="form-control"
-                                    name="amount" value="{{ old('amount') }}" required autocomplete="amount">
+                                <input id="amount" type="number" class="form-control" name="amount" step="any" value="{{ old('amount') }}" required autocomplete="amount">
                             </div>
                         </div>
 
@@ -93,8 +90,8 @@
                             <label for="weight" class="col-md-4 col-form-label text-md-right">Waga</label>
 
                             <div class="col-md-6">
-                                <input id="weight" type="text" class="form-control" name="weight"
-                                    value="{{ old('weight') }}" required autocomplete="weight">
+                                <input id="weight" type="number" class="form-control" name="weight"
+                                    step="any" value="{{ old('weight') }}" required autocomplete="weight">
                             </div>
                         </div>
 
@@ -102,15 +99,17 @@
                             <label for="description" class="col-md-4 col-form-label text-md-right">Opis produktu</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" type="text" class="form-control" name="description"
-                                    value="{{ old('description') }}" required autocomplete="description"></textarea>
+                                <textarea id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" required autocomplete="description"></textarea>
                             </div>
                         </div>
 
                         <div class="form-group row pt-3">
                             <label for="photo" class="col-md-4 col-form-label form-label">Zdjęcie produktu</label>
                             <div class="col-md-6">
-                                <input class="form-control" type="file" id="photo" name="photo">
+                                <label for="file-upload" class="custom-file-upload" style="width: 200px">
+                                    <i class="fas fa-cloud-upload-alt"></i> Wgraj zdjęcie
+                                </label>
+                                <input class="form-control" type="file" id="file-upload" name="photo">
                             </div>
                         </div>
 
@@ -127,4 +126,27 @@
         </div>
     </div>
 </div>
+<style>
+    input[type="file"] {
+        display: none;
+    }
+
+    .custom-file-upload {
+        border: 1px solid #ced4da;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
 @endsection

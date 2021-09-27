@@ -48,7 +48,7 @@ class OrderController extends Controller
             $product = Product::find($productID[$i]);
             $product->amount -= (int)$productAmount[$i];
             $product->save();
-            $order->products()->attach($product);
+            $order->products()->attach($product, ['quantity' => $productAmount[$i]]);
         }
 
         return view('/payment', compact('orderID'));
@@ -69,13 +69,13 @@ class OrderController extends Controller
     }
 
     /**
-     * Edit specific order status.
+     * Edit specific order status (order realization).
      *
      * @param  Request $request
      * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function confirmation(Request $request, $id)
+    public function realization(Request $request, $id)
     {
         $order = Order::find($id);
 
@@ -87,6 +87,23 @@ class OrderController extends Controller
     }
 
     /**
+     * Edit specific order status (order received).
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function received(Request $request, $id)
+    {
+        $order = Order::find($id);
+
+        $order->order_status = "przesyłka odebrana";
+        $order->save();
+
+        return redirect('/profile/user_orders');
+    }
+
+    /**
      * Display specified order
      *
      * @param  $id
@@ -94,8 +111,36 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::where('id', $id)->first();
+        $orders = Order::where('id', $id)->with(['products:id,name,price,color,size', 'users:id'])->get();
 
+        if(auth()->user()->id == $orders[0]['users']['id']) { // || admin dodac
+            return view('order_info', compact('orders'));
+        }
+        else {
+            return view('unauthorized');
+        }
+    }
+
+    /**
+     * Display specified order for id fetch.
+     *
+     * @param  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function showOrder($id)
+    {
+        $order = Order::where('id', $id)->first();
         return $order;
+    }
+
+    /**
+     * Edit order
+     *
+     * @param  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function edit(Request $request)
+    {
+
     }
 }

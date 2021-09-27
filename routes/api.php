@@ -10,6 +10,7 @@ use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PaymentController;
 
 /*
@@ -28,6 +29,10 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login/post', [AuthController::class, 'loginUser']);
 Route::post('/register/post', [AuthController::class, 'registerUser']);
+
+Route::get('/customers', function () {
+    return view('unauthorized');
+});
 
 Route::prefix('about')->group( function () {
     Route::get('/company', function () {
@@ -58,22 +63,15 @@ Route::get('product/rating/{id}', [RatingController::class, 'show']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    Route::post('order/store', [OrderController::class, 'store']);
-
     Route::prefix('profile')->group( function () {
         Route::get('/contact_details', [UserController::class, 'userInfo']);
         Route::post('/contact_details/edit', [UserController::class, 'editUser']);
-        Route::get('/user_orders', function () {
-            return view('profile.user_orders');
-        });
-        Route::get('/', function () {
-            return view('profile');
-        });
+        Route::get('/user_orders', [ProfileController::class, 'userOrders']);
+        Route::get('/', [ProfileController::class, 'index']);
     });
 
     Route::prefix('admin_panel')->group( function () {
         Route::get('/orders', [OrderController::class, 'index']);
-        Route::get('/order/{id}', [OrderController::class, 'show']);
         Route::get('/products', [ProductController::class, 'index']);
         Route::get('/products/add', [SubcategoryController::class, 'getAll']);
         Route::get('/categories/add', [CategoryController::class, 'addCategoryView']);
@@ -114,5 +112,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('payment/store', [PaymentController::class, 'store'])->name('payment.store');
     Route::get('payment', [PaymentController::class, 'payment']);
 
-    Route::put('/order/confirm/{id}', [OrderController::class, 'confirmation']);
+    Route::put('/order/realization/{id}', [OrderController::class, 'realization']);
+    Route::put('/order/received/{id}', [OrderController::class, 'received']);
+    Route::get('/order/{id}', [OrderController::class, 'show']);
+    Route::get('/order/fetch/{id}', [OrderController::class, 'showOrder']);
+    Route::post('order/store', [OrderController::class, 'store']);
+    Route::put('/order/edit', [OrderController::class, 'edit']);
 });
