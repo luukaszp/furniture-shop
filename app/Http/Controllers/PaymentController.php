@@ -27,15 +27,15 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
+        $order = Order::where('id', $request->orderID)->first();
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create([
-            "amount" => 100 * 100,
+            "amount" => 100 * $order->order_amount,
             "currency" => "pln",
             "source" => $request->stripeToken,
-            "description" => "This payment is tested purpose."
+            "description" => 'Zapłata za zamówienie ' .$order->order_number
         ]);
 
-        $order = Order::where('id', $request->orderID)->first();
         $order->payment_status = "zapłacono";
         $order->save();
 

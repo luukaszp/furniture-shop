@@ -17,7 +17,7 @@
         <div class="col-xl-3 col-sm-6 mb-5">
             <div class="row ms-1">
                 <div class="card bg-white rounded shadow-sm py-5 px-4 mb-2" style="height: 225px"><i class="fas fa-envelope pb-3" style="font-size: 3em; color: rgb(158, 91, 2)"></i>
-                    <h5 class="mb-0">E-mail</h5><span class="small text-uppercase text-muted">sklep-meblowy@example.com</span>
+                    <h5 class="mb-0">E-mail</h5><span class="small text-uppercase text-muted">sklep-meblowy@gmail.com</span>
                 </div>
 
                 <div class="card bg-white rounded shadow-sm py-5 px-4 mt-2" style="height: 225px"><i class="fas fa-fax pb-3" style="font-size: 3em; color: rgb(158, 91, 2)"></i>

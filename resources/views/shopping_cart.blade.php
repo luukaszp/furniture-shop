@@ -62,7 +62,8 @@
                 <p class="summary-info"><span class="title">Koszt: </span><span style="font-weight: bold">{{ $subtotal }}zł</span></p>
                 <div class="form-group pb-3 col-3" style="display: inline-flex">
                     <label class=" me-2 pt-1" for="delivery">Dostawa:</label>
-                    <select class="form-control" id="delivery" name="delivery" style="font-weight: bold" required>
+                    <select class="form-select" id="delivery" name="delivery" style="font-weight: bold; text-align: center; width: 250px" required>
+                        <option selected disabled value="">Sposób dostawy</option>
                         <option value="0">Odbiór osobisty - 0 zł</option>
                         @if($subtotal <= 500)
                         <option value="50">Bez wniesienia - 50 zł</option>

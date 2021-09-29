@@ -35,10 +35,9 @@
                                     </li>
                                 @else
                                     <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link" href="/profile" role="button" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }} {{ Auth::user()->surname }}
-                                        </a>
+                                        <a class="nav-link" aria-current="page" href="/profile/user_orders">Historia zamówień</a>
+
+                                        <a class="nav-link" href="/profile/contact_details">Dane wysyłkowe</a>
 
                                         <a class="dropdown-item" href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Wyloguj się</a>
 
@@ -62,6 +61,7 @@
                     </ul>
                 </div>
                 @auth
+                @if (auth()->user()->roles->is_admin === true)
                 <div class="btn-group">
                     <a class="nav-link link-dark" style="font-size: 2em" href="#" id="dropdownMenu" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -75,6 +75,7 @@
                         <li><a class="dropdown-item" href="/admin_panel/products"><i class="fas fa-box-open"></i> Produkty</a></li>
                     </ul>
                 </div>
+                @endif
                 @endauth
             </div>
         </div>

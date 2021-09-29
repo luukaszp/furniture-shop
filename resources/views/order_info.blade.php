@@ -5,9 +5,6 @@
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand">Szczegóły zamówienia</a>
-            <form class="d-flex">
-                <input class="form-control me-2" id="search" type="search" placeholder="Szukaj" aria-label="Search">
-            </form>
         </div>
     </nav>
     @php $products=$orders[0]->products @endphp
@@ -50,7 +47,6 @@
         style="text-align: center">
         <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Nazwa produktu</th>
                 <th scope="col">Cena</th>
                 <th scope="col">Kolor</th>
@@ -61,7 +57,6 @@
         <tbody>
             @forelse($products as $product)
             <tr>
-                <th scope="row">{{ $product->id }}</th>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->color }}</td>

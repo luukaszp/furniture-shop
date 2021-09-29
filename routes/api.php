@@ -60,16 +60,7 @@ Route::prefix('cart')->group( function () {
 Route::get('product/{id}', [ProductController::class, 'showProduct'])->name('product.index');
 Route::get('product/rating/{id}', [RatingController::class, 'show']);
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('/logout', [AuthController::class, 'logout']);
-
-    Route::prefix('profile')->group( function () {
-        Route::get('/contact_details', [UserController::class, 'userInfo']);
-        Route::post('/contact_details/edit', [UserController::class, 'editUser']);
-        Route::get('/user_orders', [ProfileController::class, 'userOrders']);
-        Route::get('/', [ProfileController::class, 'index']);
-    });
-
+Route::group(['middleware' => ['auth:sanctum', 'admin']], function () {
     Route::prefix('admin_panel')->group( function () {
         Route::get('/orders', [OrderController::class, 'index']);
         Route::get('/products', [ProductController::class, 'index']);
@@ -84,6 +75,16 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('/customers', function () {
             return view('admin_panel.customers');
         });
+    });
+});
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::prefix('profile')->group( function () {
+        Route::get('/contact_details', [UserController::class, 'userInfo']);
+        Route::post('/contact_details/edit', [UserController::class, 'editUser']);
+        Route::get('/user_orders', [ProfileController::class, 'userOrders']);
     });
 
     Route::prefix('rating')->group( function () {

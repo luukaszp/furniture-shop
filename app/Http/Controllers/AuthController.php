@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Role;
 use App\Models\Product;
 use Validator;
 
@@ -66,6 +67,10 @@ class AuthController extends Controller
             'phone_number' => $request->phone_number,
             'password' => bcrypt($request->password)
         ]);
+
+        $role = new Role();
+        $role->user_id = $user->id;
+        $role->save();
 
         $token = $user->createToken('auth_token')->plainTextToken;
 

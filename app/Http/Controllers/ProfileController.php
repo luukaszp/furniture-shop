@@ -9,15 +9,6 @@ use App\Models\Order;
 class ProfileController extends Controller
 {
     /**
-     * Display user profile.
-     *
-     */
-    public function index()
-    {
-        return view('profile');
-    }
-
-    /**
      * Display user orders.
      *
      */

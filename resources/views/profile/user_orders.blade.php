@@ -35,7 +35,7 @@
                 <td>{{ $order->tracking_number }}</td>
             </tr>
             @empty
-            <th scope="col" colspan="3" class="font-weight-bold text-center">Brak danych</th>
+            <th scope="col" colspan="7" class="font-weight-bold text-center">Brak danych</th>
             @endforelse
         </tbody>
     </table>

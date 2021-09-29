@@ -131,7 +131,7 @@
                                     </div>
                                     @auth
                                     <small class="text-muted">
-                                        @if($rating->user_id == Auth::user()->id)
+                                        @if($rating->user_id == Auth::user()->id || auth()->user()->roles->is_admin === true)
                                             <button class="btn editbtn" id="editRating" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id={{ $rating->product_id }}><i class="fas fa-pencil-alt" style="font-size: 1.3em"></i></button>
                                         @endif
                                         {{ $rating->created_at }}

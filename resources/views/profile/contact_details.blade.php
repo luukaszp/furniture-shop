@@ -8,22 +8,30 @@
         @forelse($users as $user)
         <div class="col-6" style="text-align: left">
             <div class="user_info">
-                <i class="fas fa-user mt-2 mb-2 card-header" style="color:rgb(158, 91, 2); text-align: center"> Dane osobowe</i>
+                <i class="fas fa-user mt-2 mb-2 card-header">
+                    <span class="badge badge-pill badge-primary" style="color:rgb(158, 91, 2); text-align: center">Dane osobowe</span>
+                </i>
                 <p><span style="font-weight: bold">Imię: </span></b> {{ $user->name }}</p>
                 <p><span style="font-weight: bold">Nazwisko: </span>{{ $user->surname }}</p>
             </div>
             <div class="email">
-                <i class="fas fa-at mt-2 mb-2 card-header" style="color:rgb(158, 91, 2)"> E-mail / login</i>
+                <i class="fas fa-at mt-2 mb-2 card-header">
+                    <span class="badge badge-pill badge-primary" style="color:rgb(158, 91, 2); text-align: center">E-mail / login</span>
+                </i>
                 <p><span style="font-weight: bold">E-mail: </span>{{ $user->email }}</p>
             </div>
             <div class="phone_number">
-                <i class="fas fa-phone-volume mt-2 mb-2 card-header" style="color:rgb(158, 91, 2)"> Numer telefonu</i>
+                <i class="fas fa-phone-volume mt-2 mb-2 card-header">
+                    <span class="badge badge-pill badge-primary" style="color:rgb(158, 91, 2); text-align: center">Numer telefonu</span>
+                </i>
                 <p><span style="font-weight: bold">Telefon: </span>{{ $user->phone_number }}</p>
             </div>
         </div>
         <div class="col-6" style="text-align: left">
             <div class="address">
-                <i class="fas fa-map-marked-alt mt-2 mb-2 card-header" style="color:rgb(158, 91, 2)"> Adres wysyłki</i>
+                <i class="fas fa-map-marked-alt mt-2 mb-2 card-header">
+                    <span class="badge badge-pill badge-primary" style="color:rgb(158, 91, 2); text-align: center">Adres wysyłki</span>
+                </i>
                 <p><span style="font-weight: bold">Ulica: </span>{{ $user->address }}</p>
                 <p><span style="font-weight: bold">Kod pocztowy: </span>{{ $user->zip_code }}</p>
                 <p><span style="font-weight: bold">Miasto: </span>{{ $user->city }}</p>
