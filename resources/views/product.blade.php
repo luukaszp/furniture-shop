@@ -90,7 +90,7 @@
                     <h3>Wystaw opinię</h3>
                     <form style="justify-content: center; text-align: center; display: flex" method="POST" action="/rating/add">
                         @csrf
-                        <div class="col-5">
+                        <div class="col-5 pb-4">
                             <div class="star-rating">
                                 <input type="radio" id="5-stars" name="rate" value="5" />
                                 <label for="5-stars" class="star">&#9733;</label>
@@ -132,7 +132,8 @@
                                     @auth
                                     <small class="text-muted">
                                         @if($rating->user_id == Auth::user()->id || auth()->user()->roles->is_admin === true)
-                                            <button class="btn editbtn" id="editRating" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id={{ $rating->product_id }}><i class="fas fa-pencil-alt" style="font-size: 1.3em"></i></button>
+                                            <button class="btn editbtn" id="editRating" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id={{ $rating->id }}><i class="fas fa-pencil-alt" style="font-size: 1.3em"></i></button>
+                                            <button class="btn deletebtn" id="deleteRating" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id={{ $rating->id }}><i class="fas fa-trash-alt" style="font-size: 1.3em"></i></button>
                                         @endif
                                         {{ $rating->created_at }}
                                     </small>
@@ -178,8 +179,7 @@
                                         </div>
 
                                         <div class="form-group row pt-3">
-                                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Opinia') }}</label>
-
+                                            <label for="name" class="col-md-4 col-form-label text-md-right">Opinia</label>
                                             <div class="col-md-6 opinion">
                                                 <input id="opinion" type="text" class="form-control"
                                                     name="opinion" value="{{ $rating->opinion }}" required autocomplete="opinion" autofocus>
@@ -193,6 +193,29 @@
                                             aria-label="Close">Zamknij</button>
                                         <button type="submit" class="btn btn-success">Edytuj opinię</button>
                                     </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Usuwanie opinii</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" style="text-align: center">
+                                <i class="fas fa-exclamation-triangle" style="color: red; font-size: 2em"></i>
+                                <p class="pt-4" style="font-size: 24px">Czy chcesz usunąć tę opinię?</p>
+                            </div>
+                            <div class="modal-footer" style="justify-content: center">
+                                <form method="POST" action="/rating/delete" class="mb-3">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" id="product_id" name="product_id" value="{{ $rating->product_id }}">
+                                    <button type="submit" class="btn btn-success">TAK</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">NIE</button>
                                 </form>
                             </div>
                         </div>
@@ -234,6 +257,12 @@
         new bootstrap.Toast(document.querySelector('#addProductToast')).show();
     }*/
 
+    $(document).on("hidden.bs.modal", "#editModal", function () {
+        $(this).find("input[type=radio]")
+        .prop("checked", "")
+        .end();
+    });
+
     $(document).ready(function () {
         var editModal = document.getElementById('editModal')
         var deleteModal = document.getElementById('deleteModal')
@@ -242,15 +271,15 @@
             var button = event.relatedTarget;
             var id = button.getAttribute('data-bs-id');
 
-            $.get('rating/' + id + '', function (data) {
-            var inputOpinion = editModal.querySelector('.opinion input')
-            inputOpinion.value = data.opinion
-            var inputID = editModal.querySelector('.modal-body form')
-            inputID.action = '/rating/edit/' + data.id
+            $.get('/product/rating/' + id + '', function (data) {
+                var inputOpinion = editModal.querySelector('.opinion input')
+                inputOpinion.value = data.opinion
+                var inputID = editModal.querySelector('.modal-body form')
+                inputID.action = '/rating/edit/' + data.id
             })
         });
 
-        /*deleteModal.addEventListener('show.bs.modal', function (event) {
+        deleteModal.addEventListener('show.bs.modal', function (event) {
             var button = event.relatedTarget;
             var id = button.getAttribute('data-bs-id');
 
@@ -258,7 +287,7 @@
             var inputID = deleteModal.querySelector('.modal-footer form')
             inputID.action = '/rating/delete/' + data.id
             })
-        });*/
+        });
     });
 </script>
 @endsection

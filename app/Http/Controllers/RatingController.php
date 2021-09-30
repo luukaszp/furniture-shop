@@ -15,7 +15,7 @@ class RatingController extends Controller
      */
     public function show($id)
     {
-        $rating = Rating::where('product_id', $id)->first();
+        $rating = Rating::where('id', $id)->first();
 
         return $rating;
     }
@@ -53,6 +53,20 @@ class RatingController extends Controller
         $rating->opinion = $request->opinion;
         $rating->rate = $request->rate;
         $rating->save();
+
+        return redirect('product/' . $request->product_id);
+    }
+
+    /**
+     * Remove the specified rating.
+     *
+     * @param  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete(Request $request, $id)
+    {
+        $rating = Rating::find($id);
+        $rating->destroy($id);
 
         return redirect('product/' . $request->product_id);
     }

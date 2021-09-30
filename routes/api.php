@@ -90,6 +90,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::prefix('rating')->group( function () {
         Route::post('/add', [RatingController::class, 'addRating']);
         Route::put('/edit/{id}', [RatingController::class, 'edit']);
+        Route::delete('/delete/{id}', [RatingController::class, 'delete']);
     });
 
     Route::prefix('product')->group( function () {
