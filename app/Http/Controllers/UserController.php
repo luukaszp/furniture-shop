@@ -9,8 +9,6 @@ class UserController extends Controller
 {
     /**
      * Display user info by id
-     *
-     * @param  $id
      */
     public function userInfo()
     {
@@ -21,10 +19,6 @@ class UserController extends Controller
 
     /**
      * Edit specific user.
-     *
-     * @param  Request $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function editUser(Request $request)
     {

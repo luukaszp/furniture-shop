@@ -10,9 +10,6 @@ class SubcategoryController extends Controller
 {
     /**
      * Create a new subcategory.
-     *
-     * @param  array  $data
-     * @return \App\Models\Subcategory
      */
     protected function store(Request $request)
     {
@@ -26,9 +23,6 @@ class SubcategoryController extends Controller
 
     /**
      * Display all subcategories.
-     *
-     * @param  array  $data
-     * @return \App\Models\Subcategory
      */
     public function index()
     {
@@ -38,13 +32,9 @@ class SubcategoryController extends Controller
 
     /**
      * Get all subcategories with categories.
-     *
-     * @param  array  $data
-     * @return \App\Models\Subcategory
      */
     public function getAll()
     {
-        //$subcategories = Subcategory::all();
         $subcategories = DB::table('subcategories')
             ->join('categories', 'subcategories.category_id', '=', 'categories.id')
             ->select('subcategories.id', 'subcategories.name', 'categories.id as categoryID', 'categories.name as categoryName')
@@ -54,9 +44,6 @@ class SubcategoryController extends Controller
 
     /**
      * Display specified subcategory
-     *
-     * @param  $id
-     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
@@ -67,10 +54,6 @@ class SubcategoryController extends Controller
 
     /**
      * Edit specific subcategory.
-     *
-     * @param  Request $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function edit(Request $request, $id)
     {
@@ -85,9 +68,6 @@ class SubcategoryController extends Controller
 
     /**
      * Remove the specified subcategory.
-     *
-     * @param  $id
-     * @return \Illuminate\Http\JsonResponse
      */
     public function delete($id)
     {

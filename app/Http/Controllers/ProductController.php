@@ -16,8 +16,6 @@ class ProductController extends Controller
 {
     /**
      * Store a newly created product.
-     *
-     * @param  Request $request
      */
     public function store(Request $request)
     {
@@ -53,8 +51,6 @@ class ProductController extends Controller
 
     /**
      * Edit info about specific product.
-     *
-     * @param  Request $request
      */
     public function edit(Request $request, $id)
     {
@@ -76,13 +72,9 @@ class ProductController extends Controller
 
     /**
      * Display all products (admin panel - table).
-     *
-     * @param  array  $data
-     * @return \App\Models\Product
      */
     public function index()
     {
-        //$products = Product::all();
         $products = DB::table('products')
         ->join('categories', 'products.category_id', '=', 'categories.id')
         ->join('subcategories', 'products.subcategory_id', '=', 'subcategories.id')
@@ -92,9 +84,6 @@ class ProductController extends Controller
 
     /**
      * Display all products (main page).
-     *
-     * @param  array  $data
-     * @return \App\Models\Product
      */
     public function mainDisplay()
     {
@@ -104,8 +93,6 @@ class ProductController extends Controller
 
     /**
      * Display product by id
-     *
-     * @param  $id
      */
     public function showProduct($id)
     {
@@ -118,8 +105,6 @@ class ProductController extends Controller
 
     /**
      * Display product by category
-     *
-     * @param  $id
      */
     public function productByCategory(Request $request, Category $categoryName)
     {
@@ -131,9 +116,6 @@ class ProductController extends Controller
 
     /**
      * Display specified product
-     *
-     * @param  $id
-     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
@@ -144,9 +126,6 @@ class ProductController extends Controller
 
     /**
      * Remove the specified product.
-     *
-     * @param  $id
-     * @return \Illuminate\Http\JsonResponse
      */
     public function delete($id)
     {

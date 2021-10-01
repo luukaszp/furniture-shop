@@ -2,6 +2,14 @@
 
 @section('content')
 <div class="container">
+    @if (session('message'))
+    <div class="alert alert-danger col-6" role="alert" style="text-align: center">
+        <div>
+            <i class="fas fa-exclamation-triangle"></i> {{ session('message') }}
+            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        </div>
+    </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-7">
             <div class="card" style="text-align: center">
@@ -93,8 +101,7 @@
                             <label for="phone_number" class="col-md-4 col-form-label text-md-right">Numer telefonu</label>
 
                             <div class="col-md-6">
-                                <input id="phone_number" type="text" placeholder="666555444" class="form-control"
-                                    name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number">
+                                <input id="phone_number" type="number" placeholder="666555444" class="form-control" step="any" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number">
                             </div>
                         </div>
 
@@ -127,4 +134,16 @@
         </div>
     </div>
 </div>
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+    -moz-appearance: textfield;
+    }
+</style>
 @endsection

@@ -30,10 +30,6 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login/post', [AuthController::class, 'loginUser']);
 Route::post('/register/post', [AuthController::class, 'registerUser']);
 
-Route::get('/customers', function () {
-    return view('unauthorized');
-});
-
 Route::prefix('about')->group( function () {
     Route::get('/company', function () {
         return view('about.company');
@@ -112,7 +108,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     });
 
     Route::post('payment/store', [PaymentController::class, 'store'])->name('payment.store');
-    Route::get('payment', [PaymentController::class, 'payment']);
+    Route::get('payment', [PaymentController::class, 'payment'])->name('payment');
 
     Route::put('/order/realization/{id}', [OrderController::class, 'realization']);
     Route::put('/order/received/{id}', [OrderController::class, 'received']);

@@ -11,9 +11,7 @@ use Cart;
 class PaymentController extends Controller
 {
     /**
-     * success response method.
-     *
-     * @return \Illuminate\Http\Response
+     * Display payment view.
      */
     public function payment()
     {
@@ -21,9 +19,7 @@ class PaymentController extends Controller
     }
 
     /**
-     * success response method.
-     *
-     * @return \Illuminate\Http\Response
+     * Save payment and clear cart.
      */
     public function store(Request $request)
     {

@@ -10,8 +10,6 @@ class RatingController extends Controller
 {
     /**
      * Display ratings for specified product
-     *
-     * @param  $id
      */
     public function show($id)
     {
@@ -22,10 +20,6 @@ class RatingController extends Controller
 
     /**
      * Store a newly created rating.
-     *
-     * @param  Request $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function addRating(Request $request)
     {
@@ -41,10 +35,6 @@ class RatingController extends Controller
 
     /**
      * Edit specific rating/opinion.
-     *
-     * @param  Request $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function edit(Request $request, $id)
     {
@@ -59,9 +49,6 @@ class RatingController extends Controller
 
     /**
      * Remove the specified rating.
-     *
-     * @param  $id
-     * @return \Illuminate\Http\JsonResponse
      */
     public function delete(Request $request, $id)
     {

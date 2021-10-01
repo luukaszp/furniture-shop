@@ -181,12 +181,12 @@
         var selected = $('#selected');
 
         delivery.on('change', function(){
-        var selectedOptionText = $(this).children(':selected').val();
-        var subtotal = document.getElementById('subtotal')
-        price = subtotal.getAttribute('data-bs-id');
+            var selectedOptionText = $(this).children(':selected').val();
+            var subtotal = document.getElementById('subtotal')
+            price = subtotal.getAttribute('data-bs-id');
 
-        var total = parseFloat(selectedOptionText) + parseFloat(price);
-        selected.text('Razem: ' + total + ' zł');
+            var total = parseFloat(selectedOptionText) + parseFloat(price);
+            selected.text('Razem: ' + total + ' zł');
         });
     });
 </script>

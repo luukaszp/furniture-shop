@@ -2,6 +2,14 @@
 
 @section('content')
 <div class="container">
+    @if (session('message'))
+    <div class="alert alert-danger col-4" role="alert" style="text-align: center">
+        <div>
+            <i class="fas fa-exclamation-triangle"></i> {{ session('message') }}
+            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        </div>
+    </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card" style="text-align: center">

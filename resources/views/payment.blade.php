@@ -9,7 +9,11 @@
                             <h3 class="panel-title display-td" style="font-weight: bold">Szczegóły płatności</h3>
                         </div>
                     </div>
-                    <h5 class="pt-2">Do zapłaty: <span style="font-weight: bold">{{ Cart::subtotal() }}zł</span></h5>
+                    @isset($order)
+                    <h5 class="pt-2">Do zapłaty:
+                        <span style="font-weight: bold">{{ $order->order_amount }}zł</span>
+                    </h5>
+                    @endisset
                     <div class="panel-body">
                         @if (Session::has('success'))
                         <div class="alert alert-success text-center">
@@ -44,7 +48,12 @@
                                     <label class='control-label'>Rok ważności</label>
                                     <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
                                 </div>
-                                <input type="hidden" id="orderID" name="orderID" value="{{ $orderID }}">
+                                @isset($order)
+                                <input type="hidden" id="orderID" name="orderID" value="{{ $order->id }}">
+                                @endisset
+                                @empty($order)
+                                <input type="hidden" id="orderID" name="orderID" value="{{ Str::of(url()->previous())->after('order/') }}">
+                                @endempty
                             </div>
                             <div class="row" style="text-align: center">
                                 <div class="col-xs-12 pt-4">

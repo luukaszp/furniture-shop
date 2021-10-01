@@ -10,8 +10,6 @@ class CartController extends Controller
 {
     /**
      * Store product inside shopping cart.
-     *
-     * @param  Request $request
      */
     public function store(Request $request)
     {
@@ -35,9 +33,6 @@ class CartController extends Controller
 
     /**
      * Display content of shopping cart
-     *
-     * @param  array  $data
-     * @return \App\Models\Product
      */
     public function show()
     {
@@ -48,9 +43,6 @@ class CartController extends Controller
 
     /**
      * Update specific content of shopping cart
-     *
-     * @param  array  $data
-     * @return \App\Models\Product
      */
     public function update(Request $request)
     {
@@ -60,9 +52,6 @@ class CartController extends Controller
 
     /**
      * Delete specific content of shopping cart
-     *
-     * @param  array  $data
-     * @return \App\Models\Product
      */
     public function delete(Request $request)
     {
@@ -72,25 +61,10 @@ class CartController extends Controller
 
     /**
      * Delete all content of shopping cart
-     *
-     * @param  array  $data
-     * @return \App\Models\Product
      */
     public function destroy()
     {
         Cart::destroy();
-        return redirect()->route('cart.show');
-    }
-
-    /**
-     * Get weight of all the content of shopping cart
-     *
-     * @param  array  $data
-     * @return \App\Models\Product
-     */
-    public function getWeight()
-    {
-        Cart::weight();
         return redirect()->route('cart.show');
     }
 }

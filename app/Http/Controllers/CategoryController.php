@@ -9,9 +9,6 @@ class CategoryController extends Controller
 {
     /**
      * Create a new category.
-     *
-     * @param  array  $data
-     * @return \App\Models\Category
      */
     protected function store(Request $request)
     {
@@ -24,9 +21,6 @@ class CategoryController extends Controller
 
     /**
      * Display all categories.
-     *
-     * @param  array  $data
-     * @return \App\Models\Category
      */
     public function index()
     {
@@ -36,9 +30,6 @@ class CategoryController extends Controller
 
     /**
      * Display view for adding new category.
-     *
-     * @param  array  $data
-     * @return \App\Models\Category
      */
     public function addCategoryView()
     {
@@ -47,9 +38,6 @@ class CategoryController extends Controller
 
     /**
      * Get all categories (for select options - subcategories).
-     *
-     * @param  array  $data
-     * @return \App\Models\Category
      */
     public function getAllSub()
     {
@@ -59,9 +47,6 @@ class CategoryController extends Controller
 
     /**
      * Display all categories for menu.
-     *
-     * @param  array  $data
-     * @return \App\Models\Category
      */
     public function categoryMenu()
     {
@@ -71,9 +56,6 @@ class CategoryController extends Controller
 
     /**
      * Display all categories (furniture).
-     *
-     * @param  array  $data
-     * @return \App\Models\Product
      */
     public function allCategories()
     {
@@ -83,9 +65,6 @@ class CategoryController extends Controller
 
     /**
      * Display specified category
-     *
-     * @param  $id
-     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
@@ -96,10 +75,6 @@ class CategoryController extends Controller
 
     /**
      * Edit specific category.
-     *
-     * @param  Request $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function edit(Request $request, $id)
     {
@@ -114,9 +89,6 @@ class CategoryController extends Controller
 
     /**
      * Remove the specified category.
-     *
-     * @param  $id
-     * @return \Illuminate\Http\JsonResponse
      */
     public function delete($id)
     {

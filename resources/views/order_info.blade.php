@@ -27,7 +27,11 @@
                 <td>{{ $order->order_number }}</td>
                 <td>{{ $order->order_date }}</td>
                 <td>{{ $order->order_amount }} zł</td>
+                @if ($order->payment_status !== "zapłacono")
+                <td><a href="{{ route('payment') }}">{{ $order->payment_status }}</a></td>
+                @else
                 <td>{{ $order->payment_status }}</td>
+                @endif
                 <td>{{ $order->order_status }}</td>
                 <td>{{ $order->tracking_number }}</td>
                 @if(auth()->user()->id === $order->users->id)

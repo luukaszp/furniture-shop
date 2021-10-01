@@ -12,9 +12,6 @@ class OrderController extends Controller
 {
     /**
      * Store an order.
-     *
-     * @param  array  $data
-     * @return \App\Models\Order
      */
     protected function store(Request $request)
     {
@@ -29,8 +26,10 @@ class OrderController extends Controller
             $order->order_number = 'ORD' .$order_id->id+1;
         }
 
+        $order_amount = $request->subtotal + $request->delivery;
+
         $order->order_date = Carbon::now()->format('d-m-Y');
-        $order->order_amount = $request->subtotal;
+        $order->order_amount = $order_amount;
         $order->tracking_number = rand(111111111111111,999999999999999);
 
         $id = str_replace (array('[', ']'), '' , $request->product_id);
@@ -42,7 +41,6 @@ class OrderController extends Controller
         $countID = count($productID);
 
         $order->save();
-        $orderID = $order->id;
 
         for($i = 0; $i < $countID; $i++) {
             $product = Product::find($productID[$i]);
@@ -51,14 +49,11 @@ class OrderController extends Controller
             $order->products()->attach($product, ['quantity' => $productAmount[$i]]);
         }
 
-        return view('/payment', compact('orderID'));
+        return view('/payment', compact('order'));
     }
 
     /**
      * Display all orders (admin panel - table).
-     *
-     * @param  array  $data
-     * @return \App\Models\Order
      */
     public function index()
     {
@@ -70,10 +65,6 @@ class OrderController extends Controller
 
     /**
      * Edit specific order status (order realization).
-     *
-     * @param  Request $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function realization(Request $request, $id)
     {
@@ -88,10 +79,6 @@ class OrderController extends Controller
 
     /**
      * Edit specific order status (order received).
-     *
-     * @param  Request $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function received(Request $request, $id)
     {
@@ -105,42 +92,25 @@ class OrderController extends Controller
 
     /**
      * Display specified order
-     *
-     * @param  $id
-     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
         $orders = Order::where('id', $id)->with(['products:id,name,price,color,size', 'users:id'])->get();
 
-        if(auth()->user()->id == $orders[0]['users']['id']) { // || admin dodac
+        if(auth()->user()->id == $orders[0]['users']['id'] || auth()->user()->roles->is_admin) {
             return view('order_info', compact('orders'));
         }
         else {
-            return view('unauthorized');
+            return view('errors/401');
         }
     }
 
     /**
      * Display specified order for id fetch.
-     *
-     * @param  $id
-     * @return \Illuminate\Http\JsonResponse
      */
     public function showOrder($id)
     {
         $order = Order::where('id', $id)->first();
         return $order;
-    }
-
-    /**
-     * Edit order
-     *
-     * @param  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function edit(Request $request)
-    {
-
     }
 }

@@ -13,9 +13,6 @@ class AuthController extends Controller
 {
     /**
      * Display login view.
-     *
-     * @param  array  $data
-     * @return \App\Models\Category
      */
     public function login()
     {
@@ -24,18 +21,18 @@ class AuthController extends Controller
 
     /**
      * Display register view.
-     *
-     * @param  array  $data
-     * @return \App\Models\Category
      */
     public function register()
     {
         return view('auth/register');
     }
 
+    /**
+     * Validate data and register user.
+     */
+
     public function registerUser(Request $request)
     {
-        //Validate data
         $data = $request->only('name', 'surname', 'email', 'address', 'zip_code', 'city', 'province', 'phone_number', 'password', 'password_confirmation');
 
         $validator = Validator::make($data, [
@@ -50,12 +47,16 @@ class AuthController extends Controller
             'password' => 'required|string|min:8|max:50|confirmed'
         ]);
 
-        //Send failed response if request is not valid
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->messages()], 200);
+            if ($validator->errors()->first('email')) {
+                return redirect('/register')->with('message', 'Podany e-mail istnieje w serwisie. Zaloguj się!');
+            } elseif ($validator->errors()->first('password') == "The password must be at least 8 characters.") {
+                return redirect('/register')->with('message', 'Hasło nie spełnia kryteriów. Spróbuj ponownie!');
+            } elseif ($validator->errors()->first('password') == "The password confirmation does not match.") {
+                return redirect('/register')->with('message', 'Podane hasła różnią się. Spróbuj ponownie!');
+            }
         }
 
-        //Request is valid, create new user
         $user = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
@@ -77,6 +78,9 @@ class AuthController extends Controller
         return redirect('/login');
     }
 
+    /**
+     * Validate data, crrate token and login user.
+     */
     public function loginUser(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -85,11 +89,13 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
+            if ($validator->errors()->first('password')) {
+                return redirect('/login')->with('message', 'Złe hasło.');
+            }
         }
 
         if (!Auth::attempt($request->only('email', 'password'))) {
-            return response()->json(['message' => 'Invalid login details'], 401);
+            return redirect('/login')->with('message', 'Zły e-mail lub hasło.');
         }
 
         $user = User::where('email', $request['email'])->firstOrFail();
@@ -103,8 +109,6 @@ class AuthController extends Controller
 
     /**
      * Get products to display in main page.
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function productMain()
     {
@@ -114,9 +118,7 @@ class AuthController extends Controller
 
 
     /**
-     * Log the user out (Invalidate the token).
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * Log the user out (invalidate the token).
      */
     public function logout(Request $request)
     {
@@ -127,6 +129,9 @@ class AuthController extends Controller
         return redirect('/');
     }
 
+    /**
+     * Refresh the token
+     */
     public function refresh(Request $request)
     {
         $user = $request->user();
