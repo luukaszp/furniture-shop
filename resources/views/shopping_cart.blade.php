@@ -9,6 +9,14 @@
         </div>
     </div>
     @endif
+    @if (session('error'))
+    <div class="alert alert-danger col-5" role="alert" style="text-align: center">
+        <div>
+            <i class="fas fa-exclamation-circle"></i> {{ session('error') }}
+            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        </div>
+    </div>
+    @endif
     @php ($product_id = [])
     @php ($amount = [])
     @forelse($carts as $cart)
