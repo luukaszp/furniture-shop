@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Product;
+use App\Mail\ResetPasswordMail;
+use Illuminate\Support\Facades\Mail;
 use Validator;
 
 class AuthController extends Controller
@@ -116,6 +118,77 @@ class AuthController extends Controller
         return view('main', compact('products'));
     }
 
+    /**
+     * Password reset view.
+     */
+    public function passwordReset()
+    {
+        return view('auth/passwords/email');
+    }
+
+    /**
+     * Resetting password for specific user.
+     */
+    public function resetByEmail(Request $request)
+    {
+        $user = User::where('email', '=', $request->email)->first();
+
+        if (!$user) {
+            return redirect('password/reset')->with('message', 'Błędny email. Spróbuj ponownie.');
+        }
+
+        $details = [
+            'title' => 'Resetowanie hasła',
+            'url' => "http://127.0.0.1:8000/new-password/$user->id",
+            'name' => $user->name
+        ];
+
+        Mail::to($user->email)->send(new ResetPasswordMail($details));
+
+        return redirect('login');
+    }
+
+    /**
+     * Password reset view.
+     */
+    public function newPassword($id)
+    {
+        return view('auth/passwords/new-password', ["id"=>$id]);
+    }
+
+    /**
+     * Password reset view.
+     */
+    public function setPassword(Request $request)
+    {
+        $data = $request->only('email', 'password', 'password_confirmation', 'user_id');
+
+        $validator = Validator::make($data, [
+            'password' => 'required|string|min:8|max:50|confirmed'
+        ]);
+
+        if ($validator->fails()) {
+            if ($validator->errors()->first('password') == "The password must be at least 8 characters.") {
+                return redirect('/register')->with('message', 'Hasło nie spełnia kryteriów. Spróbuj ponownie!');
+            } elseif ($validator->errors()->first('password') == "The password confirmation does not match.") {
+                return redirect('/register')->with('message', 'Podane hasła różnią się. Spróbuj ponownie!');
+            }
+        }
+
+        $user = User::where('email', $request['email'])->first();
+        $userID = $user->id;
+
+        if ($userID !== (int)$request->user_id) {
+            return redirect('/login')->with('message', 'Wystąpił błąd. Spróbuj ponownie.');
+        }
+
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return redirect('/login')->with('success', 'Hasło zostało zresetowane!');;
+    }
 
     /**
      * Log the user out (invalidate the token).

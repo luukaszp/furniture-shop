@@ -10,6 +10,14 @@
         </div>
     </div>
     @endif
+    @if (session('success'))
+    <div class="alert alert-success col-4" role="alert" style="text-align: center">
+        <div>
+            <i class="fas fa-check-circle"></i> {{ session('success') }}
+            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        </div>
+    </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card" style="text-align: center">
@@ -35,12 +43,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-success">
+                        <div class="form-group row mb-0" style="justify-content: center">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-success mb-2">
                                     Zaloguj się
                                 </button>
-                                <a class="btn btn-link link-dark" style="text-decoration: none" href="/password.request">
+                                <a class="btn btn-link link-dark" style="text-decoration: none" href="/password/reset">
                                     Zapomniałeś hasła?
                                 </a>
                             </div>
