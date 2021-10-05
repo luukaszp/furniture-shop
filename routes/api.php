@@ -80,6 +80,7 @@ Route::group(['middleware' => ['auth:sanctum', 'admin']], function () {
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::delete('/account-delete', [AuthController::class, 'deleteAccount']);
 
     Route::prefix('profile')->group( function () {
         Route::get('/contact_details', [UserController::class, 'userInfo']);

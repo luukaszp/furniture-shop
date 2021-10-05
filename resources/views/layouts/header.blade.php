@@ -39,12 +39,14 @@
 
                                         <a class="nav-link" href="/profile/contact_details">Dane wysyłkowe</a>
 
-                                        <a class="dropdown-item" href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Wyloguj się</a>
+                                        <a class="nav-link" style="color: black" href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Wyloguj się</a>
 
                                         <form id="logout-form" action="/logout" method="POST" class="d-none">
                                             @csrf
                                         </form>
-                                        </div>
+
+                                        <hr>
+                                        <button class="btn btn-danger btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#deleteModal" style="font-weight: bold">USUŃ KONTO</button>
                                     </li>
                                 @endguest
                             </ul>
@@ -80,4 +82,30 @@
             </div>
         </div>
     </nav>
+
+    @auth
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Usuwanie konta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="text-align: center">
+                    <i class="fas fa-exclamation-triangle" style="color: red; font-size: 2em"></i>
+                    <p class="pt-4" style="font-size: 24px">Czy na pewno chcesz usunąć swoje konto?</p>
+                </div>
+                <div class="modal-footer" style="justify-content: center">
+                    <form method="POST" action="/account-delete" class="mb-3">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" id="user_id" name="user_id" value="{{ auth()->user()->id }}">
+                        <button type="submit" class="btn btn-success">TAK</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">NIE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endauth
 </header>

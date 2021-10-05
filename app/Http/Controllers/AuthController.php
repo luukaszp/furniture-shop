@@ -203,6 +203,19 @@ class AuthController extends Controller
     }
 
     /**
+     * Delete account.
+     */
+    public function deleteAccount(Request $request)
+    {
+        $user = User::find($request->user_id);
+
+        $user->destroy($request->user_id);
+        $this->productMain();
+
+        return redirect('/');
+    }
+
+    /**
      * Refresh the token
      */
     public function refresh(Request $request)
