@@ -36,10 +36,37 @@ Route::post('/password/new', [AuthController::class, 'setPassword']);
 
 Route::prefix('about')->group( function () {
     Route::get('/company', function () {
-        return view('about.company');
+        return view('footer.about.company');
     });
     Route::get('/contact', function () {
-        return view('about.contact');
+        return view('footer.about.contact');
+    });
+});
+
+Route::prefix('help')->group( function () {
+    Route::get('/faq', function () {
+        return view('footer.help.faq');
+    });
+    Route::get('/regulations', function () {
+        return view('footer.help.regulations');
+    });
+    Route::get('/returns_complains', function () {
+        return view('footer.help.returns_complains');
+    });
+});
+
+Route::prefix('info')->group( function () {
+    Route::get('/privacy_policy', function () {
+        return view('footer.info.privacy_policy');
+    });
+});
+
+Route::prefix('payments_delivery')->group( function () {
+    Route::get('/delivery', function () {
+        return view('footer.payments_delivery.delivery');
+    });
+    Route::get('/payment', function () {
+        return view('footer.payments_delivery.payment');
     });
 });
 

@@ -5,24 +5,22 @@
             <div class="col-sm">
                 <div class="list-group list-group-flush">
                     <p style="font-weight: bold">POMOC</p>
-                    <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Zwroty i reklamacje</a>
-                    <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Pytania i odpowiedzi</a>
-                    <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Regulamin</a>
+                    <a href="/help/returns_complains" class="list-group-item list-group-item-action list-group-item-secondary">Zwroty i reklamacje</a>
+                    <a href="/help/faq" class="list-group-item list-group-item-action list-group-item-secondary">Pytania i odpowiedzi</a>
+                    <a href="/help/regulations" class="list-group-item list-group-item-action list-group-item-secondary">Regulamin</a>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="list-group list-group-flush">
                     <p style="font-weight: bold">PŁATNOŚCI I DOSTAWA</p>
-                    <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Formy płatności</a>
-                    <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Czas i koszty dostawy</a>
-                    <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Czas realizacji zamówienia</a>
+                    <a href="/payments_delivery/payment" class="list-group-item list-group-item-action list-group-item-secondary">Formy płatności</a>
+                    <a href="/payments_delivery/delivery" class="list-group-item list-group-item-action list-group-item-secondary">Czas i koszty dostawy</a>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="list-group list-group-flush">
                     <p style="font-weight: bold">INFORMACJE</p>
-                    <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Polityka prywatności</a>
-                    <a href="/" class="list-group-item list-group-item-action list-group-item-secondary">Jak kupować?</a>
+                    <a href="/info/privacy_policy" class="list-group-item list-group-item-action list-group-item-secondary">Polityka prywatności</a>
                 </div>
             </div>
             <div class="col-sm">
