@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthServices
 {
+    /**
+     * Create new user and assign role.
+     */
     public function register($data)
     {
         $user = User::create([
@@ -29,15 +32,32 @@ class AuthServices
         return $user;
     }
 
+    /**
+     * Create token and login user.
+     */
     public function login($data)
     {
-        if (!Auth::attempt($data->only('email', 'password'))) {
-            return redirect('/login')->with('message', 'Zły e-mail lub hasło.');
-        }
-
         $user = User::where('email', $data['email'])->firstOrFail();
 
         $token = $user->createToken('auth_token')->plainTextToken;
         return $token;
+    }
+
+    /**
+     * Reset password for a specific user.
+     */
+    public function passwordReset($data)
+    {
+        $user = User::where('email', $data['email'])->first();
+        $userID = $user->id;
+
+        if ($userID !== (int)$data['user_id']) {
+            return redirect('/login')->with('message', 'Wystąpił błąd. Spróbuj ponownie.');
+        }
+
+        $user->password = bcrypt($data['password']);
+        $user->save();
+
+        return $user;
     }
 }

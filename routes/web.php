@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,5 +19,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [ProductController::class, 'mainDisplay'], function () {
     return view('main');
 });
+
+Route::get('/new-password/{id}', [AuthController::class, 'newPassword'])->name('new-password');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

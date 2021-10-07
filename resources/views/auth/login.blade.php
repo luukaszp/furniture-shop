@@ -2,20 +2,30 @@
 
 @section('content')
 <div class="container">
-    @if (session('message'))
-    <div class="alert alert-danger col-4" role="alert" style="text-align: center">
-        <div>
-            <i class="fas fa-exclamation-triangle"></i> {{ session('message') }}
-            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
-        </div>
-    </div>
-    @endif
     @if (session('success'))
-    <div class="alert alert-success col-4" role="alert" style="text-align: center">
+    <div class="alert alert-success col-6" role="alert" style="text-align: center">
         <div>
             <i class="fas fa-check-circle"></i> {{ session('success') }}
             <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
         </div>
+    </div>
+    @endif
+    @if (session('message'))
+    <div class="alert alert-danger col-6" role="alert" style="text-align: center">
+        <div>
+            <i class="fas fa-exclamation-triangle"></i></i> {{ session('message') }}
+            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        </div>
+    </div>
+    @endif
+    @if ($errors->any())
+    <div class="alert alert-danger col-6" style="text-align: center">
+        <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li><i class="fas fa-exclamation-triangle"></i> {{ $error }}</li>
+            @endforeach
+        </ul>
     </div>
     @endif
     <div class="row justify-content-center">

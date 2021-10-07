@@ -30,9 +30,7 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login/post', [AuthController::class, 'loginUser']);
 Route::post('/register/post', [AuthController::class, 'registerUser']);
 Route::get('/password/reset', [AuthController::class, 'passwordReset']);
-Route::post('/password/email', [AuthController::class, 'resetByEmail'])->name('password.email');
-Route::get('/new-password/{id}', [AuthController::class, 'newPassword'])->name('new-password');
-Route::post('/password/new', [AuthController::class, 'setPassword']);
+Route::post('/password/email', [AuthController::class, 'resetByEmail'])->name('password.email');Route::post('/password/new', [AuthController::class, 'setPassword']);
 
 Route::prefix('about')->group( function () {
     Route::get('/company', function () {

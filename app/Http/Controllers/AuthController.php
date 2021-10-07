@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Mail;
 use Validator;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\PasswordReset;
 use App\Services\AuthServices;
 
 class AuthController extends Controller
@@ -53,11 +54,15 @@ class AuthController extends Controller
     }
 
     /**
-     * Create token and login user.
+     * Login user with product compact.
      */
     public function loginUser(LoginRequest $request)
     {
         if ($request->validated()) {
+            if (!Auth::attempt($request->only('email', 'password'))) {
+                return redirect('/login')->with('message', 'Zły e-mail lub hasło.');
+            }
+
             $result = $this->authServices->login($request);
             $this->productMain();
             return redirect('/');
@@ -100,7 +105,7 @@ class AuthController extends Controller
 
         Mail::to($user->email)->send(new ResetPasswordMail($details));
 
-        return redirect('login');
+        return redirect('login')->with('success', 'Link do zresetowania hasła został wysłany na e-mail!');
     }
 
     /**
@@ -108,41 +113,18 @@ class AuthController extends Controller
      */
     public function newPassword($id)
     {
-        return view('auth/passwords/new-password', ["id"=>$id]);
+        return view('auth/passwords/new-password', ["id" => $id]);
     }
 
     /**
      * Password reset view.
      */
-    public function setPassword(Request $request)
+    public function setPassword(PasswordReset $request)
     {
-        $data = $request->only('email', 'password', 'password_confirmation', 'user_id');
-
-        $validator = Validator::make($data, [
-            'password' => 'required|string|min:8|max:50|confirmed'
-        ]);
-
-        if ($validator->fails()) {
-            if ($validator->errors()->first('password') == "The password must be at least 8 characters.") {
-                return redirect('/register')->with('message', 'Hasło nie spełnia kryteriów. Spróbuj ponownie!');
-            } elseif ($validator->errors()->first('password') == "The password confirmation does not match.") {
-                return redirect('/register')->with('message', 'Podane hasła różnią się. Spróbuj ponownie!');
-            }
+        if ($request->validated()) {
+            $result = $this->authServices->passwordReset($request);
+            return redirect('login')->with('success', 'Hasło zostało zresetowane!');
         }
-
-        $user = User::where('email', $request['email'])->first();
-        $userID = $user->id;
-
-        if ($userID !== (int)$request->user_id) {
-            return redirect('/login')->with('message', 'Wystąpił błąd. Spróbuj ponownie.');
-        }
-
-        $user->password = bcrypt($request->password);
-        $user->save();
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return redirect('/login')->with('success', 'Hasło zostało zresetowane!');;
     }
 
     /**

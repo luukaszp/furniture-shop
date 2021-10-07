@@ -2,12 +2,14 @@
 
 @section('content')
 <div class="container">
-    @if (session('message'))
-    <div class="alert alert-danger col-6" role="alert" style="text-align: center">
-        <div>
-            <i class="fas fa-exclamation-triangle"></i> {{ session('message') }}
-            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
-        </div>
+    @if ($errors->any())
+    <div class="alert alert-danger col-6" style="text-align: center">
+        <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li><i class="fas fa-exclamation-triangle"></i> {{ $error }}</li>
+            @endforeach
+        </ul>
     </div>
     @endif
     <div class="row justify-content-center">
@@ -21,8 +23,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">Adres e-mail</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" placeholder="name@example.com" class="form-control"
-                                    name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" placeholder="name@example.com" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email">
                             </div>
                         </div>
 
@@ -30,18 +31,15 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">Hasło</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required
-                                    autocomplete="new-password">
+                                <input id="password" type="password" class="form-control" name="password" required autocomplete="new-password">
                             </div>
                         </div>
 
                         <div class="form-group row py-3">
-                            <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">Potwierdź
-                                hasło</label>
+                            <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">Potwierdź hasło</label>
 
                             <div class="col-md-6">
-                                <input id="password_confirmation" type="password" class="form-control"
-                                    name="password_confirmation" required autocomplete="new-password">
+                                <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
@@ -50,7 +48,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-7 offset-md-3">
                                 <button type="submit" class="btn btn-success">
-                                    Zarejestruj się
+                                    Zmień hasło
                                 </button>
                             </div>
                         </div>
