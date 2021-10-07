@@ -10,7 +10,7 @@
     przekazanych przez Użytkowników w związku z korzystaniem przez nich z usług za pośrednictwem Sklepu Meblowego.</p>
 
     <p>2. Administrator Danych Osobowych</p>
-    <p>Administratorem danych osobowych Użytkowników przekazywanych w związku z korzystaniem przez nich z Usług za pośrednictwem Sklepu (dalej: „Dane Osobowe”) jest Usługodawca, tj. SKLEP MEBLOWY Łukasz Poterała, ul. Admiralska 1, 51-218 Wrocław, zwany dalej Administratorem.</p>
+    <p>Administratorem danych osobowych Użytkowników przekazywanych w związku z korzystaniem przez nich z Usług za pośrednictwem Sklepu (dalej: „Dane Osobowe”) jest Usługodawca, tj. SKLEP MEBLOWY, ul. Admiralska 1, 51-218 Wrocław, zwany dalej Administratorem.</p>
 
     <p>3. W trosce o bezpieczeństwo powierzonych nam danych opracowaliśmy wewnętrzne
     procedury i zalecenia, które mają zapobiec udostępnieniu danych osobom

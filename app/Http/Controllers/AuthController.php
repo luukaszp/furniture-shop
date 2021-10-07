@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -10,9 +11,18 @@ use App\Models\Product;
 use App\Mail\ResetPasswordMail;
 use Illuminate\Support\Facades\Mail;
 use Validator;
+use App\Http\Requests\AuthRequest;
+use App\Services\AuthServices;
 
 class AuthController extends Controller
 {
+    protected $authServices;
+
+    public function __construct(AuthServices $authServices)
+    {
+        $this->authServices = $authServices;
+    }
+
     /**
      * Display login view.
      */
@@ -33,51 +43,12 @@ class AuthController extends Controller
      * Validate data and register user.
      */
 
-    public function registerUser(Request $request)
+    public function registerUser(AuthRequest $request)
     {
-        $data = $request->only('name', 'surname', 'email', 'address', 'zip_code', 'city', 'province', 'phone_number', 'password', 'password_confirmation');
-
-        $validator = Validator::make($data, [
-            'name' => 'required|string|max:15',
-            'surname' => 'required|string|max:30',
-            'email' => 'required|email|max:60|unique:users',
-            'address' => 'required|string|max:80',
-            'zip_code' => 'required|string|max:6',
-            'city' => 'required|string|max:20',
-            'province' => 'required|string|max:30',
-            'phone_number' => 'required|string|max:10',
-            'password' => 'required|string|min:8|max:50|confirmed'
-        ]);
-
-        if ($validator->fails()) {
-            if ($validator->errors()->first('email')) {
-                return redirect('/register')->with('message', 'Podany e-mail istnieje w serwisie. Zaloguj się!');
-            } elseif ($validator->errors()->first('password') == "The password must be at least 8 characters.") {
-                return redirect('/register')->with('message', 'Hasło nie spełnia kryteriów. Spróbuj ponownie!');
-            } elseif ($validator->errors()->first('password') == "The password confirmation does not match.") {
-                return redirect('/register')->with('message', 'Podane hasła różnią się. Spróbuj ponownie!');
-            }
+        if ($request->validated()) {
+            $result = $this->authServices->register($request);
+            return redirect('/login');
         }
-
-        $user = User::create([
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'email' => $request->email,
-            'address' => $request->address,
-            'zip_code' => $request->zip_code,
-            'city' => $request->city,
-            'province' => $request->province,
-            'phone_number' => $request->phone_number,
-            'password' => bcrypt($request->password)
-        ]);
-
-        $role = new Role();
-        $role->user_id = $user->id;
-        $role->save();
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return redirect('/login');
     }
 
     /**

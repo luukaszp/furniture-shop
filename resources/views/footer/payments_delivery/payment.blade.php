@@ -8,7 +8,7 @@
     <h3>Przelew</h3>
     <p>Numer rachunku: 00 1111 2222 3333 4444 5555 6666</p>
     <p>Bank Santander</p>
-    <p>SKLEP MEBLOWY Łukasz Poterała, ul. Admiralska 1, 51-218 Wrocław</p>
+    <p>SKLEP MEBLOWY, ul. Admiralska 1, 51-218 Wrocław</p>
     <p><span style="font-weight: bold">Pamiętaj, aby w tytule przelewu wpisać numer swojego zamówienia!</span></p>
 </div>
 @endsection
