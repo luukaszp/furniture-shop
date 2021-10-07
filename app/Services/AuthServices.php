@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 class AuthServices
 {
@@ -26,5 +27,17 @@ class AuthServices
         $role->save();
 
         return $user;
+    }
+
+    public function login($data)
+    {
+        if (!Auth::attempt($data->only('email', 'password'))) {
+            return redirect('/login')->with('message', 'Zły e-mail lub hasło.');
+        }
+
+        $user = User::where('email', $data['email'])->firstOrFail();
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+        return $token;
     }
 }

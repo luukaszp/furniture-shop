@@ -11,7 +11,8 @@ use App\Models\Product;
 use App\Mail\ResetPasswordMail;
 use Illuminate\Support\Facades\Mail;
 use Validator;
-use App\Http\Requests\AuthRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginRequest;
 use App\Services\AuthServices;
 
 class AuthController extends Controller
@@ -40,10 +41,10 @@ class AuthController extends Controller
     }
 
     /**
-     * Validate data and register user.
+     * Register user.
      */
 
-    public function registerUser(AuthRequest $request)
+    public function registerUser(RegisterRequest $request)
     {
         if ($request->validated()) {
             $result = $this->authServices->register($request);
@@ -52,32 +53,15 @@ class AuthController extends Controller
     }
 
     /**
-     * Validate data, crrate token and login user.
+     * Create token and login user.
      */
-    public function loginUser(Request $request)
+    public function loginUser(LoginRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required|string|min:6',
-        ]);
-
-        if ($validator->fails()) {
-            if ($validator->errors()->first('password')) {
-                return redirect('/login')->with('message', 'Złe hasło.');
-            }
+        if ($request->validated()) {
+            $result = $this->authServices->login($request);
+            $this->productMain();
+            return redirect('/');
         }
-
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            return redirect('/login')->with('message', 'Zły e-mail lub hasło.');
-        }
-
-        $user = User::where('email', $request['email'])->firstOrFail();
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        $this->productMain();
-
-        return redirect('/');
     }
 
     /**
