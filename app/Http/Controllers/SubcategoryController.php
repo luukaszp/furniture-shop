@@ -5,20 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Subcategory;
+use App\Http\Requests\CreateSubcategory;
+use App\Services\SubcategoryServices;
 
 class SubcategoryController extends Controller
 {
+    protected $subcategoryServices;
+
+    public function __construct(SubcategoryServices $subcategoryServices)
+    {
+        $this->subcategoryServices = $subcategoryServices;
+    }
+
     /**
      * Create a new subcategory.
      */
-    protected function store(Request $request)
+    protected function store(CreateSubcategory $request)
     {
-        $subcategory = new Subcategory();
-        $subcategory->name = $request->name;
-        $subcategory->category_id = $request->category;
-        $subcategory->save();
-
-        return redirect('/admin_panel/subcategories');
+        if ($request->validated()) {
+            $result = $this->subcategoryServices->create($request);
+            return redirect('/admin_panel/subcategories');
+        }
     }
 
     /**

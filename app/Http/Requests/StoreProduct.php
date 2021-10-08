@@ -25,11 +25,30 @@ class StoreProduct extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:50'],
-            'price' => ['required', 'string', 'max:10'],
+            'price' => ['required', 'numeric', 'between:0.00,99999.99'],
             'color' => ['required', 'string', 'max:15'],
-            'amount' => ['required', 'string', 'max:6'],
+            'amount' => ['required', 'numeric', 'digits_between:1,8'],
+            'size' => ['required'],
             'code_product' => ['required', 'string', 'max:12'],
-            'weight' => ['required', 'string', 'max:5']
+            'weight' => ['required', 'numeric', 'digits_between:1,5'],
+            'photo' => ['required'],
+            'description' => ['required', 'string', 'min:20'],
+            'subcategory' => ['required']
+        ];
+    }
+
+    /**
+     * Custom message for validation
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'photo.required' => 'Wgraj zdjęcie produktu!',
+            'subcategory.required' => 'Wymagane wybranie podkategorii!',
+            '*.max' => 'Wprowadzono zbyt dużą ilość znaków!',
+            'description.min' => 'Opis produktu powinien być dłuższy!'
         ];
     }
 }

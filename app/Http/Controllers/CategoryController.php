@@ -4,19 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Http\Requests\CreateCategory;
+use App\Services\CategoryServices;
 
 class CategoryController extends Controller
 {
+    protected $categoryServices;
+
+    public function __construct(CategoryServices $categoryServices)
+    {
+        $this->categoryServices = $categoryServices;
+    }
+
     /**
      * Create a new category.
      */
-    protected function store(Request $request)
+    protected function store(CreateCategory $request)
     {
-        $category = new Category();
-        $category->name = $request->name;
-        $category->save();
-
-        return redirect('/admin_panel/categories');
+        if ($request->validated()) {
+            $result = $this->categoryServices->create($request);
+            return redirect('/admin_panel/categories');
+        }
     }
 
     /**

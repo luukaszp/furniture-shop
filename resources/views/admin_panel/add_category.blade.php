@@ -2,6 +2,16 @@
 
 @section('content')
 <div class="container">
+    @if ($errors->any())
+    <div class="alert alert-danger col-6" style="text-align: center">
+        <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li><i class="fas fa-exclamation-triangle"></i> {{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-7">
             <div class="card" style="text-align: center">
@@ -34,4 +44,9 @@
         </div>
     </div>
 </div>
+<style>
+    ul {
+    list-style-type: none;
+    }
+</style>
 @endsection

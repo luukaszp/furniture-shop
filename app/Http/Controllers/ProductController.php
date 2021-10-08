@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProduct;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Rating;
@@ -11,42 +10,27 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use App\Models\Subcategory;
 use Cart;
+use App\Services\ProductServices;
+use App\Http\Requests\StoreProduct;
 
 class ProductController extends Controller
 {
+    protected $productServices;
+
+    public function __construct(ProductServices $productServices)
+    {
+        $this->productServices = $productServices;
+    }
+
     /**
      * Store a newly created product.
      */
-    public function store(Request $request)
+    public function store(StoreProduct $request)
     {
-        $product = new Product();
-        $product->name = $request->get('name');
-
-        $subID = $request->get('subcategory');
-        $categoryID = Subcategory::where('id', $subID)->pluck('category_id')->first();
-        $product->subcategory_id = $subID;
-        $product->category_id = $categoryID;
-
-        $product->price = str_replace(",", ".", $request->get('price'));
-        $product->color = $request->get('color');
-        $product->amount = $request->get('amount');
-        $product->size = $request->get('size');
-        $product->code_product = $request->get('code_product');
-        $product->weight = $request->get('weight');
-        $product->description = $request->get('description');
-
-        if ($request->file('photo')) {
-            $product->photo = $imagePath = $request->file('photo')->store('products', 'public');
-
-            $photo = Image::make(public_path("storage/{$imagePath}"))->fit(300, 450);
-            $photo->save();
-
-            $imageArray = ['photo' => $imagePath];
+        if ($request->validated()) {
+            $result = $this->productServices->store($request);
+            return redirect('/admin_panel/products');
         }
-
-        $product->save();
-
-        return redirect('/admin_panel/products');
     }
 
     /**

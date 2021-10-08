@@ -12,12 +12,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/furniture">Meble</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Promocje</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Nowości</a>
-                    </li>
                 </ul>
                 <div class="dropdown">
                     <ul style="margin: 0; display: inline-flex">
