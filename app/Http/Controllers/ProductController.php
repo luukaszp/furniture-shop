@@ -12,6 +12,7 @@ use App\Models\Subcategory;
 use Cart;
 use App\Services\ProductServices;
 use App\Http\Requests\StoreProduct;
+use App\Http\Requests\EditProduct;
 
 class ProductController extends Controller
 {
@@ -36,22 +37,12 @@ class ProductController extends Controller
     /**
      * Edit info about specific product.
      */
-    public function edit(Request $request, $id)
+    public function edit(EditProduct $request, $id)
     {
-        $product = Product::find($id);
-        $product->name = $request->get('name');
-
-        $product->price = str_replace(",", ".", $request->get('price'));
-        $product->color = $request->get('color');
-        $product->amount = $request->get('amount');
-        $product->size = $request->get('size');
-        $product->code_product = $request->get('code_product');
-        $product->weight = $request->get('weight');
-        $product->description = $request->get('description');
-
-        $product->save();
-
-        return redirect('/admin_panel/products');
+        if ($request->validated()) {
+            $result = $this->productServices->edit($request, $id);
+            return redirect('/admin_panel/products');
+        }
     }
 
     /**

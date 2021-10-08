@@ -42,4 +42,34 @@ class ProductServices
 
         return $product;
     }
+
+    /**
+     * Edit info about specific product.
+     */
+    public function edit($data, $id)
+    {
+        $product = Product::find($id);
+        $product->name = $data->get('name');
+
+        $product->price = str_replace(",", ".", $data->get('price'));
+        $product->color = $data->get('color');
+        $product->amount = $data->get('amount');
+        $product->size = $data->get('size');
+        $product->code_product = $data->get('code_product');
+        $product->weight = $data->get('weight');
+        $product->description = $data->get('description');
+
+        if ($data->file('photo')) {
+            $product->photo = $imagePath = $data->file('photo')->store('products', 'public');
+
+            $photo = Image::make(public_path("storage/{$imagePath}"))->fit(300, 450);
+            $photo->save();
+
+            $imageArray = ['photo' => $imagePath];
+        }
+
+        $product->save();
+
+        return $product;
+    }
 }

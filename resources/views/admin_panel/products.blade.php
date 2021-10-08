@@ -2,6 +2,16 @@
 
 @section('content')
 <div class="container">
+    @if ($errors->any())
+    <div class="alert alert-danger col-6" style="text-align: center">
+        <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li><i class="fas fa-exclamation-triangle"></i> {{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand">Produkty</a>
@@ -70,7 +80,7 @@
                 <div class="modal-body">
                     <form method="POST" action="/product/edit/{{ $product->id }}" class="mb-3">
                         @csrf
-                        <div class="col-12 mb-4" style="display: flex">
+                        <div class="col-12" style="display: flex">
                             <div class="col-6">
                                 <div class="form-group row pt-3">
                                     <label for="name" class="col-md-4 col-form-label text-md-right">Nazwa</label>
@@ -140,11 +150,23 @@
                                 </div>
 
                                 <div class="form-group row pt-3">
-                                    <label for="description" class="col-md-4 col-form-label text-md-right">Opis produktu</label>
-
-                                    <div class="col-md-6 productDescription">
-                                        <input id="description" type="text" class="form-control" name="description" value="{{ $product->description }}" required autocomplete="description">
+                                    <label for="photo" class="col-md-4 col-form-label form-label">Zdjęcie produktu</label>
+                                    <div class="col-md-6">
+                                        <label for="file-upload" class="custom-file-upload" style="width: 200px">
+                                            <i class="fas fa-cloud-upload-alt"></i> Wgraj zdjęcie
+                                        </label>
+                                        <input class="form-control" type="file" id="file-upload" name="photo">
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <div class="form-group row pt-3">
+                                <label for="description" class="col-md-3 col-form-label text-md-right">Opis produktu</label>
+
+                                <div class="col-md-8 productDescription">
+                                    <input id="description" type="text" class="form-control" name="description"
+                                        value="{{ $product->description }}" required autocomplete="description">
                                 </div>
                             </div>
                         </div>
@@ -192,6 +214,9 @@
     .page-item.active .page-link {
         background: white;
         color: black;
+    }
+    ul {
+        list-style-type: none;
     }
 </style>
 <script>
