@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (session('message'))
-    <div class="alert alert-success" role="alert">
-        <div>
-            <i class="fas fa-check-circle"></i> {{ session('message') }}
-            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
-        </div>
-    </div>
-    @endif
     <div class="container">
+        @if (session('message'))
+        <div class="alert alert-success" role="alert">
+            <div>
+                <i class="fas fa-check-circle"></i> {{ session('message') }}
+                <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+            </div>
+        </div>
+        @endif
         <div class="product-info">
             <div class="row text-center">
                 @forelse($products as $product)

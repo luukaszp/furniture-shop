@@ -17,6 +17,16 @@
         </div>
     </div>
     @endif
+    @if ($errors->any())
+    <div class="alert alert-danger col-6" style="text-align: center">
+        <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li><i class="fas fa-exclamation-triangle"></i> {{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     @php ($product_id = [])
     @php ($amount = [])
     @forelse($carts as $cart)

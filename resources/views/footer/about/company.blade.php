@@ -1,10 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1 class="pb-3" style="text-align: center">O firmie</h1>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor urna, vulputate id mattis et, rhoncus ut risus. Fusce in euismod velit, et pulvinar dolor. Aliquam suscipit metus nec ultrices faucibus. Aenean vitae mi in neque lacinia laoreet. Phasellus accumsan sagittis nulla, at sodales est ornare et. Aenean luctus enim nec mi euismod, quis fermentum mi sollicitudin. Etiam rhoncus magna eget lacus vehicula, nec lobortis est eleifend. Suspendisse eu risus tortor. Mauris scelerisque pharetra hendrerit. Curabitur ex lacus, aliquet in tellus et, pulvinar volutpat felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam efficitur est in quam facilisis commodo. </p>
-        <p> Donec non mauris ut magna eleifend faucibus at eget leo. Pellentesque nec risus augue. Phasellus ultrices est augue, quis fringilla leo iaculis quis. Fusce ex turpis, consectetur blandit sodales sed, dignissim in tortor. Suspendisse facilisis elit tortor, sed mattis libero tempus vitae. Etiam id leo eu nisi tempor maximus. Donec ac leo eu justo scelerisque ultrices. Fusce posuere condimentum luctus. Nunc luctus dui eget justo euismod, vitae mattis orci laoreet. Aenean blandit libero a tincidunt pretium. </p>
-        <p> Suspendisse interdum, nisi in molestie mollis, nibh mauris scelerisque tellus, at aliquam est libero sit amet est. Etiam sit amet bibendum nunc, in luctus velit. Pellentesque in mi nibh. Duis quis consectetur sapien. Phasellus fermentum lacus sed sapien gravida condimentum. Aliquam erat volutpat. Aenean feugiat arcu quis erat egestas maximus. Donec ac varius risus, et rutrum sem. Duis justo tellus, hendrerit at quam eget, accumsan vulputate odio. Suspendisse nec velit auctor, placerat purus vitae, feugiat arcu. Maecenas scelerisque maximus ante ullamcorper aliquet. </p>
+    <div class="container" style="justify-content: center; text-align: center; display: flex;">
+        <div class="card mb-3" style="max-width: 750px">
+            <div class="card-header" style="text-align: center">
+                <a class="navbar-brand">
+                    <span style="color: rgb(158, 91, 2)">
+                        <i class="ps-2" style="font-size: 24px; font-family: 'Vegan Style Personal Use', sans-serif;">O firmie</i>
+                    </span>
+                </a>
+            </div>
+            <div class="row g-0">
+                <div class="col-md-6">
+                    <img src="/images/furniture/bed.jpg" class="d-block w-100">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <p> Jesteśmy świetnie prosperującą firmą na rynku meblowym, która funkcjonuje już od niespełna 20 lat. Przez ten czas
+                        zdążyliśmy zdobyć cenne doświadczenie oraz profesjonalny zespół pracowników.
+                        </p>
+                        <p> Na pierwszym miejscu stawiany jest klient oraz jego oczekiwania. Uzyskujemy to poprzez profesjonalną obsługę, atrakcyjną ofertę oraz najwyższej jakości produkty. </p>
+                        <p> Firma wyszła na przeciw panującym na rynku mebli standardom i stworzyła niedrogie, a zarazem
+                        estetyczne meble najwyższej jakości.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

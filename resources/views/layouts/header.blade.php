@@ -10,7 +10,13 @@
             <div class="collapse navbar-collapse ps-5">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="/furniture">Meble</a>
+                        <a class="nav-link" style="color: black" href="/furniture">Meble</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about/contact">Kontakt</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about/company">O firmie</a>
                     </li>
                 </ul>
                 <div class="dropdown">

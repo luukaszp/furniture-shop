@@ -8,7 +8,7 @@
             <form class="d-flex">
                 <input class="form-control me-2" id="search" type="search" placeholder="Szukaj" aria-label="Search">
             </form>
-            <a href="./subcategories/add" class="btn btn-outline-light" type="submit">Dodaj podkategorię</a>
+            <a href="./subcategories/add" class="btn btn-light" type="submit">Dodaj podkategorię</a>
         </div>
     </nav>
     <table class="table table-striped" data-toggle="table" data-search="true" data-search-selector="#search" style="text-align: center">

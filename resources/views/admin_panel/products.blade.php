@@ -18,7 +18,7 @@
             <form class="d-flex">
                 <input class="form-control me-2" id="search" type="search" placeholder="Szukaj" aria-label="Search">
             </form>
-            <a href="./products/add" class="btn btn-outline-light" type="submit">Dodaj produkt</a>
+            <a href="./products/add" class="btn btn-light" type="submit">Dodaj produkt</a>
         </div>
     </nav>
     <table class="table table-striped" data-toggle="table" data-search="true" data-search-selector="#search" style="text-align: center">
@@ -78,7 +78,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/product/edit/{{ $product->id }}" class="mb-3">
+                    <form method="POST" action="/product/edit/{{ $product->id }}" class="mb-3" enctype="multipart/form-data">
                         @csrf
                         <div class="col-12" style="display: flex">
                             <div class="col-6">
@@ -151,11 +151,11 @@
 
                                 <div class="form-group row pt-3">
                                     <label for="photo" class="col-md-4 col-form-label form-label">Zdjęcie produktu</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 pt-3 ps-4 productPhoto">
                                         <label for="file-upload" class="custom-file-upload" style="width: 200px">
                                             <i class="fas fa-cloud-upload-alt"></i> Wgraj zdjęcie
                                         </label>
-                                        <input class="form-control" type="file" id="file-upload" name="photo">
+                                        <input class="form-control" type="file" id="file-upload" name="photo" value="{{ $product->photo }}">
                                     </div>
                                 </div>
                             </div>
@@ -206,6 +206,9 @@
     @endif
 </div>
 <style>
+    input[type="file"] {
+        display: none;
+    }
     .pagination .page-link {
         background: black;
         color: white;
@@ -243,6 +246,9 @@
                 inputWeight.value = data.weight
                 var inputDescription = editModal.querySelector('.productDescription input')
                 inputDescription.value = data.description
+                var inputPhoto = editModal.querySelector('file')
+                inputPhoto.value = data.photo
+                console.log(inputPhoto.value)
                 var inputID = editModal.querySelector('.modal-body form')
                 inputID.action = '/product/edit/' + data.id
             })
