@@ -2,6 +2,16 @@
 
 @section('content')
     <div class="container">
+        @if ($errors->any())
+        <div class="alert alert-danger col-6" style="text-align: center">
+            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li><i class="fas fa-exclamation-triangle"></i> {{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         @if (session('message'))
         <div class="alert alert-success" role="alert">
             <div>
@@ -249,6 +259,10 @@
         .star-rating label:hover,
         .star-rating label:hover ~ label {
             color:#fc0;
+        }
+
+        ul {
+            list-style-type: none;
         }
 </style>
 

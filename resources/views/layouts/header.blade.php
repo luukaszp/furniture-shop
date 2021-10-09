@@ -46,7 +46,7 @@
                                         </form>
 
                                         <hr>
-                                        <button class="btn btn-danger btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#deleteModal" style="font-weight: bold">USUŃ KONTO</button>
+                                        <button class="btn btn-danger btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#deleteAccountModal" style="font-weight: bold">USUŃ KONTO</button>
                                     </li>
                                 @endguest
                             </ul>
@@ -84,11 +84,11 @@
     </nav>
 
     @auth
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Usuwanie konta</h5>
+                    <h5 class="modal-title" id="deleteAccountModalLabel">Usuwanie konta</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="text-align: center">

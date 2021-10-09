@@ -5,9 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Rating;
 use App\Models\Product;
+use App\Http\Requests\RatingRequest;
+use App\Services\RatingServices;
 
 class RatingController extends Controller
 {
+    protected $ratingServices;
+
+    public function __construct(RatingServices $ratingServices)
+    {
+        $this->ratingServices = $ratingServices;
+    }
+
     /**
      * Display ratings for specified product
      */
@@ -21,30 +30,23 @@ class RatingController extends Controller
     /**
      * Store a newly created rating.
      */
-    public function addRating(Request $request)
+    public function addRating(RatingRequest $request)
     {
-        $rating = new Rating();
-        $rating->rate = $request->rate;
-        $rating->opinion = $request->opinion;
-        $rating->product_id = $request->product_id;
-        $rating->user_id = auth()->user()->id;
-        $rating->save();
-
-        return redirect('product/' . $request->product_id);
+        if ($request->validated()) {
+            $result = $this->ratingServices->create($request);
+            return redirect('product/' . $request->product_id);
+        }
     }
 
     /**
      * Edit specific rating/opinion.
      */
-    public function edit(Request $request, $id)
+    public function edit(RatingRequest $request, $id)
     {
-        $rating = Rating::find($id);
-
-        $rating->opinion = $request->opinion;
-        $rating->rate = $request->rate;
-        $rating->save();
-
-        return redirect('product/' . $request->product_id);
+        if ($request->validated()) {
+            $result = $this->ratingServices->edit($request, $id);
+            return redirect('product/' . $request->product_id);
+        }
     }
 
     /**
