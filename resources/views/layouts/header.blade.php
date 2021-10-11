@@ -75,6 +75,7 @@
                         <li><a class="dropdown-item" href="/admin_panel/customers"><i class="fas fa-users"></i> Klienci</a></li>
                         <li><a class="dropdown-item" href="/admin_panel/orders"><i class="fas fa-clipboard-check"></i> Zamówienia</a></li>
                         <li><a class="dropdown-item" href="/admin_panel/products"><i class="fas fa-box-open"></i> Produkty</a></li>
+                        <li><a class="dropdown-item" href="/admin_panel/questions"><i class="fas fa-question"></i></i> Pytania</a></li>
                     </ul>
                 </div>
                 @endif

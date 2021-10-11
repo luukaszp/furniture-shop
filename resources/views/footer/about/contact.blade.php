@@ -2,6 +2,24 @@
 
 @section('content')
 <div class="container">
+    @if (session('message'))
+    <div class="alert alert-success col-6" role="alert" style="text-align: center">
+        <div>
+            <i class="fas fa-check-circle"></i></i> {{ session('message') }}
+            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        </div>
+    </div>
+    @endif
+    @if ($errors->any())
+    <div class="alert alert-danger col-6" style="text-align: center">
+        <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li><i class="fas fa-exclamation-triangle"></i> {{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="row text-center">
         <div class="col-xl-3 col-sm-6 mb-5">
             <div class="row me-1">
@@ -26,22 +44,28 @@
             </div>
         </div>
     <div class="col">
-        <form class="border border-success px-4 py-4">
+        <form method="POST" action="/question/store" class="border border-success px-4 py-4">
+            @csrf
             <h1 class="py-4">Skontaktuj się z nami!</h1>
             <div class="mb-3">
-                <label for="input-name" class="form-label">Imię i nazwisko</label>
-                <input type="name" class="form-control" id="input-name" placeholder="John Smith">
+                <label for="name" class="form-label">Imię i nazwisko</label>
+                <input type="name" class="form-control" id="name" name="name" placeholder="John Smith" required>
             </div>
             <div class="mb-3">
-                <label for="input-email" class="form-label">Adres e-mail</label>
-                <input type="email" class="form-control" id="input-email" placeholder="name@example.com">
+                <label for="email" class="form-label">Adres e-mail</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
             </div>
             <div class="mb-3">
-                <label for="textarea" class="form-label">Treść wiadomości</label>
-                <textarea class="form-control" id="textarea" rows="3"></textarea>
+                <label for="question" class="form-label">Treść wiadomości</label>
+                <textarea type="text" class="form-control" id="question" name="question" rows="3" required></textarea>
             </div>
             <button type="submit" class="btn btn-success">Wyślij</button>
         </form>
     </div>
 </div>
+<style>
+    ul {
+        list-style-type: none;
+    }
+</style>
 @endsection

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
@@ -31,6 +32,8 @@ Route::post('/login/post', [AuthController::class, 'loginUser']);
 Route::post('/register/post', [AuthController::class, 'registerUser']);
 Route::get('/password/reset', [AuthController::class, 'passwordReset']);
 Route::post('/password/email', [AuthController::class, 'resetByEmail'])->name('password.email');Route::post('/password/new', [AuthController::class, 'setPassword']);
+
+Route::post('/question/store', [QuestionController::class, 'store']);
 
 Route::prefix('about')->group( function () {
     Route::get('/company', function () {
@@ -97,6 +100,8 @@ Route::group(['middleware' => ['auth:sanctum', 'admin']], function () {
         Route::get('/subcategory/{id}', [SubcategoryController::class, 'show']);
         Route::get('/categories', [CategoryController::class, 'index']);
         Route::get('/subcategories', [SubcategoryController::class, 'index']);
+        Route::get('/questions', [QuestionController::class, 'index']);
+        Route::get('/question/{id}', [QuestionController::class, 'show']);
         Route::get('/customers', function () {
             return view('admin_panel.customers');
         });
@@ -146,4 +151,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/order/fetch/{id}', [OrderController::class, 'showOrder']);
     Route::post('order/store', [OrderController::class, 'store']);
     Route::put('/order/edit', [OrderController::class, 'edit']);
+
+    Route::delete('/question/delete/{id}', [QuestionController::class, 'delete']);
 });

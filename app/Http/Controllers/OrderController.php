@@ -22,7 +22,7 @@ class OrderController extends Controller
     /**
      * Store an order.
      */
-    protected function store(StoreOrder $request)
+    public function store(StoreOrder $request)
     {
         if ($request->validated()) {
             $result = $this->orderServices->store($request);

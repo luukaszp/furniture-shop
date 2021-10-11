@@ -20,7 +20,7 @@ class SubcategoryController extends Controller
     /**
      * Create a new subcategory.
      */
-    protected function store(CreateSubcategory $request)
+    public function store(CreateSubcategory $request)
     {
         if ($request->validated()) {
             $result = $this->subcategoryServices->create($request);

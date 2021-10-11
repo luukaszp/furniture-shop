@@ -19,7 +19,7 @@ class CategoryController extends Controller
     /**
      * Create a new category.
      */
-    protected function store(CreateCategory $request)
+    public function store(CreateCategory $request)
     {
         if ($request->validated()) {
             $result = $this->categoryServices->create($request);
