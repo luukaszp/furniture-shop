@@ -76,6 +76,21 @@
                             </div>
                         </form>
                     </div>
+                    <div class=" pt-4 payment-option">
+                        <p>Innym sposobem na dokonanie płatności za zakupione meble jest wykonanie przelewu na podany niżej rachunek bankowy: </p>
+
+                        @isset($order)
+                        <p>Tytuł przelewu: <span style="font-weight: bold">Zamówienie ORD{{ $order->id }}</span></p>
+                        @endisset
+
+                        <p>Numer rachunku: <span style="font-weight: bold">00 1111 2222 3333 4444 5555 6666</span></p>
+
+                        <p>Bank Santander</p>
+
+                        <p>SKLEP MEBLOWY, ul. Admiralska 1, 51-218 Wrocław</p>
+
+                        <p style="font-weight: bold">Pamiętaj, aby w tytule przelewu wpisać numer swojego zamówienia!</p>
+                    </div>
                 </div>
             </div>
         </div>

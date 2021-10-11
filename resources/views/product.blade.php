@@ -72,7 +72,7 @@
                             <h3 class="mt-3" style="font-weight: bold; color: rgb(158, 91, 2)">Produkt znajduje się już w koszyku</h3>
                         @else
                         <div class="col-12 pb-3">
-                            <button class="btn btn-dark" type="submit">
+                            <button class="btn btn-success" type="submit">
                                 Do koszyka
                                 <i class="fas fa-shopping-cart" style="font-size: 1em"></i>
                             </button>
