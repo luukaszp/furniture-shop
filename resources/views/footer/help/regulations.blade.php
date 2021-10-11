@@ -3,64 +3,232 @@
 @section('content')
 <div class="container">
     <h1 class="pb-3" style="text-align: center">Regulamin</h1>
-    <h3 style="font-weight: bold">§ 1 DEFINICJE</h3>
+    <h3 class="paragraph">§ 1</h3>
+    <h3 class="paragraph">DEFINICJE</h3>
         <ul>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-            <li>Ut sodales tellus in ipsum molestie suscipit.</li>
-            <li>Ut sed augue quis urna ultricies ullamcorper vitae id est.</li>
-            <li>Nullam tincidunt neque eget eros ullamcorper, ut consectetur tortor tristique.</li>
-            <li>Proin in purus in metus aliquet ultrices.</li>
+            <li><span class="word">Konsument</span> ​- osoba fizyczna zawierająca ze Sprzedawcą umowę w ramach Sklepu,
+            której przedmiot nie jest związany bezpośrednio z jej działalnością gospodarczą lub
+            zawodową.</li>
+            <li><span class="word">Sprzedawca</span> - osoba fizyczna z siedzibą we Wrocławiu przy ul. Admiralska 1, kod pocztowy 51-218, wpisany do Krajowego Rejestru Sądowego przez Sąd Rejonowy.</li>
+            <li><span class="word">Klient</span> ​- każdy podmiot dokonujący zakupów za pośrednictwem Sklepu.</li>
+            <li><span class="word">Przedsiębiorca</span> ​- osoba fizyczna, osoba prawna i jednostka organizacyjna
+            niebędąca osobą prawną, której odrębna ustawa przyznaje zdolność prawną,
+            wykonująca we własnym imieniu działalność gospodarczą, która korzysta ze Sklepu.</li>
+            <li><span class="word">Sklep</span> ​- sklep internetowy prowadzony przez Sprzedawcę pod adresem
+            internetowym www.sklep-meblowy.pl</li>
+            <li><span class="word">Umowa zawarta na odległość</span> - umowa zawarta z Klientem w ramach
+            zorganizowanego systemu zawierania umów na odległość (w ramach Sklepu), bez
+            jednoczesnej fizycznej obecności stron, z wyłącznym wykorzystaniem jednego lub
+            większej liczby środków porozumiewania się na odległość do chwili zawarcia umowy
+            włącznie.</li>
+            <li><span class="word">Regulamin</span> ​- niniejszy regulamin Sklepu.</li>
+            <li><span class="word">Zamówienie</span> ​- oświadczenie woli Klienta składane za pomocą Formularza
+            Zamówienia i zmierzające bezpośrednio do zawarcia Umowy Sprzedaży Produktu
+            lub Produktów ze Sprzedawcą.</li>
+            <li><span class="word">Konto</span> - konto klienta w Sklepie, są w nim gromadzone są dane podane przez
+            Klienta oraz informacje o złożonych przez niego Zamówieniach w Sklepie.</li>
+            <li><span class="word">Formularz rejestracji</span> ​- formularz dostępny w Sklepie, umożliwiający utworzenie
+            Konta.</li>
+            <li><span class="word">Formularz zamówienia</span> - interaktywny formularz dostępny w Sklepie umożliwiający
+            złożenie Zamówienia, w szczególności poprzez dodanie Produktów do Koszyka oraz
+            określenie warunków Umowy Sprzedaży, w tym sposobu dostawy.</li>
+            <li><span class="word">Koszyk</span> ​– element oprogramowania Sklepu, w którym widoczne są wybrane przez
+            Klienta Produkty do zakupu, a także istnieje możliwość ustalenia i modyfikacji danych
+            Zamówienia, w szczególności ilości produktów.</li>
+            <li><span class="word">Produkt</span> ​- dostępna w Sklepie rzecz ruchoma/usługa będąca przedmiotem Umowy
+            Sprzedaży między Klientem a Sprzedawcą.</li>
+            <li><span class="word">Umowa Sprzedaży</span> - umowa sprzedaży Produktu zawierana albo zawarta między Klientem a Sprzedawcą za pośrednictwem Sklepu internetowego. Przez Umowę
+            Sprzedaży rozumie się też - stosowanie do cech Produktu - umowę o świadczenie
+            usług i umowę o dzieło.</li>
         </ul>
-        <ul>
-            <li>Suspendisse in lorem fringilla, aliquet justo et, ornare nulla.</li>
-            <li>Vestibulum lobortis ante nec ornare volutpat.</li>
-            <li>Sed et sapien feugiat, pharetra dui id, dictum ante.</li>
-            <li>Donec varius leo vitae viverra volutpat.</li>
-            <li>Nunc vel tortor faucibus, condimentum nisi blandit, aliquet mi.</li>
-        </ul>
-        <ul>
-            <li>Nulla non magna congue, sagittis mi ornare, pulvinar nisl.</li>
-            <li>Curabitur sit amet tortor fermentum, porta lectus nec, elementum turpis.</li>
-        </ul>
 
-    <h3 style="font-weight: bold">§ 2 KONTAKT ZE SPRZEDAWCĄ</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis posuere diam, et porttitor libero. Mauris eget accumsan quam, id aliquet justo. Donec convallis orci non orci posuere, sit amet aliquet lorem finibus. Aenean non felis tristique, accumsan dolor vel, sagittis purus. Curabitur elementum ut ligula quis pulvinar. Nam auctor arcu ac dui hendrerit, in sollicitudin lorem fermentum. Maecenas porttitor ullamcorper urna vitae finibus. Donec id dolor accumsan, gravida diam eget, varius nulla. Donec in tincidunt purus, sed semper ligula. Sed ut mollis arcu. Ut vel pellentesque metus. In ornare eu nisl vitae faucibus.</p>
+    <h3 class="paragraph">§ 2</h3>
+    <h3 class="paragraph">KONTAKT ZE SKLEPEM</h3>
+        <li>1. Adres Sprzedawcy: 51-218 Wrocław, ul. Admiralska 1.</li>
+        <li>2. Adres e-mail Sprzedawcy: sklep-meblowy@gmail.com.</li>
+        <li>3. Numer telefonu Sprzedawcy: +48 667 744 888.</li>
+        <li>4. Numer fax Sprzedawcy (88) 888-88-88.</li>
+        <li>5. Numer rachunku bankowego Sprzedawcy 00 1111 2222 3333 4444 5555 6666.</li>
+        <li>Klient może porozumiewać się ze Sprzedawcą za pomocą adresów i numerów
+        telefonów podanych w niniejszym paragrafie lub w zakładce <span class="word"> O NAS - Kontakt i dane firmy</span>.</li>
+        <li>7. Klient może porozumieć się telefonicznie ze Sprzedawcą od poniedziałku do piątku w godzinach od 10:00 do 18:00 oraz w soboty od 12:00 do 16:00.</li>
 
-    <h3 style="font-weight: bold">§ 3 WYMOGI TECHNICZNE</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis posuere diam, et porttitor libero. Mauris eget accumsan quam, id aliquet justo. Donec convallis orci non orci posuere, sit amet aliquet lorem finibus. Aenean non felis tristique, accumsan dolor vel, sagittis purus. Curabitur elementum ut ligula quis pulvinar. Nam auctor arcu ac dui hendrerit, in sollicitudin lorem fermentum. Maecenas porttitor ullamcorper urna vitae finibus. Donec id dolor accumsan, gravida diam eget, varius nulla. Donec in tincidunt purus, sed semper ligula. Sed ut mollis arcu. Ut vel pellentesque metus. In ornare eu nisl vitae faucibus.</p>
-        <p>Fusce a bibendum velit. Curabitur non tempus dolor, dapibus dapibus justo. Aliquam at commodo mi, volutpat auctor enim. Ut ultricies vitae elit et eleifend. Fusce mollis ut elit eu venenatis. Sed suscipit velit odio, eget venenatis erat commodo non. Sed eu odio finibus, semper quam ut, posuere dui. Integer laoreet pellentesque nunc, sit amet interdum tortor congue at. Duis interdum convallis arcu, vitae posuere purus iaculis congue. Etiam ut sapien nec turpis vehicula ullamcorper. Aenean vel vehicula quam. Suspendisse ut leo non purus faucibus mattis vitae nec neque. Quisque sit amet dolor ut ex volutpat venenatis in ac mauris.</p>
+    <h3 class="paragraph">§ 3</h3>
+    <h3 class="paragraph">WYMAGANIA TECHNICZNE</h3>
+        <p>Do korzystania ze Sklepu, w tym przeglądania asortymentu Sklepu oraz składania
+        zamówień na Produkty, niezbędne są:<p>
+        <li>urządzenie końcowe z dostępem do sieci Internet i przeglądarka internetowa,</li>
+        <li>aktywne konto poczty elektronicznej (e-mail)</li>
+        <li>włączona obsługa plików cookies</li>
 
-    <h3 style="font-weight: bold">§ 4 ZAKUPY W SKLEPIE INTERNETOWYM</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis posuere diam, et porttitor libero. Mauris eget accumsan quam, id aliquet justo. Donec convallis orci non orci posuere, sit amet aliquet lorem finibus. Aenean non felis tristique, accumsan dolor vel, sagittis purus. Curabitur elementum ut ligula quis pulvinar. Nam auctor arcu ac dui hendrerit, in sollicitudin lorem fermentum. Maecenas porttitor ullamcorper urna vitae finibus. Donec id dolor accumsan, gravida diam eget, varius nulla. Donec in tincidunt purus, sed semper ligula. Sed ut mollis arcu. Ut vel pellentesque metus. In ornare eu nisl vitae faucibus.</p>
-        <p>Fusce a bibendum velit. Curabitur non tempus dolor, dapibus dapibus justo. Aliquam at commodo mi, volutpat auctor enim. Ut ultricies vitae elit et eleifend. Fusce mollis ut elit eu venenatis. Sed suscipit velit odio, eget venenatis erat commodo non. Sed eu odio finibus, semper quam ut, posuere dui. Integer laoreet pellentesque nunc, sit amet interdum tortor congue at. Duis interdum convallis arcu, vitae posuere purus iaculis congue. Etiam ut sapien nec turpis vehicula ullamcorper. Aenean vel vehicula quam. Suspendisse ut leo non purus faucibus mattis vitae nec neque. Quisque sit amet dolor ut ex volutpat venenatis in ac mauris.</p>
-        <p>Mauris laoreet varius nunc, vel suscipit arcu tempus et. Proin tempor consequat ligula vel molestie. Ut aliquet nisi ut eros aliquet, vitae elementum urna sodales. Etiam iaculis orci lobortis maximus placerat. Sed et sem vel orci eleifend tincidunt. Phasellus eleifend lobortis augue in vulputate. Aliquam erat volutpat. Morbi et lorem nec justo rutrum cursus non eu mi. Praesent quis commodo tellus.</p>
+    <h3 class="paragraph">§ 4</h3>
+    <h3 class="paragraph">INFORMACJE OGÓLNE</h3>
+        <p>1. Sprzedawca w najszerszym dopuszczalnym przez prawo zakresie nie ponosi
+        odpowiedzialności za zakłócenia w tym przerwy w funkcjonowaniu Sklepu spowodowane siłą wyższą, niedozwolonym działaniem osób trzecich lub niekompatybilnością Sklepu internetowego z infrastrukturą techniczną Klienta.</p>
+        <p>2. Przeglądanie asortymentu Sklepu nie wymaga zakładania Konta. Składanie
+        zamówień przez Klienta na Produkty znajdujące się w asortymencie Sklepu możliwe
+        jest albo po założeniu Konta zgodnie z postanowieniami § 6 Regulaminu albo przez
+        podanie niezbędnych danych osobowych i adresowych umożliwiających realizację
+        Zamówienia bez zakładania Konta.</p>
+        <p>3. Ceny podane w Sklepie są podane w polskich złotych i są cenami brutto
+        (uwzględniają podatek VAT).</p>
+        <p>4. Na końcową (ostateczną) kwotę do zapłaty przez Klienta składa się cena za Produkt
+        oraz koszt dostawy (w tym opłaty za transport, dostarczenie i usługi pocztowe), o
+        której Klient jest informowany na stronach Sklepu w trakcie składania Zamówienia, w
+        tym także w chwili wyrażenia woli związania się Umową Sprzedaży.</p>
+        <p>5. W przypadku Umowy obejmującej prenumeratę lub świadczenie usług na czas
+        nieoznaczony końcową (ostateczną) ceną jest łączna cena obejmująca wszystkie
+        płatności za okres rozliczeniowy.</p>
+        <p>6. Gdy charakter przedmiotu Umowy nie pozwala, rozsądnie oceniając, na
+        wcześniejsze obliczenie wysokości końcowej (ostatecznej) ceny, informacja o
+        sposobie, w jaki cena będzie obliczana, a także o opłatach za transport,
+        dostarczenie, usługi pocztowe oraz o innych kosztach, będzie podana w Sklepie w
+        opisie Produktu.</p>
 
-    <h3 style="font-weight: bold">§ 5 PŁATNOŚCI</h3>
-        <p>Mauris laoreet varius nunc, vel suscipit arcu tempus et. Proin tempor consequat ligula vel molestie. Ut aliquet nisi ut eros aliquet, vitae elementum urna sodales. Etiam iaculis orci lobortis maximus placerat. Sed et sem vel orci eleifend tincidunt. Phasellus eleifend lobortis augue in vulputate. Aliquam erat volutpat. Morbi et lorem nec justo rutrum cursus non eu mi. Praesent quis commodo tellus.</p>
+    <h3 class="paragraph">§ 5</h3>
+    <h3 class="paragraph">ZAKŁADANIE KONTA W SKLEPIE</h3>
+        <p>1. Aby założyć Konto w Sklepie, należy wypełnić Formularz rejestracji.</p>
+        <p>2. Założenie Konta w Sklepie jest darmowe.</p>
+        <p>3. Logowanie się na Konto odbywa się poprzez podanie loginu i hasła ustanowionych w
+        Formularzu rejestracji.</p>
+        <p>4. Klient ma możliwość w każdej chwili, bez podania przyczyny i bez ponoszenia z tego
+        tytułu jakichkolwiek opłat usunąć Konto poprzez wysłanie stosownego żądania do
+        Sprzedawcy, w szczególności za pośrednictwem poczty elektronicznej lub pisemnie
+        na adresy podane w § 3.</p>
 
-    <h3 style="font-weight: bold">§ 6 REALIZACJA ZAMÓWIENIA</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elit eros, luctus eu ornare eget, porttitor in sem. Donec at mi metus. Cras id magna non turpis placerat dignissim. Curabitur iaculis, felis nec elementum efficitur, ex magna tristique nulla, non mattis libero neque vel sem. Integer gravida urna quis vehicula venenatis. Curabitur tincidunt egestas ante nec porta. Vestibulum a sem velit. Proin fringilla nulla in egestas tristique.</p>
+    <h3 class="paragraph">§ 6</h3>
+    <h3 class="paragraph">ZASADY SKŁADANIA ZAMÓWIENIA</h3>
+        <p>W celu złożenia Zamówienia należy:<p>
+        <li>1. zalogować się do Sklepu;</li>
+        <li>2. wybrać Produkt będący przedmiotem Zamówienia, a następnie kliknąć przycisk „Do
+        koszyka” (lub równoznaczny);</li>
+        <li>3. kliknąć przycisk “Zapłać”</li>
+        <li>4. wybrać jeden z dostępnych sposobów dostawy, a następnie opłacić zamówienie w określonym terminie, z zastrzeżeniem § 8 pkt 3.</li>
 
-        <p>Ut tellus est, interdum in velit eget, dictum consectetur dui. Nullam rutrum eleifend dui ac congue. Ut gravida orci eu accumsan mattis. Donec condimentum lectus nec euismod lobortis. Quisque ac purus tempus, iaculis massa nec, posuere ligula. Pellentesque laoreet purus lacus, sit amet lacinia justo placerat id. Cras pulvinar hendrerit neque. Donec et
-        mauris enim. Fusce pharetra in odio id sollicitudin. Integer faucibus sem eget laoreet ultrices. Fusce et nisl dolor. In in ex velit. Ut elementum accumsan diam, sed auctor tortor suscipit ac.</p>
+    <h3 class="paragraph">§ 7</h3>
+    <h3 class="paragraph">OFEROWANE METODY DOSTAWY I PŁATNOŚCI</h3>
+        <p>1. Klient może skorzystać z następujących metod dostawy lub odbioru zamówionego
+        Produktu:<p>
+        <li>Odbiór osobisty</li>
+        <li>Kurier - bez wniesienia</li>
+        <li>Kurier - z wniesieniem</li>
+        <p>2. Klient może skorzystać z następujących metod płatności:<p>
+        <li>Płatność kartą płatniczą</li>
+        <li>Płatność przelewem na konto Sprzedawcy</li>
+        <p>3. Szczegółowe informacje na temat metod dostawy oraz akceptowalnych metod płatności
+        znajdują się za stronach Sklepu.</p>
 
-    <h3 style="font-weight: bold">§ 7 PRAWO ODSTĄPIENIA OD UMOWY</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec justo commodo, ultrices ipsum in, imperdiet lectus. Vivamus ac massa nec sem fermentum fermentum. Suspendisse fermentum tincidunt lobortis. Duis quis hendrerit enim. Vestibulum at quam sed nisl fermentum malesuada. Donec sodales dignissim nunc nec ultrices. Cras molestie malesuada elit et placerat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec nec accumsan ante. Aliquam in magna nunc. Nunc fermentum risus ante, vitae dictum risus tempor quis. Ut porta diam quam. Phasellus in urna eu ipsum euismod ultricies non quis diam.<p>
+    <h3 class="paragraph">§ 8</h3>
+    <h3 class="paragraph">WYKONANIE UMOWY SPRZEDAŻY</h3>
+        <p>1. Zawarcie Umowy Sprzedaży między Klientem a Sprzedawcą następuje po
+        uprzednim złożeniu przez Klienta Zamówienia za pomocą Formularza zamówienia w
+        Sklepie internetowym zgodnie z § 7 Regulaminu.</p>
+        <p>2. Po złożeniu Zamówienia Sprzedawca niezwłocznie potwierdza jego otrzymanie oraz
+        jednocześnie przyjmuje Zamówienie do realizacji. Potwierdzenie otrzymania
+        Zamówienia i jego przyjęcie do realizacji następuje poprzez przesłanie przez
+        Sprzedawcę Klientowi stosownej wiadomości e-mail na podany w trakcie składania
+        Zamówienia adres poczty elektronicznej Klienta, która zawiera co najmniej
+        oświadczenia Sprzedawcy o otrzymaniu Zamówienia i o jego przyjęciu do realizacji
+        oraz potwierdzenie zawarcia Umowy Sprzedaży. Z chwilą otrzymania przez Klienta
+        powyższej wiadomości e-mail zostaje zawarta Umowa Sprzedaży między Klientem a
+        Sprzedawcą.</p>
+        <p>3. W przypadku wyboru przez Klienta płatności przelewem albo płatności kartą płatniczą, Klient
+        obowiązany jest do dokonania płatności w terminie 7 dni kalendarzowych od dnia
+        zawarcia Umowy Sprzedaży - w przeciwnym razie zamówienie zostanie anulowane</p>
+        <p>4. Jeżeli Klient wybrał sposób dostawy inny niż odbiór osobisty, Produkt zostanie
+        wysłany przez Sprzedawcę w terminie wskazanym w jego opisie (z zastrzeżeniem
+        ustępu 5 niniejszego paragrafu), w sposób wybrany przez Klienta podczas składania
+        Zamówienia.</p>
+        <p>5. A W przypadku zamówienia Produktów o różnych terminach dostawy, terminem
+        dostawy jest najdłuższy podany termin. Klient ma
+        możliwość żądania dostarczenia Produktów częściami lub też dostarczenia wszystkich
+        Produktów po skompletowaniu całego zamówienia.</p>
+        <p>6. Początek biegu terminu dostawy Produktu do Klienta liczy się w następujący sposób: W przypadku wyboru przez Klienta sposobu płatności przelewem lub kartą płatniczą - od dnia uznania rachunku bankowego Sprzedawcy.
+        <p>7. W przypadku wyboru przez Klienta odbioru osobistego Produktu, Produkt będzie gotowy
+        do odbioru przez Klienta w terminie wskazanym w opisie Produktu. O gotowości Produktu do
+        odbioru Klient zostanie dodatkowo poinformowany przez Sprzedawcę poprzez przesłanie
+        stosownej wiadomości e-mail na podany w trakcie składania Zamówienia adres poczty
+        elektronicznej Klienta.</p>
 
-    <h3 style="font-weight: bold">§ 8 WYJĄTKI OD PRAWA ODSTĄPIENIA OD UMOWY</h3>
-        <p>Suspendisse sit amet fringilla dolor, eget gravida lorem. Vestibulum vehicula neque vel turpis bibendum, vulputate luctus tellus egestas. Aliquam malesuada et risus sed tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel sapien quis nisi auctor rutrum a a nibh. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce vel odio ullamcorper, cursus mi sit amet, pretium dolor.</p>
+    <h3 class="paragraph">§ 9</h3>
+    <h3 class="paragraph">PRAWO ODSTĄPIENIA OD UMOWY</h3>
+        <p>1. Konsument może w terminie 14 dni odstąpić od Umowy Sprzedaży bez podania
+        jakiejkolwiek przyczyny.<p>
+        <p>2. Bieg terminu określonego w ust. 1 rozpoczyna się od dostarczenia Produktu
+        Konsumentowi lub wskazanej przez niego osobie innej niż przewoźnik.<p>
+        <p>3. W przypadku Umowy, która obejmuje wiele Produktów, które są dostarczane
+        osobno, partiami lub w częściach, termin wskazany w ust. 1 biegnie od dostawy
+        ostatniej rzeczy, partii lub części.<p>
+        <p>4. W przypadku Umowy, która polega na regularnym dostarczaniu Produktów przez
+        czas oznaczony (prenumerata), termin wskazany w ust. 1 biegnie od objęcia w
+        posiadanie pierwszej z rzeczy.<p>
+        <p>5. Konsument może odstąpić od Umowy, składając Sprzedawcy oświadczenie o
+        odstąpieniu od Umowy. Do zachowania terminu odstąpienia od Umowy wystarczy
+        wysłanie przez Konsumenta oświadczenia przed upływem tego terminu.</p>
 
-    <h3 style="font-weight: bold">§ 9 REKLAMACJE</h3>
-        <p>Vestibulum consequat tellus lacus, a pellentesque sem vulputate in. Nam aliquam velit ut tempor bibendum. Vestibulum orci sapien, facilisis id ipsum ut, vehicula vehicula diam. Mauris sagittis malesuada mauris ut scelerisque. Sed facilisis gravida ligula sit amet vulputate. Ut lorem risus, faucibus nec dignissim ac, cursus id magna. Mauris congue quis risus ullamcorper posuere. Sed pretium tortor quis enim semper, et auctor diam posuere.</p>
+    <h3 class="paragraph">§ 10</h3>
+    <h3 class="paragraph">REKLAMACJA I GWARANCJA</h3>
+        <p>1. Umową Sprzedaży objęte są nowe Produkty.</p>
+        <p>2. Sprzedawca jest obowiązany dostarczyć Klientowi rzecz wolną od wad.</p>
+        <p>3. W przypadku wystąpienia wady zakupionego u Sprzedawcy towaru Klient ma prawo
+        do reklamacji w oparciu o przepisy dotyczące rękojmi w kodeksie cywilnym.</p>
+        <p>4. Reklamację należy zgłosić pisemnie lub drogą elektroniczną na podane w niniejszym
+        Regulaminie adresy Sprzedawcy.</p>
+        <p>5. Zaleca się, aby w reklamacji zawrzeć m.in. zwięzły opis wady, okoliczności (w tym
+        datę) jej wystąpienia, dane Klienta składającego reklamację, oraz żądanie Klienta w
+        związku z wadą towaru.</p>
+        <p>6. Sprzedawca ustosunkuje się do żądania reklamacyjnego niezwłocznie, nie później
+        niż w terminie 14 dni, a jeśli nie zrobi tego w tym terminie, uważa się, że żądanie
+        Klienta uznał za uzasadnione.</p>
+        <p>7. Towary odsyłane w ramach procedury reklamacyjnej należy wysyłać na adres
+        podany w § 3 niniejszego Regulaminu.</p>
+        <p>8. W przypadku, gdy na Produkt została udzielona gwarancja, informacja o niej, a także
+        jej treść, będą zawarte przy opisie Produktu w Sklepie.</p>
+        <p></p>
 
-    <h3 style="font-weight: bold">§ 10 DANE OSOBOWE</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius eu augue ut porttitor. Curabitur volutpat eleifend porttitor. Suspendisse at placerat ex, in mollis risus. Nam eleifend lectus non sagittis auctor. Vivamus vitae viverra sem. Pellentesque ultrices in ante a tincidunt. Sed non aliquet erat. Mauris scelerisque magna dui, at imperdiet lorem porttitor vitae. Sed mollis ante quis diam scelerisque elementum.</p>
+    <h3 class="paragraph">§ 11</h3>
+    <h3 class="paragraph">DANE OSOBOWE W SKLEPIE INTERNETOWYM</h3>
+        <p>1. Administratorem danych osobowych Klientów zbieranych za pośrednictwem Sklepu
+        internetowego jest Sprzedawca.</p>
+        <p>2. Dane osobowe Klientów zbierane przez administratora za pośrednictwem Sklepu
+        internetowego zbierane są w celu realizacji Umowy Sprzedaży, a jeżeli Klient wyrazi na to
+        zgodę - także w celu marketingowym.</p>
+        <p>3. Odbiorcami danych osobowych Klientów Sklepu internetowego mogą być:
+        a. W przypadku Klienta, który korzysta w Sklepie internetowym ze sposobu dostawy
+        przesyłką pocztową lub przesyłką kurierską, Administrator udostępnia zebrane dane
+        osobowe Klienta wybranemu przewoźnikowi lub pośrednikowi realizującemu
+        przesyłki na zlecenie Administratora.
+        b. W przypadku Klienta, który korzysta w Sklepie internetowym ze sposobu płatności
+        elektronicznych lub kartą płatniczą Administrator udostępnia zebrane dane osobowe
+        Klienta, wybranemu podmiotowi obsługującemu powyższe płatności w Sklepie
+        internetowym.</p>
+        <p>4. Klient ma prawo dostępu do treści swoich danych oraz ich poprawiania.</p>
+        <p>5. Podanie danych osobowych jest dobrowolne, aczkolwiek niepodanie wskazanych w
+        Regulaminie danych osobowych niezbędnych do zawarcia Umowy Sprzedaży skutkuje
+        brakiem możliwości zawarcia tejże umowy</p>
 
-    <h3 style="font-weight: bold">§ 11 ZASTRZEŻENIA</h3>
-        <p>Curabitur vel magna ex. Etiam lectus mi, pulvinar id pretium ac, euismod et nisi. Sed cursus mattis maximus. Proin lorem est, varius eget blandit et, accumsan eget orci. Ut dignissim aliquet enim, sit amet gravida ex pellentesque ac. Morbi condimentum, odio ultricies ultrices porta, felis nisi congue nibh, tincidunt finibus ante ipsum nec ante. Nam ut ornare ante.</p>
-
-    <h3 style="font-weight: bold">§ 12 POSTANOWIENIA DOTYCZĄCE KUPUJĄCYCH NIEBĘDĄCYCH KONSUMENTAMI</h3>
-        <p>In vitae efficitur risus. Pellentesque non nibh non velit consequat lobortis. Proin sed sapien sapien. Sed congue vel augue consectetur mollis. Proin vel massa sit amet augue porta consectetur. Pellentesque vel ante ac felis feugiat sollicitudin id tempus justo. Aliquam erat volutpat. Donec sed elit rhoncus, mollis felis in, semper justo. Phasellus tincidunt quis nulla at faucibus. Praesent semper justo neque, vel luctus dolor sagittis a. Duis suscipit velit condimentum laoreet interdum. In porttitor suscipit libero a commodo.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet libero id interdum interdum. Mauris sed diam sed ante consectetur bibendum nec vitae ligula. Nunc sem quam, tempus vitae risus id, ornare ultrices urna. Integer lacinia posuere volutpat. Suspendisse rhoncus iaculis pellentesque. Pellentesque in odio dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam sodales, sem vitae lobortis condimentum, lectus lacus ornare dolor, sit amet scelerisque lectus risus non nunc. Nam at est at quam lobortis aliquam. Nam eget lectus felis. Praesent ut urna congue, posuere felis cursus, dictum tellus. Integer mollis dui vitae quam tempor aliquam. Aliquam non turpis justo.</p>
+    <h3 class="paragraph">§ 12</h3>
+    <h3 class="paragraph">POSTANOWIENIA KOŃCOWE</h3>
+        <p>1. Umowy zawierane poprzez Sklep internetowy zawierane są w języku polskim.</p>
+        <p>2. Sprzedawca zastrzega sobie prawo do dokonywania zmian Regulaminu z ważnych
+        przyczyn to jest: zmiany przepisów prawa, zmiany sposobów płatności i dostaw - w zakresie,
+        w jakim te zmiany wpływają na realizację postanowień niniejszego Regulaminu. O każdej
+        zmianie Sprzedawca poinformuje Klienta z co najmniej 7 dniowym wyprzedzeniem.</p>
+        <p>3. W sprawach nieuregulowanych w niniejszym Regulaminie mają zastosowanie
+        powszechnie obowiązujące przepisy prawa polskiego, w szczególności: Kodeksu cywilnego;
+        ustawy o świadczeniu usług drogą elektroniczną; ustawy o prawach konsumenta, ustawy o
+        ochronie danych osobowych.</p>
+        <p>4. Klient ma prawo skorzystać z pozasądowych sposobów rozpatrywania reklamacji i
+        dochodzenia roszczeń. W tym celu może złożyć skargę za pośrednictwem unijnej platformy
+        internetowej ODR dostępnej pod adresem: http://ec.europa.eu/consumers/odr/</p>
 </div>
+<style>
+    .word {
+        font-weight: bold;
+    }
+    .paragraph {
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
 @endsection
