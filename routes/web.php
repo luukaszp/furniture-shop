@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -23,3 +26,23 @@ Route::get('/', [ProductController::class, 'mainDisplay'], function () {
 Route::get('/new-password/{id}', [AuthController::class, 'newPassword'])->name('new-password');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/password/reset', [AuthController::class, 'passwordReset']);
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/show', [CartController::class, 'show'])->name('cart.show');
+
+Route::prefix('about')->group( function () {
+    Route::get('/contact', function () {
+        return view('footer.about.contact');
+    });
+});
+
+Route::prefix('admin_panel')->group( function () {
+        Route::get('/products', [ProductController::class, 'index']);
+        Route::get('/products/add', [SubcategoryController::class, 'getAll']);
+        Route::get('/categories/add', [CategoryController::class, 'addCategoryView']);
+        Route::get('/subcategories/add', [CategoryController::class, 'getAllSub']);
+});
+
+Route::get('product/{id}', [ProductController::class, 'showProduct'])->name('product.index');
+

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     @if ($errors->any())
-    <div class="alert alert-danger col-6" style="text-align: center">
+    <div class="alert alert-danger">
         <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
         <ul>
             @foreach ($errors->all() as $error)

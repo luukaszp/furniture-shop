@@ -4,14 +4,14 @@
 <div class="container">
     <div class="items" style="text-align: center; justify-content: center">
         @include('menu')
-        <div class="row mt-3 mb-3" style="display: inline-flex">
+        <div class="row mt-3 mb-3">
             @isset($products)
-            <div class="mb-3">
+            <div class="mb-3" style="text-align: center; justify-content: center;">
                 <button class="rounded-pill btn-light" style="text-decoration: none; color:black; border: 1px solid black" onclick="history.back(-1)"><i class="fas fa-arrow-circle-left"></i> Powrót</button>
             </div>
             @forelse($products as $product)
             <div class="col" style="justify-content: center; display: flex">
-                <div class="card mb-3" style="width: 18rem;">
+                <div class="card mb-3" style="width: 18rem; text-align: center">
                     <a href="/product/{{ $product->id }}">
                         <img src="../storage/{{ $product->photo }}" class="card-img-top" alt="armchair">
                     </a>
@@ -23,7 +23,7 @@
                 </div>
             </div>
             @empty
-            <div>
+            <div style="text-align: center">
                 <h1>Brak produktów w sklepie</h1>
             </div>
             @endforelse

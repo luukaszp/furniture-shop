@@ -23,13 +23,13 @@
         <div class="product-info">
             <div class="row text-center">
                 @forelse($products as $product)
-                <div class="col-xl-6 col-sm-6 mb-5">
-                    <div class="row me-1" style="width: 30rem">
-                        <img src="../storage/{{ $product->photo }}" class="card-img-top" alt="armchair">
+                <div class="col-xl-5 col-sm-5 mb-5">
+                    <div class="row">
+                        <img src="../storage/{{ $product->photo }}" class="img-fluid" alt="armchair">
                     </div>
                 </div>
-                <div class="col" style="text-align: left">
-                    <h1 class="pb-3" >{{ $product->name }}</h1>
+                <div class="informations col">
+                    <h1 class="pb-3" style="text-align: center">{{ $product->name }}</h1>
                     <hr class="mb-4">
                     <div class="row mb-5">
                         <div class="col">
@@ -64,7 +64,7 @@
                             <h4>Rozmiar</h4>
                             <h2 style="font-weight: bold">{{ $product->size }}</h2>
                         </div>
-                        <div class="form-group pb-3 col-3">
+                        <div class="quantity form-group pb-3">
                             <label for="quantity">Ilość</label>
                             <input type="text" class="form-control" id="quantity" value="1" name="quantity" required>
                         </div>
@@ -82,7 +82,7 @@
                 </div>
                 <hr>
                 <div class="description" style="text-align: left">
-                    <h2 class="pb-4" style="font-weight: bold">Opis produktu</h2>
+                    <h2 class="pb-4" style="font-weight: bold; text-align: center">Opis produktu</h2>
                     <p style="text-align: justify"> {{$product->description }}</p>
                 </div>
                 <hr>
@@ -95,7 +95,7 @@
                     @endguest
                     @auth
                     @if($ratings->contains('user_id', Auth::user()->id))
-                    <h1 class="pt-2 pb-4">Dziękujemy za wystawienie opinii!</h1>
+                    <h1 class="pt-2 pb-4" style="font-weight: bold">Dziękujemy za wystawienie opinii!</h1>
                     @else
                     <h3>Wystaw opinię</h3>
                     <form style="justify-content: center; text-align: center; display: flex" method="POST" action="/rating/add">
@@ -127,8 +127,8 @@
                     <div class="list-group" style="text-align: left">
                         @forelse($ratings as $rating)
                             <a class="list-group-item list-group-item-action" aria-current="true">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <div class="comment-header" style="display: inline-flex">
+                                <div class="d-flex justify-content-between">
+                                    <div class="comment-header">
                                         <h5 class="mb-1 pe-4">{{ $rating->users->name }} {{ $rating->users->surname }}</h5>
                                         <div class="rating-star" style="color: darkorange">
                                             @for($i = 0; $i < $rating->rate; $i++)
@@ -140,7 +140,7 @@
                                         </div>
                                     </div>
                                     @auth
-                                    <small class="text-muted">
+                                    <small class="text-muted" style="display: block ruby">
                                         @if($rating->user_id == Auth::user()->id || auth()->user()->roles->is_admin === true)
                                             <button class="btn editbtn" id="editRating" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id={{ $rating->id }}><i class="fas fa-pencil-alt" style="font-size: 1.3em"></i></button>
                                             <button class="btn deletebtn" id="deleteRating" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id={{ $rating->id }}><i class="fas fa-trash-alt" style="font-size: 1.3em"></i></button>
@@ -153,7 +153,7 @@
                             </a>
                         @empty
                         <hr>
-                            <h2 class="pt-1" style="font-weight: bold; text-align: center">Brak opinii. Wystaw pierwszą opinię dla tego produktu!</h2>
+                            <h2 class="pt-2" style="font-weight: bold; text-align: center">Brak opinii. Wystaw pierwszą opinię dla tego produktu!</h2>
                         @endforelse
                     </div>
                 </div>
@@ -171,10 +171,10 @@
                                     @method('PUT')
                                     <div class="col-12">
 
-                                        <div class="form-group row pt-3">
+                                        <div class="form-group row pt-3" style="text-align: center; justify-content: center">
                                             <label for="name" class="col-md-4 col-form-label text-md-right">Ocena</label>
 
-                                            <div class="col-4 star-rating">
+                                            <div class="star-rating">
                                                 <input type="radio" id="5-stars" name="rate" value="5" />
                                                 <label for="5-stars" class="star">&#9733;</label>
                                                 <input type="radio" id="4-stars" name="rate" value="4" />
@@ -199,7 +199,7 @@
                                     <hr>
                                     <input type="hidden" id="product_id" name="product_id" value="{{ $rating->product_id }}">
                                     <div class="col-12 pt-3" style="justify-content: center; text-align: center;">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
                                             aria-label="Close">Zamknij</button>
                                         <button type="submit" class="btn btn-success">Edytuj opinię</button>
                                     </div>
@@ -264,13 +264,35 @@
         ul {
             list-style-type: none;
         }
+
+        .informations {
+            text-align: left;
+        }
+
+        .quantity {
+            width: 25%;
+        }
+
+        .comment-header {
+            display: inline-flex;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .informations {
+                text-align: center;
+            }
+
+            .quantity {
+                width: 100%;
+            }
+
+            .comment-header {
+                display: inline-block;
+            }
+        }
 </style>
 
 <script>
-    /*document.querySelector("#addProductToastBtn").onclick = function() {
-        new bootstrap.Toast(document.querySelector('#addProductToast')).show();
-    }*/
-
     $(document).on("hidden.bs.modal", "#editModal", function () {
         $(this).find("input[type=radio]")
         .prop("checked", "")
