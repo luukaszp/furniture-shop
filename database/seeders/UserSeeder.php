@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'zip_code' => '51-218',
             'city' => 'Wrocław',
             'province' => 'dolnośląskie',
-            'phone_number' => '667 744 888',
+            'phone_number' => '667744888',
             'password' => bcrypt('ZAQ!2wsxzaq1@WSX')
         ]);
 

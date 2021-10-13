@@ -2,7 +2,7 @@
     <div class="container p-4 pb-0">
         <hr class="my-4" style="color: black">
         <div class="row text-black py-5">
-            <div class="col-sm">
+            <div class="col-sm pt-3 pb-3">
                 <div class="list-group list-group-flush">
                     <p style="font-weight: bold">POMOC</p>
                     <a href="/help/returns_complains" class="list-group-item list-group-item-action list-group-item-secondary">Zwroty i reklamacje</a>
@@ -10,20 +10,20 @@
                     <a href="/help/regulations" class="list-group-item list-group-item-action list-group-item-secondary">Regulamin</a>
                 </div>
             </div>
-            <div class="col-sm">
+            <div class="col-sm pt-3 pb-3">
                 <div class="list-group list-group-flush">
                     <p style="font-weight: bold">PŁATNOŚCI I DOSTAWA</p>
                     <a href="/payments_delivery/payment" class="list-group-item list-group-item-action list-group-item-secondary">Formy płatności</a>
                     <a href="/payments_delivery/delivery" class="list-group-item list-group-item-action list-group-item-secondary">Czas i koszty dostawy</a>
                 </div>
             </div>
-            <div class="col-sm">
+            <div class="col-sm pt-3 pb-3">
                 <div class="list-group list-group-flush">
                     <p style="font-weight: bold">INFORMACJE</p>
                     <a href="/info/privacy_policy" class="list-group-item list-group-item-action list-group-item-secondary">Polityka prywatności</a>
                 </div>
             </div>
-            <div class="col-sm">
+            <div class="col-sm pt-3 pb-3">
                 <div class="list-group list-group-flush">
                     <p style="font-weight: bold">O NAS</p>
                     <a href="/about/contact" class="list-group-item list-group-item-action list-group-item-secondary">Kontakt i dane firmy</a>
@@ -84,6 +84,6 @@
     </div>>
     <div class="text-center p-3 bg-dark" style="background-color: rgba(0, 0, 0, 0.2);">
         Copyrights © 2021 -
-        <a class="text-white" href="https://sklep-meblowy.pl/">Sklep Meblowy</a>
+        <a class="text-white" href="https://furniture-shop-web.herokuapp.com/">Sklep Meblowy</a>
     </div>
   </footer>

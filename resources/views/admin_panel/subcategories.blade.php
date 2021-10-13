@@ -2,13 +2,22 @@
 
 @section('content')
 <div class="container">
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand">Podkategorie</a>
-            <form class="d-flex">
-                <input class="form-control me-2" id="search" type="search" placeholder="Szukaj" aria-label="Search">
-            </form>
-            <a href="./subcategories/add" class="btn btn-light" type="submit">Dodaj podkategorię</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTable"
+                aria-controls="navbarTable" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTable" style="justify-content: space-between">
+                <ul class="navbar-nav pb-2 pt-2">
+                    <form class="d-flex">
+                        <input class="form-control me-2" id="search" type="search" placeholder="Szukaj" aria-label="Search">
+                    </form>
+                </ul>
+                <ul class="navbar-nav" style="width: 180px">
+                    <a href="./subcategories/add" class="btn btn-light" type="submit">Dodaj podkategorię</a>
+                </ul>
         </div>
     </nav>
     <table class="table table-striped" data-toggle="table" data-search="true" data-search-selector="#search" style="text-align: center">
@@ -65,9 +74,9 @@
                         <hr>
                         <input type="hidden" id="subcategory_id" name="subcategory_id" value="">
                         <div class="col-12 pt-3" style="justify-content: center; text-align: center;">
-                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal"
+                            <button type="button" class="btn btn-danger me-2" data-bs-dismiss="modal"
                                 aria-label="Close">Zamknij</button>
-                            <button type="submit" class="btn btn-outline-dark ms-2">Edytuj podkategorię</button>
+                            <button type="submit" class="btn btn-success ms-2">Edytuj podkategorię</button>
                         </div>
                     </form>
                 </div>

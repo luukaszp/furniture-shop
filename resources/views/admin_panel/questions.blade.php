@@ -10,15 +10,13 @@
             </form>
         </div>
     </nav>
-    <table class="table table-striped" data-toggle="table" data-search="true" data-search-selector="#search"
-        style="text-align: center">
+    <table class="table table-striped" data-toggle="table" data-search="true" data-search-selector="#search" style="text-align: center">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Imię</th>
                 <th scope="col">Nazwisko</th>
                 <th scope="col">E-mail</th>
-                <th scope="col">Zapytanie</th>
                 <th scope="col">Akcje</th>
             </tr>
         </thead>
@@ -29,10 +27,13 @@
                 <td>{{ $question->name }}</td>
                 <td>{{ $question->surname }}</td>
                 <td>{{ $question->email }}</td>
-                <td>{{ $question->question }}</td>
                 <td>
                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id={{ $question->id }}><i class="fas fa-trash"></i></button>
                 </td>
+            </tr>
+            <tr>
+                <th data-field="question" data-searchable="false">Opis</th>
+                <td colspan="12">{{ $question->question }}</td>
             </tr>
             @empty
             <th scope="col" colspan="3" class="font-weight-bold text-center">Brak danych</th>
