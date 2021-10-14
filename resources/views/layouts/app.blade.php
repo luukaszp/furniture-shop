@@ -26,7 +26,7 @@
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Sklep meblowy" />
         <meta property="og:description" content="Sklep meblowy" />
-        <meta property="og:url" content="https://zwierzogram.pl/" />
+        <meta property="og:url" content="https://sklep-meblowy.pl/" />
         <meta property="og:site_name" content="Sklep meblowy" />
 
         <!-- Fonts -->
