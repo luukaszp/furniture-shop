@@ -5,6 +5,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +31,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/password/reset', [AuthController::class, 'passwordReset']);
 Route::get('/products', [ProductController::class, 'index']);
-Route::get('/show', [CartController::class, 'show'])->name('cart.show');
+Route::get('/cart/show', [CartController::class, 'show'])->name('cart.show');
+Route::get('payment', [PaymentController::class, 'payment'])->name('payment');
+Route::post('order/store', [OrderController::class, 'store']);
 
 Route::prefix('about')->group( function () {
     Route::get('/contact', function () {
@@ -45,4 +49,3 @@ Route::prefix('admin_panel')->group( function () {
 });
 
 Route::get('product/{id}', [ProductController::class, 'showProduct'])->name('product.index');
-

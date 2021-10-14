@@ -10,7 +10,7 @@
                     </span>
                 </a>
             </div>
-            <div class="card-center" style="display: inline-flex">
+            <div class="card-center">
                 <div id="carousel-furniture" class="row g-0 carousel slide col-md-6" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -36,4 +36,14 @@
             </div>
         </div>
     </div>
+<style>
+    .card-center {
+        display: inline-flex;
+    }
+    @media only screen and (max-width: 600px) {
+        .card-center {
+            display: block;
+        }
+    }
+</style>
 @endsection

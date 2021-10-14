@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container col-5" style="border: 5px solid black">
+<div class="container col-md-5" style="border: 5px solid black">
     <div class="row text-center">
         <h2 class="card-header mt-1" style="font-family: Copperplate">Dane wysyłkowe</h2>
         <hr>
@@ -150,8 +150,8 @@
                                 </div>
                             </div>
                             <div class="modal-footer" style="justify-content: center">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zamknij</button>
-                                <button type="submit" class="btn btn-outline-dark">Zapisz zmiany</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zamknij</button>
+                                <button type="submit" class="btn btn-success">Zapisz zmiany</button>
                             </div>
                         </form>
                         @empty
