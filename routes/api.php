@@ -24,7 +24,7 @@ use App\Http\Controllers\PaymentController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::middleware('auth:sanctum')->get("/refresh", [AuthController::class, 'refresh']);
+Route::middleware('web')->get("/refresh", [AuthController::class, 'refresh']);
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
@@ -88,7 +88,7 @@ Route::prefix('cart')->group( function () {
 Route::get('product/{id}', [ProductController::class, 'showProduct'])->name('product.index');
 Route::get('product/rating/{id}', [RatingController::class, 'show']);
 
-Route::group(['middleware' => ['auth:sanctum', 'admin']], function () {
+Route::group(['middleware' => ['web', 'admin']], function () {
     Route::prefix('admin_panel')->group( function () {
         Route::get('/orders', [OrderController::class, 'index']);
         Route::get('/products', [ProductController::class, 'index']);
@@ -108,7 +108,7 @@ Route::group(['middleware' => ['auth:sanctum', 'admin']], function () {
     });
 });
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['web']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::delete('/account-delete', [AuthController::class, 'deleteAccount']);
 

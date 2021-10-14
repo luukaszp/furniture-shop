@@ -27,8 +27,8 @@ class Admin
 
         return response()->json(
             [
-            'success' => false,
-            'message' => 'You do not have Administrator permissions.'
+                'success' => false,
+                'message' => 'You do not have Administrator permissions.'
             ], 401
         );
     }

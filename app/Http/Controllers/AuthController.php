@@ -61,8 +61,9 @@ class AuthController extends Controller
                 return redirect('/login')->with('message', 'Zły e-mail lub hasło.');
             }
 
-            $result = $this->authServices->login($request);
+            $token = $this->authServices->login($request);
             $this->productMain();
+
             return redirect('/');
         }
     }
@@ -159,6 +160,6 @@ class AuthController extends Controller
 
         $user->tokens()->delete();
 
-        return response()->json(['token' => $user->createToken($user->name)->plainTextToken]);
+        return response()->json(['token' => $user->createToken($user->name)->accessToken]);
     }
 }
