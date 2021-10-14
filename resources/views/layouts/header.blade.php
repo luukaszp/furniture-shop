@@ -1,5 +1,5 @@
 <header style="display: block; background-color: #F5F5F5">
-    <div class="container">
+    <div class="container" style="display: contents">
         <nav class="py-2 px-3 navbar navbar-expand-lg navbar-light">
             <div class="container-fluid" style="width: 1500px">
                 <a class="navbar-brand" href="{{ url('/') }}">

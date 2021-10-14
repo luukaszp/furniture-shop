@@ -1,24 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    @if (session('message'))
-    <div class="alert alert-success col-4" role="alert" style="text-align: center">
-        <div>
-            <i class="fas fa-check-circle"></i> {{ session('message') }}
-            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
-        </div>
-    </div>
-    @endif
-    @if (session('error'))
-    <div class="alert alert-danger col-5" role="alert" style="text-align: center">
-        <div>
-            <i class="fas fa-exclamation-circle"></i> {{ session('error') }}
-            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
-        </div>
-    </div>
-    @endif
     @if ($errors->any())
-    <div class="alert alert-danger col-6" style="text-align: center">
+    <div class="alert alert-danger" style="text-align: center">
         <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
         <ul>
             @foreach ($errors->all() as $error)
@@ -27,13 +11,29 @@
         </ul>
     </div>
     @endif
+    @if (session('message'))
+    <div class="alert alert-success" role="alert" style="text-align: center">
+        <div>
+            <i class="fas fa-check-circle"></i> {{ session('message') }}
+            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        </div>
+    </div>
+    @endif
+    @if (session('error'))
+    <div class="alert alert-danger" role="alert" style="text-align: center">
+        <div>
+            <i class="fas fa-exclamation-circle"></i> {{ session('error') }}
+            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        </div>
+    </div>
+    @endif
     @php ($product_id = [])
     @php ($amount = [])
     @forelse($carts as $cart)
-    <table id="cart" class="table">
+    <table id="cart" class="table" style="text-align: center">
         <thead>
             <tr>
-                <th class="col-6" style="text-align: center">NAZWA PRODUKTU</th>
+                <th class="col-6" style="text-align: center">PRODUKT</th>
                 <th>CENA</th>
                 <th class="col-1" style="text-align: center">ILOŚĆ</th>
                 <th style="text-align: center">KOSZT</th>
@@ -45,9 +45,9 @@
                 <td data-th="Product">
                     <div class="row">
                         <div class="col-sm-3 hidden-xs"><img src="../storage/{{ $cart->options->photo }}" class="thumbnail img-thumbnail" /></div>
-                        <div class="col-sm-9">
-                            @php ($product_id[] = $cart->id)
-                            @php ($amount[] = $cart->qty)
+                        @php ($product_id[] = $cart->id)
+                        @php ($amount[] = $cart->qty)
+                        <div class="additional col-sm-9">
                             <h4 class="nomargin">{{ $cart->name }}</h4>
                             <p>Waga: <span style="font-weight: bold">{{ $cart->weight }} kg</span></p>
                             <p>Kolor: <span style="font-weight: bold">{{ $cart->options->color }}</span></p>
@@ -58,9 +58,9 @@
                 <td data-th="Price">{{ $cart->price }} zł</td>
                 <td data-th="Price" class="text-center">{{ $cart->qty }}</td>
                 <td data-th="Subtotal" class="text-center">{{ number_format($cart->price * $cart->qty, 2) }} zł</td>
-                <td>
+                <td style="text-align: center">
                     <button class="btn btn-success btn-sm editbtn" id="editCart" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id={{ $cart->rowId }}><i class="fas fa-pencil-alt"></i></button>
-                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id={{ $cart->rowId }}><i class="fas fa-trash"></i></button>
+                    <button class="btn btn-danger btn-sm deletebtn" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id={{ $cart->rowId }}><i class="fas fa-trash"></i></button>
                 </td>
             </tr>
             @empty
@@ -78,7 +78,7 @@
         <div class="summary col-6" style="display: inline; text-align: right">
             <div class="order-summary">
                 <p class="summary-info"><span class="title">Koszt: </span><span style="font-weight: bold">{{ $subtotal }}zł</span></p>
-                <div class="form-group pb-3 col-3" style="display: inline-flex">
+                <div class="form-group pb-3 col-md-3" style="display: inline-flex">
                     <label class=" me-2 pt-1" for="delivery">Dostawa:</label>
                     <select class="form-select" id="delivery" name="delivery" style="font-weight: bold; text-align: center; width: 250px" required>
                         <option selected disabled value="">Sposób dostawy</option>
@@ -208,5 +208,18 @@
         });
     });
 </script>
+<style>
+    @media screen and (max-width: 600px){
+        .additional {
+            display: none;
+        }
+        .editbtn {
+            margin-bottom: 10px;
+        }
+        .deletebtn {
+            margin-bottom: 10px;
+        }
+    }
+</style>
 @endsection
 
