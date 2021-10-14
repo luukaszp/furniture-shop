@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     @if (session('message'))
-    <div class="alert alert-success col-6" role="alert" style="text-align: center">
+    <div class="alert alert-success" role="alert" style="text-align: center">
         <div>
             <i class="fas fa-check-circle"></i></i> {{ session('message') }}
             <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
@@ -11,7 +11,7 @@
     </div>
     @endif
     @if ($errors->any())
-    <div class="alert alert-danger col-6" style="text-align: center">
+    <div class="alert alert-danger" style="text-align: center">
         <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
         <ul>
             @foreach ($errors->all() as $error)

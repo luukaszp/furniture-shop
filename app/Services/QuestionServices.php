@@ -14,7 +14,9 @@ class QuestionServices
         $question = new Question();
         $nameSurname = explode(" ", $data->name);
         $question->name = $nameSurname[0];
-        $question->surname = $nameSurname[1];
+        if ($question->surname) {
+            $question->surname = $nameSurname[1];
+        }
         $question->email = $data->email;
         $question->question = $data->question;
         $question->save();
