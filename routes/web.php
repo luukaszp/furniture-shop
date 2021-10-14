@@ -29,9 +29,12 @@ Route::get('/new-password/{id}', [AuthController::class, 'newPassword'])->name('
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/password/reset', [AuthController::class, 'passwordReset']);
+
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/cart/show', [CartController::class, 'show'])->name('cart.show');
+
 Route::get('payment', [PaymentController::class, 'payment'])->name('payment');
 Route::post('order/store', [OrderController::class, 'store']);
 
