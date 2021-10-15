@@ -38,8 +38,7 @@ class AuthServices
     public function login($data)
     {
         $user = User::where('email', $data['email'])->firstOrFail();
-
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('auth_token')->accessToken;
         return $token;
     }
 

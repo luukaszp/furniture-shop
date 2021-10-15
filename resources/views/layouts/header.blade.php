@@ -2,7 +2,7 @@
     <div class="container" style="display: contents">
         <nav class="py-2 px-3 navbar navbar-expand-lg navbar-light">
             <div class="container-fluid" style="width: 1500px">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('https://furniture-shop-web.herokuapp.com') }}">
                     <span style="color: rgb(158, 91, 2)">
                         <i class="fas fa-couch" style="font-size: 2em"></i>
                         <i class="ps-2" style="font-size: 24px; font-family: 'Vegan Style Personal Use', sans-serif;">Sklep meblowy</i>
