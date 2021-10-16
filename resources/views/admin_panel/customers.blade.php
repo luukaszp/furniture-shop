@@ -25,29 +25,37 @@
             </tr>
         </thead>
         <tbody>
+            @forelse($users as $user)
             <tr>
-                <th scope="row">1</th>
-                <td>Łukasz</td>
-                <td>Poterała</td>
-                <td>lukasz.poterala@wp.pl</td>
-                <td>Niedaszów 6A</td>
-                <td>59-407</td>
-                <td>Mściwojów</td>
-                <td>dolnośląskie</td>
-                <td>665544334</td>
+                <th scope="row">{{ $user->id }}</th>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->surname }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->address }}</td>
+                <td>{{ $user->zip_code }}</td>
+                <td>{{ $user->city }}</td>
+                <td>{{ $user->province }}</td>
+                <td>{{ $user->phone_number }}</td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Anna</td>
-                <td>Kowalska</td>
-                <td>anna.kowalska@wp.pl</td>
-                <td>ul. Akacjowa 3B</td>
-                <td>59-400</td>
-                <td>Jawor</td>
-                <td>dolnośląskie</td>
-                <td>665577889</td>
-            </tr>
+            @empty
+            <th scope="col" colspan="9" class="font-weight-bold text-center">Brak danych</th>
+            @endforelse
         </tbody>
     </table>
+
+    <div style="justify-content: center; display: flex; padding-top: 25px">
+        {!! $users->links() !!}
+    </div>
 </div>
+<style>
+    .pagination .page-link {
+        background: black;
+        color: white;
+    }
+
+    .page-item.active .page-link {
+        background: white;
+        color: black;
+    }
+</style>
 @endsection

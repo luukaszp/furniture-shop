@@ -102,9 +102,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
         Route::get('/subcategories', [SubcategoryController::class, 'index']);
         Route::get('/questions', [QuestionController::class, 'index']);
         Route::get('/question/{id}', [QuestionController::class, 'show']);
-        Route::get('/customers', function () {
-            return view('admin_panel.customers');
-        });
+        Route::get('/customers', [UserController::class, 'showAll']);
     });
 });
 

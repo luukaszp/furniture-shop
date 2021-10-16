@@ -39,4 +39,13 @@ class UserController extends Controller
 
         return view('/profile/contact_details', compact('users'));
     }
+
+    /**
+     * Display all users
+     */
+    public function showAll()
+    {
+        $users = User::paginate(10);
+        return view('admin_panel.customers', compact('users'));
+    }
 }
