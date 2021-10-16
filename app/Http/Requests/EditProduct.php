@@ -31,7 +31,7 @@ class EditProduct extends FormRequest
             'size' => ['required'],
             'code_product' => ['required', 'string', 'max:12'],
             'weight' => ['required', 'numeric', 'digits_between:1,5'],
-            'description' => ['required', 'string', 'min:20']
+            'description' => ['required', 'string']
         ];
     }
 

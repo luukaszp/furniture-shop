@@ -28,6 +28,14 @@
         </ul>
     </div>
     @endif
+    @isset ($message)
+    <div class="alert alert-danger" role="alert">
+        <div>
+            <i class="fas fa-exclamation-triangle" style="margin-right: 10px"></i></i> {{ $message }}
+            <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
+        </div>
+    </div>
+    @endisset
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card" style="text-align: center">

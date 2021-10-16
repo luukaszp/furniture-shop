@@ -2,24 +2,14 @@
 
 @section('content')
 <div class="container">
-    @if (session('message'))
+    @isset ($message)
     <div class="alert alert-success" role="alert" style="text-align: center">
         <div>
-            <i class="fas fa-check-circle"></i></i> {{ session('message') }}
+            <i class="fas fa-check-circle" style="margin-right: 10px"></i></i> {{ $message }}
             <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
         </div>
     </div>
-    @endif
-    @if ($errors->any())
-    <div class="alert alert-danger" style="text-align: center">
-        <i class="fas fa-times-circle" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 30px"></i>
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li><i class="fas fa-exclamation-triangle"></i> {{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+    @endisset
     <div class="row text-center">
         <div class="col-xl-3 col-sm-6 mb-5">
             <div class="row ms-1 me-1">

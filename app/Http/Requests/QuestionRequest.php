@@ -24,9 +24,9 @@ class QuestionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:50'],
-            'email' => ['required', 'string', 'max:60'],
-            'question' => ['required', 'string', 'min:20']
+            'name' => ['required', 'string'],
+            'email' => ['required', 'string'],
+            'question' => ['required', 'string']
         ];
     }
 
@@ -40,9 +40,7 @@ class QuestionRequest extends FormRequest
         return [
             'name.required' => 'Imię i nazwisko jesy wymagane!',
             'email.required' => 'E-mail jest wymagany!',
-            'question.required' => 'Pytanie jest wymagane!',
-            '*.max' => 'Wprowadzono zbyt dużą ilość znaków!',
-            'question.min' => 'Pytanie powinno być dłuższe!'
+            'question.required' => 'Pytanie jest wymagane!'
         ];
     }
 }

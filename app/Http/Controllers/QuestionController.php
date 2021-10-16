@@ -23,7 +23,8 @@ class QuestionController extends Controller
     {
         if ($request->validated()) {
             $result = $this->questionServices->create($request);
-            return redirect('/about/contact')->with('message', 'Zapytanie zostało wysłane!');
+            $message = 'Zapytanie zostało wysłane!';
+            return view('footer.about.contact', ['message' => $message]);
         }
     }
 

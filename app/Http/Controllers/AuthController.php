@@ -58,7 +58,8 @@ class AuthController extends Controller
     {
         if ($request->validated()) {
             if (!Auth::attempt($request->only('email', 'password'))) {
-                return redirect('/login')->with('message', 'Zły e-mail lub hasło.');
+                $message = 'Zły e-mail lub hasło.';
+                return view('auth.login', ['message' => $message]);
             }
 
             $token = $this->authServices->login($request);

@@ -25,7 +25,7 @@ class RatingRequest extends FormRequest
     {
         return [
             'rate' => 'required',
-            'opinion' => 'required|string|min:10',
+            'opinion' => 'required|string',
             'product_id' => 'required'
         ];
     }
@@ -40,8 +40,7 @@ class RatingRequest extends FormRequest
         return [
             'rate.required' => 'Ocena jest wymagana!',
             'opinion.required' => 'Opinia jest wymagana!',
-            'product_id.required' => 'Produkt jest wymagany!',
-            'opinion.min' => 'Opinia jest za krótka!'
+            'product_id.required' => 'Produkt jest wymagany!'
         ];
     }
 }

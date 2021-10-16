@@ -32,7 +32,7 @@ class StoreProduct extends FormRequest
             'code_product' => ['required', 'string', 'max:12'],
             'weight' => ['required', 'numeric', 'digits_between:1,5'],
             'photo' => ['required'],
-            'description' => ['required', 'string', 'min:20'],
+            'description' => ['required', 'string'],
             'subcategory' => ['required']
         ];
     }
@@ -47,8 +47,7 @@ class StoreProduct extends FormRequest
         return [
             'photo.required' => 'Wgraj zdjęcie produktu!',
             'subcategory.required' => 'Wymagane wybranie podkategorii!',
-            '*.max' => 'Wprowadzono zbyt dużą ilość znaków!',
-            'description.min' => 'Opis produktu powinien być dłuższy!'
+            '*.max' => 'Wprowadzono zbyt dużą ilość znaków!'
         ];
     }
 }
