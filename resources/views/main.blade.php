@@ -38,7 +38,7 @@
                 <div class="col">
                     <div class="card mb-3" style="width: 18rem;">
                         <a href="/product/{{ $product->id }}">
-                            <img src="../storage/{{ $product->photo }}" class="card-img-top" alt="furniture">
+                            <img src="{{ Storage::disk('s3')->url($product->photo) }}" class="card-img-top" alt="furniture">
                         </a>
                         <div class="card-body" style="height: 175px">
                             <h5 class="card-title" style="height: 50px">{{ $product->name }}</h5>

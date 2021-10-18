@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Product;
 use App\Models\Subcategory;
 use Intervention\Image\Facades\Image;
+use AWS;
 
 class ProductServices
 {
@@ -30,14 +31,32 @@ class ProductServices
         $product->description = $data->get('description');
 
         if ($data->file('photo')) {
-            $product->photo = $imagePath = $data->file('photo')->store('products', 'public');
+            $uploadedImage = $data->file('photo');
+            $imageName = time() . '.' . $uploadedImage->getClientOriginalExtension();
+            $destinationPath = public_path('images/products/');
+            $uploadedImage->move($destinationPath, $imageName);
+            $imagePath = $destinationPath . $imageName;
 
-            $photo = Image::make(public_path("storage/{$imagePath}"))->fit(300, 450);
-            $photo->save();
+            /* $uploadedImage = $data->file('photo');
+            $extension = $data->file('photo')->getClientOriginalExtension();
 
-            $imageArray = ['photo' => $imagePath];
+            $imageName = time() . '.' . $uploadedImage->getClientOriginalExtension();
+
+            $fit = Image::make($uploadedImage)->fit(300, 450)->encode($extension);
+            $destinationPath = public_path('images/products/');
+            $uploadedImage->move($destinationPath, $imageName);
+            $imagePath = $destinationPath . $imageName; */
+
+            $s3 = AWS::createClient('s3');
+            $s3->putObject(array(
+                'Bucket'     => 'furniture-shop-web',
+                'Key'        => $imageName,
+                'SourceFile' => $imagePath,
+                'ACL'        => 'public-read',
+            ));
+
+            $product->photo = $imageName;
         }
-
         $product->save();
 
         return $product;

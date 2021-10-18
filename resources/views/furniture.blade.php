@@ -13,7 +13,7 @@
             <div class="col" style="justify-content: center; display: flex">
                 <div class="card mb-3" style="width: 18rem; text-align: center">
                     <a href="/product/{{ $product->id }}">
-                        <img src="../storage/{{ $product->photo }}" class="card-img-top" alt="armchair">
+                        <img src="{{ Storage::disk('s3')->url($product->photo) }}" class="card-img-top" alt="armchair">
                     </a>
                     <div class="card-body" style="height: 175px">
                         <h5 class="card-title" style="height: 50px">{{ $product->name }}</h5>
