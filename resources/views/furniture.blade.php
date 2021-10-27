@@ -15,7 +15,7 @@
                     <a href="/product/{{ $product->id }}" style="height: 430px; display: table-cell; vertical-align: middle">
                         <img src="{{ Storage::disk('s3')->url($product->photo) }}" class="card-img-top" alt="armchair">
                     </a>
-                    <div class="card-body" style="height: 175px">
+                    <div class="card-body" style="height: 175px; border-top: 1px solid gainsboro">
                         <h5 class="card-title" style="height: 50px">{{ $product->name }}</h5>
                         <p class="card-text" style="font-weight: bold">{{ $product->price }} zł</p>
                         <a href="/product/{{ $product->id }}" class="btn btn-outline-dark">Zobacz więcej</a>
