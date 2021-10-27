@@ -37,7 +37,7 @@
                 @forelse($products as $product)
                 <div class="col" style="justify-content: center; display: flex">
                     <div class="card mb-3" style="width: 18rem; display: inline-block">
-                        <a href="/product/{{ $product->id }}" style="height: 430px; display: table-cell">
+                        <a href="/product/{{ $product->id }}" style="height: 430px; display: table-cell; vertical-align: middle">
                             <img src="{{ Storage::disk('s3')->url($product->photo) }}" class="card-img-top" alt="furniture">
                         </a>
                         <div class="card-body" style="height: 175px">
