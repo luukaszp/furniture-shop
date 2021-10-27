@@ -25,7 +25,7 @@
                 @forelse($products as $product)
                 <div class="col-xl-5 col-sm-5 mb-5">
                     <div class="row">
-                        <img src="{{ Storage::disk('s3')->url($product->photo) }}" class="img-fluid" alt="armchair">
+                        <img src="{{ Storage::disk('s3')->url($product->photo) }}" class="img-fluid">
                     </div>
                 </div>
                 <div class="informations col">

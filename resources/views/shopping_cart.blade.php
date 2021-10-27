@@ -44,7 +44,7 @@
             <tr>
                 <td data-th="Product">
                     <div class="row">
-                        <div class="col-sm-3 hidden-xs"><img src="../storage/{{ $cart->options->photo }}" class="thumbnail img-thumbnail" /></div>
+                        <div class="col-sm-3 hidden-xs"><img src="{{ Storage::disk('s3')->url($cart->options->photo) }}" class="thumbnail img-thumbnail" /></div>
                         @php ($product_id[] = $cart->id)
                         @php ($amount[] = $cart->qty)
                         <div class="additional col-sm-9">
