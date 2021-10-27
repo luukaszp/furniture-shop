@@ -33,11 +33,11 @@
         </div>
         <div class="items" style="text-align: center; justify-content: center">
             <h2 class="pt-5 pb-3">Produkty</h2>
-            <div class="row mt-3 mb-3" style="display: inline-flex">
+            <div class="row mt-3 mb-3 col-md-9" style="display: inline-flex">
                 @forelse($products as $product)
-                <div class="col">
-                    <div class="card mb-3" style="width: 18rem;">
-                        <a href="/product/{{ $product->id }}">
+                <div class="col" style="justify-content: center; display: flex">
+                    <div class="card mb-3" style="width: 18rem; display: inline-block">
+                        <a href="/product/{{ $product->id }}" style="height: 430px; display: table-cell">
                             <img src="{{ Storage::disk('s3')->url($product->photo) }}" class="card-img-top" alt="furniture">
                         </a>
                         <div class="card-body" style="height: 175px">

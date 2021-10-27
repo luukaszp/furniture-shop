@@ -37,16 +37,6 @@ class ProductServices
             $uploadedImage->move($destinationPath, $imageName);
             $imagePath = $destinationPath . $imageName;
 
-            /* $uploadedImage = $data->file('photo');
-            $extension = $data->file('photo')->getClientOriginalExtension();
-
-            $imageName = time() . '.' . $uploadedImage->getClientOriginalExtension();
-
-            $fit = Image::make($uploadedImage)->fit(300, 450)->encode($extension);
-            $destinationPath = public_path('images/products/');
-            $uploadedImage->move($destinationPath, $imageName);
-            $imagePath = $destinationPath . $imageName; */
-
             $s3 = AWS::createClient('s3');
             $s3->putObject(array(
                 'Bucket'     => 'furniture-shop-web',
